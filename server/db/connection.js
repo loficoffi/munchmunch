@@ -1,6 +1,8 @@
+import { config } from "../config/config.js"
+
 import { MongoClient, ServerApiVersion } from "mongodb";
 
-const uri = process.env.ATLAS_URI || "";
+const uri = config.mongoURI || "";
 const client = new MongoClient(uri, {
     serverApi: {
         version: ServerApiVersion.v1,
