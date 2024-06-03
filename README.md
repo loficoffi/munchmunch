@@ -1,2 +1,0 @@
-# munchmunch
-Culinary web app.
