@@ -4,33 +4,81 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77af0bde-9985-4206-9170-4f5dba9d0d22" name="Changes" comment="">
+    <list default="true" id="77af0bde-9985-4206-9170-4f5dba9d0d22" name="Changes" comment="Created own Branch">
+      <change afterPath="$PROJECT_DIR$/src/client/src/components/Register.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/src/dev/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/src/dev/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/src/dev/palette.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/src/dev/previews.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/src/dev/useInitial.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/src/main.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="com.intellij.reactbuddy.palette" />
+        <option value="com.intellij.reactbuddy.previews" />
+        <option value="com.intellij.reactbuddy.index" />
+        <option value="com.intellij.reactbuddy.useInitial" />
+        <option value="com.intellij.reactbuddy.README" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "KaburagiMxt"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;KaburagiMxt&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/loficoffi/munchmunch.git",
-    "accountId": "3ebe5a08-9962-4ed2-9624-5d83920514b6"
+}</component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="iss8_dev_ML" />
+                    <option name="lastUsedInstant" value="1717424365" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1717424364" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/loficoffi/munchmunch.git&quot;,
+    &quot;accountId&quot;: &quot;3ebe5a08-9962-4ed2-9624-5d83920514b6&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2hN9Hr5KaWeXtyR7ARswOiUFm1b" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -38,13 +86,16 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ReactCreateComponentLastSelected": "functionDeclarationComponent",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "iss8__dev__ML",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "npm.React Buddy Preview.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "ts.external.directory.path": "C:\\Users\\MxT\\WebstormProjects\\munchmunch\\src\\client\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -74,10 +125,36 @@
       <option name="presentableId" value="Default" />
       <updated>1717423582852</updated>
       <workItem from="1717423584137" duration="445000" />
+      <workItem from="1717424137109" duration="539000" />
+      <workItem from="1717425657861" duration="976000" />
     </task>
+    <task id="LOCAL-00001" summary="Created own Branch">
+      <option name="closed" value="true" />
+      <created>1717424396576</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1717424396576</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Created own Branch" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created own Branch" />
   </component>
 </project>

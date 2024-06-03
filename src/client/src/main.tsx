@@ -8,6 +8,8 @@ import App from './App.tsx';
 import Record from "./components/Record";
 import RecordList from "./components/RecordList.tsx";
 import './index.css';
+import {DevSupport} from "@react-buddy/ide-toolbox";
+import {ComponentPreviews, useInitial} from "./dev";
 
 const router = createBrowserRouter([
     {
