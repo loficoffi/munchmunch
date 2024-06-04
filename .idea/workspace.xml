@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77af0bde-9985-4206-9170-4f5dba9d0d22" name="Changes" comment="Created own Branch">
-      <change afterPath="$PROJECT_DIR$/src/client/src/components/Register.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/src/dev/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/src/dev/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/src/dev/palette.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/src/dev/previews.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/src/dev/useInitial.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/src/main.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="77af0bde-9985-4206-9170-4f5dba9d0d22" name="Changes" comment="Created first Test Component" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -126,7 +116,7 @@
       <updated>1717423582852</updated>
       <workItem from="1717423584137" duration="445000" />
       <workItem from="1717424137109" duration="539000" />
-      <workItem from="1717425657861" duration="976000" />
+      <workItem from="1717425657861" duration="1015000" />
     </task>
     <task id="LOCAL-00001" summary="Created own Branch">
       <option name="closed" value="true" />
@@ -136,7 +126,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717424396576</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Created first Test Component">
+      <option name="closed" value="true" />
+      <created>1717426683240</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1717426683240</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,6 +153,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created own Branch" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created own Branch" />
+    <MESSAGE value="Created first Test Component" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created first Test Component" />
   </component>
 </project>
