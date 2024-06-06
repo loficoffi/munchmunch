@@ -19,17 +19,23 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and Push Docker images
+      - name: Build Docker images
         run: |
           docker-compose -f src/docker-compose.yml build
+
+      - name: Push Docker images
+        run: |
           docker-compose -f src/docker-compose.yml push
 
-      - name: Deploy to AWS EC2
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            docker-compose pull
-            docker-compose up -d
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Pull and Run Docker containers
+        run: |
+          cd /path/to/your/project/on/ec2/src
+          docker-compose pull
+          docker-compose up -d
