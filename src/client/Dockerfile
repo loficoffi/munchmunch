@@ -5,7 +5,7 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
-ENV NODE_ENV=development
+ENV NODE_ENV=production
 
 # Serve the app with Nginx
 FROM nginx:stable-alpine
