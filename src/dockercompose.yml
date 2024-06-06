@@ -1,0 +1,15 @@
+version: '3'
+services:
+  client:
+    build: client
+    ports:
+      - '80:80'
+  server:
+    build: server
+    environment:
+      - PORT=5050
+      - BASE_API_URL=api
+      - CLIENT_URL=http://localhost:5173
+      - ATLAS_URI=mongodb+srv://maxilippmannml:2r8M3Blrkoq3xHl2@munchmunch.ivwixmh.mongodb.net/
+    ports:
+      - '5050:5050'
