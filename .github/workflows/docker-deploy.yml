@@ -36,6 +36,7 @@ jobs:
 
       - name: Pull and Run Docker containers
         run: |
-          cd /path/to/your/project/on/ec2/src
-          docker-compose pull
-          docker-compose up -d
+          cd ~/munchmunch
+          git pull
+          docker-compose -f src/docker-compose.yml pull
+          docker-compose -f src/docker-compose.yml up -d

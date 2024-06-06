@@ -79,7 +79,7 @@
       <option name="presentableId" value="Default" />
       <updated>1717411292452</updated>
       <workItem from="1717411293771" duration="461000" />
-      <workItem from="1717681785746" duration="9669000" />
+      <workItem from="1717681785746" duration="9911000" />
     </task>
     <task id="LOCAL-00001" summary="- Added docker &amp; nginx">
       <option name="closed" value="true" />
@@ -121,7 +121,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717691898795</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="- Added docker &amp; nginx">
+      <option name="closed" value="true" />
+      <created>1717692025540</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1717692025540</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
