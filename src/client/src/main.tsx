@@ -10,6 +10,7 @@ import RecordList from "./components/RecordList.tsx";
 import './index.css';
 import {DevSupport} from "@react-buddy/ide-toolbox";
 import {ComponentPreviews, useInitial} from "./dev";
+import Login from "./components/Login.tsx";
 
 const router = createBrowserRouter([
     {
@@ -39,6 +40,16 @@ const router = createBrowserRouter([
             {
                 path: "/create",
                 element: <Record/>,
+            },
+        ],
+    },
+    {
+        path: "/",
+        element: <App/>,
+        children: [
+            {
+                path: "/login",
+                element: <Login/>,
             },
         ],
     },
