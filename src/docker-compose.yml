@@ -2,10 +2,12 @@ version: '3'
 services:
   client:
     build: client
+    image: loficoffi/munchmunchclient:latest
     ports:
       - '80:80'
   server:
     build: server
+    image: loficoffi/munchmunchserver:latest
     environment:
       - PORT=5050
       - BASE_API_URL=api
