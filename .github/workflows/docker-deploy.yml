@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  build-and-push:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,7 +29,7 @@ jobs:
 
   deploy:
     runs-on: self-hosted
-
+    needs: build-and-push
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
