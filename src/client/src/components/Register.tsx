@@ -40,14 +40,15 @@ export default function Register() {
         <form onSubmit={handleSubmit}>
             <div>
                 <div>
-                    <h1>Munch</h1>
+                    <h1 className="title">Munch</h1>
+                    <h1 className="titleReverse">hcnuM</h1>
                 </div>
                 <div>
-                    <h2>Entdecke und genieße mit MunchMunch! Deine kulinarische Reise beginnt hier. Probier's aus und lass dich inspirieren!</h2>
+                <h2 className="description">Entdecke und genieße mit MunchMunch! Deine kulinarische Reise beginnt hier. Probier's aus und lass dich inspirieren!</h2>
                 </div>
-                <div>
+                <div className="fname">
                     <label htmlFor="firstName">Vorname:</label>
-                    <input
+                    <input className="inputfname"
                         type="text"
                         id="firstName"
                         name="firstName"
@@ -55,9 +56,9 @@ export default function Register() {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
+                <div className="lname">
                     <label htmlFor="lastName">Nachname:</label>
-                    <input
+                    <input className="inputlname"
                         type="text"
                         id="lastName"
                         name="lastName"
@@ -65,9 +66,9 @@ export default function Register() {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
+                <div className="emailtag">
                     <label htmlFor="email">Email:</label>
-                    <input
+                    <input className="inputemail"
                         type="email"
                         id="email"
                         name="email"
@@ -75,9 +76,9 @@ export default function Register() {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
+                <div className="passwordtag">
                     <label htmlFor="password">Passwort:</label>
-                    <input
+                    <input className="inputpassword"
                         type="password"
                         id="password"
                         name="password"
@@ -85,9 +86,9 @@ export default function Register() {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
+                <div className="confirmPasswordtag">
                     <label htmlFor="confirmPassword">Passwort wiederholen:</label>
-                    <input
+                    <input className="inputconfirmPassword"
                         type="password"
                         id="confirmPassword"
                         name="confirmPassword"
@@ -95,8 +96,8 @@ export default function Register() {
                         onChange={handleChange}
                     />
                 </div>
-                <button type="submit">Registrieren</button>
-                <p>
+                <button className="RegButton" type="submit">Registrieren</button>
+                <p className="loginlink">
                     Bereits registriert? <Link to="/login">Hier einloggen</Link>
                 </p>
             </div>
