@@ -75,8 +75,6 @@ button:focus-visible {
 
 /*Register*/
 
-
-
 .title {
     font-size: 48px;
     font-weight: bold;
@@ -233,6 +231,58 @@ button:focus-visible {
     text-align: center;
 }
 .loginlink{
+    font-size: 20px;
+    font-weight: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/*Login*/
+
+
+.loginEmail{
+    font-size: 20px;
+    font-weight: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.loginInputEmail{
+    font-size: 20px;
+    font-weight: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.loginPasswort{
+    font-size: 20px;
+    font-weight: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.loginInputPasswort{
+    font-size: 20px;
+    font-weight: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.loginButton{
     font-size: 20px;
     font-weight: normal;
     display: flex;

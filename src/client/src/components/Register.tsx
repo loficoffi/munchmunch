@@ -96,7 +96,7 @@ export default function Register() {
                         onChange={handleChange}
                     />
                 </div>
-                <button className="RegButton" type="submit">Registrieren</button>
+               <div className="RegButton"> <button className="RegButton" type="submit">Registrieren</button> </div>
                 <p className="loginlink">
                     Bereits registriert? <Link to="/login">Hier einloggen</Link>
                 </p>

@@ -4,15 +4,15 @@ export default function Login() {
         <div>
             <h2>Login</h2>
             <form>
-                <div>
+                <div className="loginEmail">
                     <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email"/>
+                    <input className="loginInputEmail" type="email" id="email" name="email"/>
                 </div>
-                <div>
+                <div className="loginPasswort" >
                     <label htmlFor="password">Passwort:</label>
-                    <input type="password" id="password" name="password"/>
+                    <input className="loginInputPasswort" type="password" id="password" name="password"/>
                 </div>
-                <button type="submit">Einloggen</button>
+               <div className="loginButton" > <button type="submit">Einloggen</button> </div>
             </form>
         </div>
     );
