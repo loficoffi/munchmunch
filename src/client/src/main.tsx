@@ -7,6 +7,7 @@ import {
 import App from './App.tsx';
 import Record from "./components/Record";
 import RecordList from "./components/RecordList.tsx";
+import Dashboard from "./pages/Dashboard.tsx";
 import './index.css';
 
 const router = createBrowserRouter([
@@ -37,6 +38,16 @@ const router = createBrowserRouter([
             {
                 path: "/create",
                 element: <Record />,
+            },
+        ],
+    },
+    {
+        path: "/dashboard", // Pfad für das Dashboard
+        element: <App />,
+        children: [
+            {
+                path: "/dashboard",
+                element: <Dashboard />, // Dashboard-Komponente einfügen
             },
         ],
     },
