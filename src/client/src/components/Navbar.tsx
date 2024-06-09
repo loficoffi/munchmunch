@@ -15,7 +15,7 @@ import {
 } from '@headlessui/react'
 
 const navigation = [
-    { name: 'Home', href: '#', current: true },
+    { name: 'Home', href: 'dashboard', current: true },
     { name: 'Meine Rezepte', href: '#', current: false },
     { name: 'Kategorien', href: '#', current: false },
     { name: <FontAwesomeIcon icon={ faSearch } />, href: '#', current: false },

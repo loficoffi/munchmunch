@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1645f7ea-51dd-4118-ab4a-40a844b397ee" name="Changes" comment="- Removed &quot;Hello Sandro&quot; comment">
-      <change afterPath="$PROJECT_DIR$/src/client/src/assets/images/spagetthi-test-bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/src/assets/images/test-bg-dashboard.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/src/assets/munchlogo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/src/pages/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/src/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/src/components/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/src/main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/src/components/RecordList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/src/components/RecordList.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +41,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -90,7 +82,7 @@
       <updated>1717411292452</updated>
       <workItem from="1717411293771" duration="461000" />
       <workItem from="1717681785746" duration="15755000" />
-      <workItem from="1717940954953" duration="413000" />
+      <workItem from="1717940954953" duration="1203000" />
     </task>
     <task id="LOCAL-00001" summary="- Added docker &amp; nginx">
       <option name="closed" value="true" />
