@@ -15,11 +15,15 @@ const RecipeView = () => {
         <div class="bg-black font-sans">
             <Navbar/>
             <RecipeTitle recipeTitle={recipeTitle}/>
-            <AddButton/>
-            <FavouriteButton/>
+            <div class="flex flex-row">
+                <AddButton/>
+                <FavouriteButton/>
+            </div>
             <TagContainer/>
-            <IngredientsContainer/>
-            <CookingDetails/>
+            <div class="flex flex-row">
+                <IngredientsContainer/>
+                <CookingDetails/>
+            </div>
             <CookingDirections/>
             <RecipeViewGallery/>
         </div>
