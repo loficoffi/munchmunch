@@ -10,22 +10,28 @@ import CookingDetails from "../components/CookingDetails.tsx";
 import RecipeViewGallery from "../components/RecipeViewGallery.tsx";
 
 const RecipeView = () => {
-    const recipeTitle : string = "Knusprige Entenbrust Süss Sauer";
-    return(
-        <div class="bg-black font-sans">
-            <Navbar/>
-            <RecipeTitle recipeTitle={recipeTitle}/>
-            <div class="flex flex-row">
-                <AddButton/>
-                <FavouriteButton/>
+    const recipeTitle = "Knusprige Entenbrust Süss Sauer";
+    return (
+        <div className="bg-black font-sans min-h-screen flex flex-col">
+            <Navbar />
+            <div className="flex flex-row justify-center p-4">
+                <div className="w-2/4 p-4">
+                    <RecipeTitle recipeTitle={recipeTitle} />
+                    <div className="flex flex-row mb-4">
+                        <AddButton />
+                        <FavouriteButton />
+                    </div>
+                    <TagContainer />
+                    <div className="flex flex-row mb-4">
+                        <IngredientsContainer />
+                        <CookingDetails />
+                    </div>
+                    <CookingDirections />
+                </div>
+                <div className="w-2/4 p-4 flex items-center">
+                    <RecipeViewGallery />
+                </div>
             </div>
-            <TagContainer/>
-            <div class="flex flex-row">
-                <IngredientsContainer/>
-                <CookingDetails/>
-            </div>
-            <CookingDirections/>
-            <RecipeViewGallery/>
         </div>
     );
 }
