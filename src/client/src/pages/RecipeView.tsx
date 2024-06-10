@@ -12,7 +12,7 @@ import RecipeViewGallery from "../components/RecipeViewGallery.tsx";
 const RecipeView = () => {
     const recipeTitle : string = "Knusprige Entenbrust Süss Sauer";
     return(
-        <div class="bg-black font-sans">
+        <div className="bg-black font-sans">
             <Navbar/>
             <RecipeTitle recipeTitle={recipeTitle}/>
             <AddButton/>
