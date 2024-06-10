@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1645f7ea-51dd-4118-ab4a-40a844b397ee" name="Changes" comment="- Configured ts.config to allow the any type, and not throw errors when locals or parameters are currently unused, but only show warnings">
+    <list default="true" id="1645f7ea-51dd-4118-ab4a-40a844b397ee" name="Changes" comment="- Edited .eslintrc.cjs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/.eslintrc.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/.eslintrc.cjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +84,7 @@
       <updated>1717411292452</updated>
       <workItem from="1717411293771" duration="461000" />
       <workItem from="1717681785746" duration="15755000" />
-      <workItem from="1717940954953" duration="1696000" />
+      <workItem from="1717940954953" duration="3470000" />
     </task>
     <task id="LOCAL-00001" summary="- Added docker &amp; nginx">
       <option name="closed" value="true" />
@@ -198,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717942433603</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="- Edited .eslintrc.cjs">
+      <option name="closed" value="true" />
+      <created>1717942705851</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1717942705851</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,6 +217,7 @@
     <MESSAGE value="- Removed &quot;Hello Sandro&quot; comment" />
     <MESSAGE value="- Refactored RecordList.tsx&#10;- Made it so that pressing &quot;Home&quot; in the navbar leads to the current temporary dashboard URL" />
     <MESSAGE value="- Configured ts.config to allow the any type, and not throw errors when locals or parameters are currently unused, but only show warnings" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Configured ts.config to allow the any type, and not throw errors when locals or parameters are currently unused, but only show warnings" />
+    <MESSAGE value="- Edited .eslintrc.cjs" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Edited .eslintrc.cjs" />
   </component>
 </project>
