@@ -4,14 +4,18 @@ import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
+
 import App from './App.tsx';
 import Record from "./components/Record";
 import RecordList from "./components/RecordList.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
+import RecipeView from "./pages/RecipeView.tsx";
+import Login from "./pages/Login.tsx";
+import Register from "./pages/Register.tsx";
+
 import './index.css';
 import {DevSupport} from "@react-buddy/ide-toolbox";
 import {ComponentPreviews, useInitial} from "./dev";
-import Login from "./components/Login.tsx";
 
 const router = createBrowserRouter([
     {
@@ -55,12 +59,32 @@ const router = createBrowserRouter([
         ],
     },
     {
+        path: "/",
+        element: <App/>,
+        children: [
+            {
+                path: "/register",
+                element: <Register/>,
+            },
+        ],
+    },
+    {
         path: "/dashboard", // Pfad für das Dashboard
         element: <App />,
         children: [
             {
                 path: "/dashboard",
                 element: <Dashboard />, // Dashboard-Komponente einfügen
+            },
+        ],
+    },
+    {
+        path: "/recipe", // Pfad für das Dashboard
+        element: <App />,
+        children: [
+            {
+                path: "/recipe",
+                element: <RecipeView />, // Dashboard-Komponente einfügen
             },
         ],
     },
