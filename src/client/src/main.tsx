@@ -9,35 +9,48 @@ import Record from "./components/Record";
 import RecordList from "./components/RecordList.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
 import './index.css';
+import {DevSupport} from "@react-buddy/ide-toolbox";
+import {ComponentPreviews, useInitial} from "./dev";
+import Login from "./components/Login.tsx";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <App />,
+        element: <App/>,
         children: [
             {
                 path: "/",
-                element: <RecordList />,
+                element: <RecordList/>,
             },
         ],
     },
     {
         path: "/edit/:id",
-        element: <App />,
+        element: <App/>,
         children: [
             {
                 path: "/edit/:id",
-                element: <Record />,
+                element: <Record/>,
             },
         ],
     },
     {
         path: "/create",
-        element: <App />,
+        element: <App/>,
         children: [
             {
                 path: "/create",
-                element: <Record />,
+                element: <Record/>,
+            },
+        ],
+    },
+    {
+        path: "/",
+        element: <App/>,
+        children: [
+            {
+                path: "/login",
+                element: <Login/>,
             },
         ],
     },
@@ -54,7 +67,11 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-      <RouterProvider router={router} />
-  </React.StrictMode>,
+    <React.StrictMode>
+        <DevSupport ComponentPreviews={ComponentPreviews}
+                    useInitialHook={useInitial}
+        >
+            <RouterProvider router={router}/>
+        </DevSupport>
+    </React.StrictMode>,
 )
