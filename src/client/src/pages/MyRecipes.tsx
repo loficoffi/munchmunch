@@ -5,6 +5,7 @@ import { faSeedling, faDrumstickBite, faFish } from '@fortawesome/free-solid-svg
 import '../index.css';
 
 export const MyRecipes = () => {
+    //array for the food category tags to render them in the tag-container
     const tags = [
         { name: 'Veggie', icon: <FontAwesomeIcon icon={faSeedling} />, backgroundColor: 'bg-veggie-green text-vegan-yellow', onClick: () => getRecipesFromTag('Veggie') },
         { name: 'Vegan', icon: <FontAwesomeIcon icon={faSeedling} />, backgroundColor: 'bg-vegan-yellow text-veggie-green', onClick: () => getRecipesFromTag('Vegan') },
@@ -12,6 +13,7 @@ export const MyRecipes = () => {
         { name: 'Fisch', icon: <FontAwesomeIcon icon={faFish} />, backgroundColor: 'bg-fish-blue text-white', onClick: () => getRecipesFromTag('Fisch') },
     ];
 
+    //TODO: implemented function for getting all recipes with the clicked tag
     const getRecipesFromTag = (tagName: string) => {
         console.log(`Tag ${tagName} is clicked!`);
     };
