@@ -2,11 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 300;
+
+    color: white;
+    background-color: black;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 .navbar
 {
     height: auto;
     display: block;
-    position: fixed;
     width: 100%;
     z-index: 2;
 }
@@ -27,7 +40,7 @@
     background-repeat: no-repeat;
 }
 
-.main-recipe-div img {
+.main-recipe-div .bg-image img {
     position: absolute;
     top: 0;
     left: 0;
@@ -57,13 +70,11 @@
     left: 5%;
     z-index: 2;
     color: white;
-    width: 60%;
     line-height: 70px;
 }
 
 .main-recipe-title
 {
-    font-size: 4rem;
     font-weight: bold;
     text-color: white;
 }
@@ -80,20 +91,6 @@
 
 
 /*
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
 a {
   font-weight: 500;
