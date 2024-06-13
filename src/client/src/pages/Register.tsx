@@ -47,18 +47,19 @@ export default function Register() {
                 <h2 className="description">Entdecke und genieße mit MunchMunch! Deine kulinarische Reise beginnt hier. Probier's aus und lass dich inspirieren!</h2>
                 </div>
                 <div className="fname">
-                    <label htmlFor="firstName">Vorname:</label>
+
                     <input className="inputfname"
-                        type="text"
-                        id="firstName"
-                        name="firstName"
-                        value={formState.firstName}
-                        onChange={handleChange}
+                           placeholder="First Name"
+                           type="text"
+                           id="firstName"
+                           name="firstName"
+                           value={formState.firstName}
+                           onChange={handleChange}
                     />
                 </div>
                 <div className="lname">
-                    <label htmlFor="lastName">Nachname:</label>
                     <input className="inputlname"
+                        placeholder="Last Name"
                         type="text"
                         id="lastName"
                         name="lastName"
@@ -67,8 +68,8 @@ export default function Register() {
                     />
                 </div>
                 <div className="emailtag">
-                    <label htmlFor="email">Email:</label>
                     <input className="inputemail"
+                        placeholder="Email"
                         type="email"
                         id="email"
                         name="email"
@@ -77,8 +78,8 @@ export default function Register() {
                     />
                 </div>
                 <div className="passwordtag">
-                    <label htmlFor="password">Passwort:</label>
                     <input className="inputpassword"
+                        placeholder="Password"
                         type="password"
                         id="password"
                         name="password"
@@ -87,8 +88,8 @@ export default function Register() {
                     />
                 </div>
                 <div className="confirmPasswordtag">
-                    <label htmlFor="confirmPassword">Passwort wiederholen:</label>
                     <input className="inputconfirmPassword"
+                        placeholder="Confirm Password"
                         type="password"
                         id="confirmPassword"
                         name="confirmPassword"

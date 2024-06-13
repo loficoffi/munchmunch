@@ -49,24 +49,13 @@ const router = createBrowserRouter([
         ],
     },
     {
-        path: "/",
-        element: <App/>,
-        children: [
-            {
-                path: "/login",
-                element: <Login/>,
-            },
-        ],
+        path: "/login",
+        element:  <Login/>,
     },
     {
-        path: "/",
-        element: <App/>,
-        children: [
-            {
-                path: "/register",
-                element: <Register/>,
-            },
-        ],
+        path: "/register",
+        element: <Register/>,
+
     },
     {
         path: "/dashboard", // Pfad für das Dashboard
