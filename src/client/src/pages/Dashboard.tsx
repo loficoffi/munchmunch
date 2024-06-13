@@ -24,11 +24,6 @@ export const Dashboard: React.FC = () => {
         pickRandomImage();
     }, []);
 
-    const handleClick = () => {
-        redirect("/recipe");
-        console.log('Button was clicked!');
-    };
-
     return (
         <div>
             <div className="main-recipe-div">
@@ -37,7 +32,7 @@ export const Dashboard: React.FC = () => {
                     <h1 className="main-recipe-title text-2xl md:text-5xl lg:text-5xl xl:text-6xl">KNUSPRIGE ENTENBRUST SÜSS-SAUER</h1>
                     <Link
                         to="/recipe"
-                        className="btn btn-primary rounded bg-black border border-munch-orange text-white py-2 px-4 text-sm text-white">
+                        className="btn btn-primary rounded bg-black border border-munch-orange py-2 px-4 text-sm text-white">
                         <FontAwesomeIcon icon={ faUtensils } className="utensils-icon" />
                         <span className="to-recipe-title">Zum Gericht</span>
                     </Link>
