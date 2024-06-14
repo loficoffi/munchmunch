@@ -1,3 +1,4 @@
+
 import { config } from "../config/config.js"
 
 import { MongoClient, ServerApiVersion } from "mongodb";
@@ -23,6 +24,6 @@ try {
     console.error(err);
 }
 
-let db = client.db("employees");
 
+let db = client.db("MunchMunch");
 export default db;

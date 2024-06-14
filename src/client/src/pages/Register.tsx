@@ -1,43 +1,43 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-interface RegisterFormState {
-    firstName: string;
-    lastName: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-}
+import  axios from "axios"
 
 export default function Register() {
-    const [formState, setFormState] = useState<RegisterFormState>({
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-    });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormState(prevState => ({
-            ...prevState,
-            [name]: value,
-        }));
-    };
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [fName, setFName] = useState("");
+    const [lName, setLName] = useState("");
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    async function submit(e)
+    {
         e.preventDefault();
-        if (formState.password !== formState.confirmPassword) {
-            alert('Passwords do not match');
+
+        // Überprüfe, ob alle Felder ausgefüllt sind
+        if (!email || !password || !fName || !lName) {
+            console.log("All fields are required");
             return;
         }
-        // Registrierungslogik hinzufügen
-        console.log('Form submitted', formState);
-    };
+
+        try {
+            const response = await axios.post("http://localhost:5050/auth/register", {
+                fName,
+                lName,
+                email,
+                password
+            });
+            console.log(response.data);
+        }
+        catch (e){
+            console.log(e.response.data);
+        }
+
+    }
+
+
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={submit} >
             <div>
                 <div>
                     <h1 className="title">Munch</h1>
@@ -53,8 +53,8 @@ export default function Register() {
                            type="text"
                            id="firstName"
                            name="firstName"
-                           value={formState.firstName}
-                           onChange={handleChange}
+                           onChange={(e) => setFName(e.target.value)}
+
                     />
                 </div>
                 <div className="lname">
@@ -63,8 +63,8 @@ export default function Register() {
                         type="text"
                         id="lastName"
                         name="lastName"
-                        value={formState.lastName}
-                        onChange={handleChange}
+                        onChange={(e) => setLName(e.target.value)}
+
                     />
                 </div>
                 <div className="emailtag">
@@ -73,8 +73,8 @@ export default function Register() {
                         type="email"
                         id="email"
                         name="email"
-                        value={formState.email}
-                        onChange={handleChange}
+                        onChange={(e) => setEmail(e.target.value)}
+
                     />
                 </div>
                 <div className="passwordtag">
@@ -83,8 +83,8 @@ export default function Register() {
                         type="password"
                         id="password"
                         name="password"
-                        value={formState.password}
-                        onChange={handleChange}
+                        onChange={(e) => setPassword(e.target.value)}
+
                     />
                 </div>
                 <div className="confirmPasswordtag">
@@ -93,8 +93,6 @@ export default function Register() {
                         type="password"
                         id="confirmPassword"
                         name="confirmPassword"
-                        value={formState.confirmPassword}
-                        onChange={handleChange}
                     />
                 </div>
                <div className="RegButton"> <button className="RegButton" type="submit">Registrieren</button> </div>
