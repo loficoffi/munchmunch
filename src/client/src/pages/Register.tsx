@@ -38,7 +38,7 @@ export default function Register() {
 
     return (
         <form onSubmit={submit} >
-            <div>
+            <div className="bg-black ">
                 <div>
                     <h1 className="title">Munch</h1>
                     <h1 className="titleReverse">hcnuM</h1>
@@ -95,7 +95,7 @@ export default function Register() {
                         name="confirmPassword"
                     />
                 </div>
-               <div className="RegButton"> <button className="RegButton" type="submit">Registrieren</button> </div>
+               <div className="RegButton"> <button className="RegButtonInput" type="submit">Registrieren</button> </div>
                 <p className="loginlink">
                     Bereits registriert? <Link to="/login">Hier einloggen</Link>
                 </p>

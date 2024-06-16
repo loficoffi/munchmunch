@@ -178,7 +178,7 @@ button:focus-visible {
 }
 
 .description {
-
+    color: white;
     font-size: 22px;
     font-weight: bold;
     display: flex;
@@ -198,15 +198,17 @@ button:focus-visible {
 }
 
 .inputfname {
-    border: none;
+    border-bottom: 2px solid #FF8A00;
+    border-radius: 15px;
+    background-color: #3C3C3C;
     font-size: 20px;
     font-weight: normal;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    border: 1px solid black;
     padding: 10px;
+    color: white;
 }
 
 .lname {
@@ -220,15 +222,17 @@ button:focus-visible {
 }
 
 .inputlname {
-    border: none;
+    border-bottom: 2px solid #FF8A00;
+    border-radius: 15px;
+    background-color: #3C3C3C;
     font-size: 20px;
     font-weight: normal;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    border: 1px solid black;
     padding: 10px;
+    color: white;
 }
 
 .emailtag {
@@ -243,14 +247,17 @@ button:focus-visible {
 
 
 .inputemail {
+    border-bottom: 2px solid #FF8A00;
+    border-radius: 15px;
+    background-color: #3C3C3C;
     font-size: 20px;
     font-weight: normal;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    border: 1px solid black;
     padding: 10px;
+    color: white;
 }
 
 
@@ -266,15 +273,17 @@ button:focus-visible {
 }
 
 .inputpassword {
-
+    border-bottom: 2px solid #FF8A00;
+    border-radius: 15px;
+    background-color: #3C3C3C;
     font-size: 20px;
     font-weight: normal;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    border: 1px solid black;
     padding: 10px;
+    color: white;
 }
 
 .confirmPasswordtag {
@@ -288,24 +297,36 @@ button:focus-visible {
 
 }
 .inputconfirmPassword {
-
+    border-bottom: 2px solid #FF8A00;
+    border-radius: 15px;
+    background-color: #3C3C3C;
     font-size: 20px;
     font-weight: normal;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    border: 1px solid black;
     padding: 10px;
+    color: white;
 }
 
 .RegButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.RegButtonInput{
     font-size: 20px;
     font-weight: normal;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    border-radius: 15px;
+    background-color: orange;
+    color: white;
 }
 
 .loginlink{
@@ -316,6 +337,7 @@ button:focus-visible {
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: white;
 }
 
 /*Login*/
@@ -330,14 +352,17 @@ button:focus-visible {
 }
 
 .loginInputEmail{
+    border-bottom: 2px solid #FF8A00;
+    border-radius: 15px;
+    background-color: #3C3C3C;
     font-size: 20px;
     font-weight: normal;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    border: 1px solid black;
     padding: 10px;
+    color: white;
 }
 
 .loginPasswort{
@@ -350,21 +375,47 @@ button:focus-visible {
 }
 
 .loginInputPasswort{
+    border-bottom: 2px solid #FF8A00;
+    border-radius: 15px;
+    background-color: #3C3C3C;
     font-size: 20px;
     font-weight: normal;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    border: 1px solid black;
     padding: 10px;
+    color: white;
 }
 
 .loginButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.loginButtonInput{
     font-size: 20px;
     font-weight: normal;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    border-radius: 15px;
+    background-color: orange;
+    color: white;
+
+}
+
+.regLink {
+    font-size: 20px;
+    font-weight: normal;
+    display: flex;
+    position: page;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+
 }
