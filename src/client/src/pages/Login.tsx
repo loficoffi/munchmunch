@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import {Link} from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import  axios from "axios"
+import config from "../config/config.ts";
 
-export default function Login() {
+
+export default function Login () {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [token, setToken] = useState(null); // State zum Speichern des Tokens
+    const navigate = useNavigate();
 
     async function submit(e) {
         e.preventDefault();
@@ -16,14 +18,17 @@ export default function Login() {
         }
 
         try {
-            const response = await axios.post("http://localhost:5050/auth/login", {
+            const response = await axios.post(`${config.apiUrl}/auth/login`, {
                 email,
                 password
             });
             const { token } = response.data;
-            setToken(token); // Token im State speichern
+            // Token im localStorage speichern
+            localStorage.setItem('token', token);
             console.log("Login successful");
-            // Weiterleitung oder Anzeige einer Erfolgsmeldung
+
+            // Weiterleitung
+            navigate('/');
         } catch (e) {
             console.log(e.response.data);  // Detaillierte Fehlermeldung vom Server
         }
@@ -65,5 +70,3 @@ export default function Login() {
         </div>
     );
 }
-
-

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate  } from "react-router-dom";
 import  axios from "axios"
+import config from "../config/config.ts";
 
 export default function Register() {
 
@@ -9,6 +10,7 @@ export default function Register() {
     const [fName, setFName] = useState("");
     const [lName, setLName] = useState("");
     const [registrationMessage, setRegistrationMessage] = useState("");
+    const navigate = useNavigate();
 
     async function submit(e)
     {
@@ -21,13 +23,19 @@ export default function Register() {
         }
 
         try {
-            const response = await axios.post("http://localhost:5050/auth/register", {
+            const response = await axios.post(`${config.apiUrl}/auth/register`, {
                 fName,
                 lName,
                 email,
                 password
             });
             setRegistrationMessage("Registrierung erfolgreich!");
+            const { token } = response.data;
+            // Token im localStorage speichern
+            localStorage.setItem('token', token);
+
+            // Weiterleitung
+            navigate('/');
         }
         catch (error) {
             if (error.response.status === 400 && error.response.data.message === 'User already exists') {
