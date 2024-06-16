@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@types/jest": "^29.5.12",
+    "react-image-gallery": "^1.3.0"
+  },
+  "devDependencies": {
+    "@types/react-image-gallery": "^1.2.4"
+  }
+}

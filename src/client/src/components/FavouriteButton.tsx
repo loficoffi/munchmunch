@@ -1,8 +1,12 @@
 import React from "react";
 
 const FavouriteButton = () => {
-    return(
-        <div>im a favourite Button</div>
+    return (
+        <div>
+            <button type="submit" className="border-2 border-border-blue rounded-2xl mr-2 ml-0 my-2">
+                <img src=".\src\assets\heart.png" alt="Add" className="w-12 h-12"/>
+            </button>
+        </div>
     );
 }
 
