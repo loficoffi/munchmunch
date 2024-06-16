@@ -7,8 +7,8 @@ const recepieText  = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, s
 const CookingDirections = () => {
     return(
         <div>
-            <h3 class="text-white text-4xl">Zubereitung</h3>
-            <p class="text-white text-2xl mx-3 my-5">{recepieText}</p>
+            <h3 className="text-white text-4xl">Zubereitung</h3>
+            <p className="text-white text-2xl mx-3 my-5">{recepieText}</p>
         </div>
     )
 }

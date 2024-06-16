@@ -4,11 +4,11 @@ const ingredients = ["6 Eier", "500g Mehl", "Entenbrust", "Reis", "Süss-Sauer S
 
 const IngredientsContainer = () => {
     return(
-        <div class="mx-2">
-            <h3 class="text-white text-4xl">Zutaten</h3>
-            <ul class="list-disc mx-9 my-5">
+        <div className="mx-2">
+            <h3 className="text-white text-4xl">Zutaten</h3>
+            <ul className="list-disc mx-9 my-5">
                 {ingredients.map((ingredient, index) => (
-                    <li key={index} class="text-white text-2xl">{ingredient}</li>
+                    <li key={index} className="text-white text-2xl">{ingredient}</li>
                 ))}
             </ul>
         </div>

@@ -9,6 +9,11 @@ import CookingDirections from "../components/CookingDirections.tsx";
 import CookingDetails from "../components/CookingDetails.tsx";
 import RecipeViewGallery from "../components/RecipeViewGallery.tsx";
 
+const tags = [
+  { name: "schismatic", color: "#B27777" },
+  { name: "vegetarisch", color: "#3F8345" },
+];
+
 const RecipeView = () => {
   const recipeTitle = "Knusprige Entenbrust Süss Sauer";
   return (
@@ -21,7 +26,7 @@ const RecipeView = () => {
             <AddButton />
             <FavouriteButton />
           </div>
-          <TagContainer />
+          {/*<TagContainer/>*/}
           <div className="flex flex-row mb-4">
             <IngredientsContainer />
             <CookingDetails />

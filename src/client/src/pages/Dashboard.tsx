@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Link, redirect} from "react-router-dom";
+import {Link} from "react-router-dom";
 import AddButton from "../components/AddButton.tsx";
 import spagetthiBG from '../assets/images/spagetthi-test-bg.jpg';
 import chickenBG from '../assets/images/test-bg-dashboard.png'

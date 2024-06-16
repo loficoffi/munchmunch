@@ -6,7 +6,7 @@ interface RecipeTitleProps {
 
 const RecipeTitle: React.FC<RecipeTitleProps> = ({ recipeTitle }) => {
     return (
-        <h2 class="text-white text-6xl">{recipeTitle}</h2>
+        <h2 className="text-white text-6xl">{recipeTitle}</h2>
     );
 }
 

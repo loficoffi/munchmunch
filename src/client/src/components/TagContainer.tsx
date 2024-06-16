@@ -1,11 +1,6 @@
 import React from "react";
 import Tag from "./Tag.tsx";
 
-const tags = [
-  { name: "asiatisch", color: "#B27777" },
-  { name: "vegetarisch", color: "#3F8345" },
-];
-
 interface TagContainerProps {
   tags: {
     name: string;
