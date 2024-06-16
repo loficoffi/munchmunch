@@ -18,7 +18,6 @@ const RecipeView = () => {
   const recipeTitle = "Knusprige Entenbrust Süss Sauer";
   return (
     <div className="bg-black font-sans min-h-screen flex flex-col">
-      <Navbar />
       <div className="flex flex-row justify-center p-4">
         <div className="w-2/4 p-4">
           <RecipeTitle recipeTitle={recipeTitle} />
