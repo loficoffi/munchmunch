@@ -1,18 +1,21 @@
-import  ImageGallery from 'react-image-gallery';
+import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
+import duck1Image from '../assets/ente1.png'
+import duck2Image from '../assets/ente2.png'
+import duck3Image from '../assets/ente3.png'
 
 const images = [
     {
-        original: './src/assets/ente1.png',
-        thumbnail: './src/assets/ente1.png'
+        original: duck1Image,
+        thumbnail: duck1Image
     },
     {
-        original: './src/assets/ente2.png',
-        thumbnail: './src/assets/ente2.png'
+        original: duck2Image,
+        thumbnail: duck2Image
     },
     {
-        original: './src/assets/ente3.png',
-        thumbnail: './src/assets/ente3.png'
+        original: duck3Image,
+        thumbnail: duck3Image
     }
 ]
 
