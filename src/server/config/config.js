@@ -4,7 +4,6 @@ console.log('Loading default .env from ./config/.env');
 dotenv.config({
     path: './config/.env'
 });
-
 if (process.env.NODE_ENV) {
     console.log(`Loading .env file for environment: ${process.env.NODE_ENV}`);
     console.log(`Attempting to load from: ./config/.env.${process.env.NODE_ENV}`);
