@@ -8,6 +8,7 @@ export default function Register() {
     const [password, setPassword] = useState("");
     const [fName, setFName] = useState("");
     const [lName, setLName] = useState("");
+    const [registrationMessage, setRegistrationMessage] = useState("");
 
     async function submit(e)
     {
@@ -15,7 +16,7 @@ export default function Register() {
 
         // Überprüfe, ob alle Felder ausgefüllt sind
         if (!email || !password || !fName || !lName) {
-            console.log("All fields are required");
+            setRegistrationMessage("Alle Felder sind erforderlich");
             return;
         }
 
@@ -26,12 +27,15 @@ export default function Register() {
                 email,
                 password
             });
-            console.log(response.data);
+            setRegistrationMessage("Registrierung erfolgreich!");
         }
-        catch (e){
-            console.log(e.response.data);
+        catch (error) {
+            if (error.response.status === 400 && error.response.data.message === 'User already exists') {
+                setRegistrationMessage("Benutzer mit dieser E-Mail existiert bereits");
+            } else {
+                setRegistrationMessage("Registrierung fehlgeschlagen. Bitte versuche es später erneut.");
+            }
         }
-
     }
 
 
@@ -96,6 +100,7 @@ export default function Register() {
                     />
                 </div>
                <div className="RegButton"> <button className="RegButtonInput" type="submit">Registrieren</button> </div>
+                {registrationMessage && <p className="registrationMessage">{registrationMessage}</p>}
                 <p className="loginlink">
                     Bereits registriert? <Link to="/login">Hier einloggen</Link>
                 </p>

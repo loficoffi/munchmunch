@@ -340,6 +340,16 @@ button:focus-visible {
     color: white;
 }
 
+.registrationMessage {
+    background-color: #f8d7da; /* Rote Farbe für Fehler */
+    color: #721c24; /* Dunkle Textfarbe für Kontrast */
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #f5c6cb; /* Rand um die Nachricht */
+    border-radius: 5px; /* Abgerundete Ecken */
+    font-size: 14px;
+}
+
 /*Login*/
 
 .loginEmail{
@@ -407,7 +417,13 @@ button:focus-visible {
     color: white;
 
 }
-
+.or{
+   color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 .regLink {
     font-size: 20px;
     font-weight: normal;
