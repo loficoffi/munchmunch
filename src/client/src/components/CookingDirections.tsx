@@ -6,8 +6,10 @@ const recepieText =
 const CookingDirections = () => {
   return (
     <div>
-      <h3 className="text-white text-3xl">Zubereitung</h3>
-      <p className="text-white text-xl mx-3 my-3">{recepieText}</p>
+      <h3 className="text-white text-xl md:text-2xl lg:text-3xl">
+        Zubereitung
+      </h3>
+      <p className="text-white text-l lg:text-xl mx-3 my-3">{recepieText}</p>
     </div>
   );
 };
