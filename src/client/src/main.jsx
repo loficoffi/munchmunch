@@ -5,14 +5,14 @@ import {
     RouterProvider,
 } from "react-router-dom";
 
-import App from './App.tsx';
+import App from './App.jsx';
 import Record from "./components/Record";
-import RecordList from "./components/RecordList.tsx";
-import Dashboard from "./pages/Dashboard.tsx";
-import RecipeView from "./pages/RecipeView.tsx";
-import Login from "./pages/Login.tsx";
-import Register from "./pages/Register.tsx";
-import MyRecipes from "./pages/MyRecipes.tsx";
+import RecordList from "./components/RecordList.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import RecipeView from "./pages/RecipeView.jsx";
+import Login from "./pages/Login.jsx";
+import Register from "./pages/Register.jsx";
+import MyRecipes from "./pages/MyRecipes.jsx";
 
 import './index.css';
 import {DevSupport} from "@react-buddy/ide-toolbox";
@@ -101,7 +101,7 @@ const router = createBrowserRouter([
     },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <DevSupport ComponentPreviews={ComponentPreviews}
                     useInitialHook={useInitial}
