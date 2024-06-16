@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1645f7ea-51dd-4118-ab4a-40a844b397ee" name="Changes" comment="- Styling and adding Props to RecepieView Components">
-      <change afterPath="$PROJECT_DIR$/src/client/src/assets/ente1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/src/assets/ente2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/src/assets/ente3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/src/components/CookingDirections.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/src/components/CookingDirections.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/src/components/RecipeViewGallery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/src/components/RecipeViewGallery.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/src/pages/RecipeView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/src/pages/RecipeView.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="1645f7ea-51dd-4118-ab4a-40a844b397ee" name="Changes" comment="Creating DataModells for the frontend" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -243,6 +233,7 @@
     <MESSAGE value="- Removed &quot;Hello Sandro&quot; comment" />
     <MESSAGE value="- Creating page and layout for recipeView&#10;-creating components of recipeView" />
     <MESSAGE value="- Styling and adding Props to RecepieView Components" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Styling and adding Props to RecepieView Components" />
+    <MESSAGE value="Creating DataModells for the frontend" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating DataModells for the frontend" />
   </component>
 </project>
