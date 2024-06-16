@@ -1,44 +1,56 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-
-interface RegisterFormState {
-    firstName: string;
-    lastName: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-}
+import { Link, useNavigate  } from "react-router-dom";
+import  axios from "axios"
+import config from "../config/config.ts";
 
 export default function Register() {
-    const [formState, setFormState] = useState<RegisterFormState>({
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-    });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormState(prevState => ({
-            ...prevState,
-            [name]: value,
-        }));
-    };
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [fName, setFName] = useState("");
+    const [lName, setLName] = useState("");
+    const [registrationMessage, setRegistrationMessage] = useState("");
+    const navigate = useNavigate();
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    async function submit(e)
+    {
         e.preventDefault();
-        if (formState.password !== formState.confirmPassword) {
-            alert('Passwords do not match');
+
+        // Überprüfe, ob alle Felder ausgefüllt sind
+        if (!email || !password || !fName || !lName) {
+            setRegistrationMessage("Alle Felder sind erforderlich");
             return;
         }
-        // Registrierungslogik hinzufügen
-        console.log('Form submitted', formState);
-    };
+
+        try {
+            const response = await axios.post(`${config.apiUrl}/auth/register`, {
+                fName,
+                lName,
+                email,
+                password
+            });
+            setRegistrationMessage("Registrierung erfolgreich!");
+            const { token } = response.data;
+            // Token im localStorage speichern
+            localStorage.setItem('token', token);
+
+            // Weiterleitung
+            navigate('/');
+        }
+        catch (error) {
+            if (error.response.status === 400 && error.response.data.message === 'User already exists') {
+                setRegistrationMessage("Benutzer mit dieser E-Mail existiert bereits");
+            } else {
+                setRegistrationMessage("Registrierung fehlgeschlagen. Bitte versuche es später erneut.");
+            }
+        }
+    }
+
+
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
+        <form onSubmit={submit} >
+            <div className="bg-black ">
                 <div>
                     <h1 className="title">Munch</h1>
                     <h1 className="titleReverse">hcnuM</h1>
@@ -47,56 +59,56 @@ export default function Register() {
                 <h2 className="description">Entdecke und genieße mit MunchMunch! Deine kulinarische Reise beginnt hier. Probier's aus und lass dich inspirieren!</h2>
                 </div>
                 <div className="fname">
-                    <label htmlFor="firstName">Vorname:</label>
+
                     <input className="inputfname"
-                        type="text"
-                        id="firstName"
-                        name="firstName"
-                        value={formState.firstName}
-                        onChange={handleChange}
+                           placeholder="First Name"
+                           type="text"
+                           id="firstName"
+                           name="firstName"
+                           onChange={(e) => setFName(e.target.value)}
+
                     />
                 </div>
                 <div className="lname">
-                    <label htmlFor="lastName">Nachname:</label>
                     <input className="inputlname"
+                        placeholder="Last Name"
                         type="text"
                         id="lastName"
                         name="lastName"
-                        value={formState.lastName}
-                        onChange={handleChange}
+                        onChange={(e) => setLName(e.target.value)}
+
                     />
                 </div>
                 <div className="emailtag">
-                    <label htmlFor="email">Email:</label>
                     <input className="inputemail"
+                        placeholder="Email"
                         type="email"
                         id="email"
                         name="email"
-                        value={formState.email}
-                        onChange={handleChange}
+                        onChange={(e) => setEmail(e.target.value)}
+
                     />
                 </div>
                 <div className="passwordtag">
-                    <label htmlFor="password">Passwort:</label>
                     <input className="inputpassword"
+                        placeholder="Password"
                         type="password"
                         id="password"
                         name="password"
-                        value={formState.password}
-                        onChange={handleChange}
+                        onChange={(e) => setPassword(e.target.value)}
+
                     />
                 </div>
                 <div className="confirmPasswordtag">
-                    <label htmlFor="confirmPassword">Passwort wiederholen:</label>
                     <input className="inputconfirmPassword"
+                        placeholder="Confirm Password"
                         type="password"
                         id="confirmPassword"
                         name="confirmPassword"
-                        value={formState.confirmPassword}
-                        onChange={handleChange}
                     />
                 </div>
-               <div className="RegButton"> <button className="RegButton" type="submit">Registrieren</button> </div>
+               <div className="RegButton"> <button className="RegButtonInput" type="submit">Registrieren</button> </div>
+                {registrationMessage && <p className="registrationMessage">{registrationMessage}</p>}
                 <p className="loginlink">
                     Bereits registriert? <Link to="/login">Hier einloggen</Link>
                 </p>
