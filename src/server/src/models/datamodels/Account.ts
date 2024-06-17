@@ -1,4 +1,4 @@
-import {AccountProfile} from "./AccountProfile.tsx";
+import {AccountProfile} from "./AccountProfile.js";
 
 export type Account= {
     id: string,
