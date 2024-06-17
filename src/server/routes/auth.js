@@ -2,6 +2,7 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import db from '../db/connection.js';
+import { config } from "../config/config.js"
 
 const router = express.Router();
 
@@ -60,7 +61,7 @@ router.post('/login', async (req, res) => {
         }
 
         // Erstelle und sende das JWT-Token
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+        const token = jwt.sign({ id: user._id }, config.jwt_secret, {
             expiresIn: '1h',
         });
         res.send({token});

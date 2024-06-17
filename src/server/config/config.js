@@ -16,5 +16,6 @@ export const config = {
     nodeEnv: process.env.NODE_ENV,
     frontendURL: process.env.FRONTEND_URI,
     mongoURI: process.env.ATLAS_URI || "",
-    port: process.env.PORT || 5050
+    port: process.env.PORT || 5050,
+    jwt_secret: process.env.JWT_SECRET || ""
 };

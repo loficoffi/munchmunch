@@ -1,4 +1,3 @@
-
 import { config } from "../config/config.js"
 
 import { MongoClient, ServerApiVersion } from "mongodb";
