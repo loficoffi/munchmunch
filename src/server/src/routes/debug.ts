@@ -58,7 +58,7 @@ router.get("/", async (req, res) => {
         extraImage: ["...", "..."]
     }
 
-    let result = await db.collection('meals').insertOne(newMeal);
+    await db.collection('meals').insertOne(newMeal);
 
     res.status(200).json({ message: 'Recipe is successfully created! Congratulations!' });
 });
