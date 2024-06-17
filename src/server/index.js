@@ -3,7 +3,7 @@ import cors from "cors";
 import path from "path";
 import records from "./routes/record.js";
 import { fileURLToPath } from 'url';
-//import authRoutes from './routes/auth.js'; // Neue Datei für Authentifizierungsrouten
+import authRoutes from './routes/auth.js'; // Neue Datei für Authentifizierungsrouten
 import './db/connection.js'; // Verbindung zur Datenbank
 
 const PORT = process.env.PORT || 5050;
