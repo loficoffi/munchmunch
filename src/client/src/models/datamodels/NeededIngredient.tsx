@@ -1,7 +1,7 @@
 import {Ingredient} from "./Ingredient.tsx";
 import {UnitType} from "./enums/UnitType.tsx";
 
-export type NeedidIngredient = {
+export type NeededIngredient = {
     id: string;
     ingredient: Ingredient;
     amount: number;

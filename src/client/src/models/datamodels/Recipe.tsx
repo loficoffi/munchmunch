@@ -1,12 +1,12 @@
 import {DifficultyType} from "./enums/DifficultyType.tsx";
-import {NeedidIngredient} from "./NeedidIngredient.tsx";
+import {NeededIngredient} from "./NeededIngredient.tsx";
 
 export type Recipe = {
     id: string,
     name: string,
     addedTime: string;
     difficulty: DifficultyType,
-    ingredients: NeedidIngredient[],
+    ingredients: NeededIngredient[],
     cookConditionInfo: string,
     cookTimeInfo: Date,
     cookDescription: string,

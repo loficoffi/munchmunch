@@ -1,7 +1,8 @@
 export enum UnitType {
-    gramm= 'gramm',
+    gram= 'gram',
     kg = 'kg',
     ml = 'ml',
     liter = 'l',
-    smallSpoon = 'sp'
+    smallSpoon = 'sp',
+    amount = ''
 }
