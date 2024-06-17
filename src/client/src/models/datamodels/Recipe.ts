@@ -8,6 +8,6 @@ export type Recipe = {
     difficulty: DifficultyType,
     ingredients: NeededIngredient[],
     cookConditionInfo: string,
-    cookTimeInfo: Date,
+    cookTimeInfo: string,
     cookDescription: string,
 }
