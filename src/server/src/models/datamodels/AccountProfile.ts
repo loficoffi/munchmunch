@@ -1,4 +1,4 @@
-import {Meal} from "./Meal.tsx";
+import {Meal} from "./Meal.js";
 
 export type AccountProfile = {
     id: string,

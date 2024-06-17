@@ -1,5 +1,5 @@
-import {Ingredient} from "./Ingredient.tsx";
-import {UnitType} from "./enums/UnitType.tsx";
+import {Ingredient} from "./Ingredient.ts";
+import {UnitType} from "./enums/UnitType.ts";
 
 export type NeededIngredient = {
     id: string;

@@ -9,4 +9,4 @@ EXPOSE 5050
 
 ENV NODE_ENV=production
 
-CMD ["node", "index.js"]
+CMD ["npm", "start"]
