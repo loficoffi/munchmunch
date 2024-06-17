@@ -12,8 +12,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 app.use(cors());
 app.use(express.json());
-app.use("/record", records);
-//app.use("/auth", authRoutes); // Authentifizierungsrouten hinzufügen
+//app.use("/record", records);
+app.use("/auth", authRoutes); // Authentifizierungsrouten hinzufügen
 app.use(express.static(path.join(__dirname, "..", 'client', 'dist')));
 
 app.get('*', (req, res) => {
