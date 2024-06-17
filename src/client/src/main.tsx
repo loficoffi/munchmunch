@@ -13,6 +13,8 @@ import RecipeView from "./pages/RecipeView.tsx";
 import Login from "./pages/Login.tsx";
 import Register from "./pages/Register.tsx";
 import MyRecipes from "./pages/MyRecipes.tsx";
+import SearchPage from "./pages/SearchPage.tsx";
+
 
 import './index.css';
 import {DevSupport} from "@react-buddy/ide-toolbox";
@@ -85,6 +87,16 @@ const router = createBrowserRouter([
             {
                 path: "/myrecipes",
                 element: <MyRecipes/>, // Dashboard-Komponente einfügen
+            },
+        ],
+    },
+    {
+        path: "/searchpage", // Pfad für das SearchPage
+        element: <App />,
+        children: [
+            {
+                path: "/searchpage",
+                element: <SearchPage/>, // Search-Komponente einfügen
             },
         ],
     },

@@ -432,3 +432,68 @@ button:focus-visible {
     color: white;
 
 }
+/*SearchPage*/
+.searchPage {
+    display: flex;
+}
+
+.sidebar-container {
+    flex: 0 0 200px; /* Fixe Breite für die Sidebar */
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+
+/*SearchBar*/
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    padding: 5px 10px;
+    width: 300px;
+    background: #3C3C3C;
+}
+
+
+.searchInput {
+    border: none;
+    outline: none;
+    flex: 1;
+    background: #3C3C3C;
+    padding-left: 10px;
+}
+
+.searchIcon {
+    margin-right: 15px;
+}
+
+/*SearchFilter*/
+.filter-sidebar {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: 200px;
+    height: 50vh;
+    box-sizing: border-box;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.filter-option input {
+    margin-right: 10px;
+}
+
+.filter-sidebar h2 {
+    margin-bottom: 20px;
+}
