@@ -57,6 +57,108 @@ router.get("/", async (req, res) => {
         mainImage: "..",
         extraImage: ["...", "..."]
     }
+
+    //Recipe 2: Forelle im Backofen
+    let recipe2Ingredients: Ingredient[] = [
+        {
+            id: uuidv4(),
+            name: 'Forelle küchenfertig (ca. 250 Gramm pro Stück)',
+            calories_100g: 103
+        },
+        {
+            id: uuidv4(),
+            name: 'Thymian',
+            calories_100g: 26
+        },
+        {
+            id: uuidv4(),
+            name: 'Rosmarin',
+            calories_100g: 6
+        },
+        {
+            id: uuidv4(),
+            name: 'Petersilie',
+            calories_100g: 18
+        },
+        {
+            id: uuidv4(),
+            name: 'Knoblauchzehen',
+            calories_100g: 141
+        },
+        {
+            id: uuidv4(),
+            name: 'Zitronensaft (Schuss)',
+            calories_100g: 4
+        }
+    ]
+    let recipe2NeededIngredients: NeededIngredient[] = [
+        {
+            id: uuidv4(),
+            ingredient: recipe2Ingredients[0],
+            amount: 2,
+            unit: UnitType.amount,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe2Ingredients[1],
+            amount: 4,
+            unit: UnitType.amount,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe2Ingredients[2],
+            amount: 4,
+            unit: UnitType.amount,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe2Ingredients[3],
+            amount: 4,
+            unit: UnitType.amount,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe2Ingredients[4],
+            amount: 2,
+            unit: UnitType.amount,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe2Ingredients[5],
+            amount: 1,
+            unit: UnitType.amount,
+        }
+    ]
+
+    let recipe2Recipe: Recipe[] = [
+        {
+            id: uuidv4(),
+            name: "Forelle im Backofen",
+            addedTime: Date.now().toString(),
+            difficulty: DifficultyType.middle,
+            ingredients: recipe2NeededIngredients,
+            cookConditionInfo: "Backofen 200 Grad (Ober-/Unterhitze)",
+            cookTimeInfo: "25 Minuten",
+            cookDescription: "* Für die Forelle im Backofen das Backrohr auf 200 Grad, Ober-/Unterhitze vorheizen.\n" +
+                "  \n" +
+                "* In der Zwischenzeit die Kräuter waschen und gut abtropfen lassen. Danach die küchenfertigen Forellen unter fließendem Wasser abspülen (innen und außen) und mit Küchenpapier trocken tupfen.\n" +
+                "  \n" +
+                "* Die Fische innen und außen mit Salz würzen und kräftig mit Öl einreiben. In die Bauchhöhle der Forellen Thymianzweige, Rosmarinzweige, Petersilie und eine kleingehackte Knoblauchzehe stecken und mit Pfeffer mit Zitronensaft würzen.\n" +
+                "  \n" +
+                "* Nun die Fische auf ein mit Backpapier ausgelegtes Backlech legen (oder in eine Alutasse) und im Backrohr etwa 15 Minuten braten. Damit der Fisch eine schöne Farbe bekommt, für die letzten 5 Minuten, die Backofen-Temperatur auf 240 Grad erhöhen.",
+        }
+    ]
+
+    let recipe2Meal: Meal = {
+        id: uuidv4(),
+        name: "Forelle im Backofen",
+        diet: DietType.fish,
+        cuisine: "Europäisch",
+        recipe: recipe2Recipe[0],
+        mainImage: "..",
+        extraImage: ["...", "..."]
+    }
+
     // create a new recipe
     let recipe3Ingredients: Ingredient[] = [
         {
@@ -401,6 +503,8 @@ router.get("/", async (req, res) => {
         extraImage: ["...", "..."]
     }
 
+
+    await db.collection('meals').insertOne(recipe2Meal);
 
     await db.collection('meals').insertOne(newMeal);
     await db.collection('meals').insertOne(recipe3Meal);
