@@ -1,5 +1,5 @@
-import {DifficultyType} from "./enums/DifficultyType.ts";
-import {NeededIngredient} from "./NeededIngredient.ts";
+import {DifficultyType} from "./enums/DifficultyType.js";
+import {NeededIngredient} from "./NeededIngredient.js";
 
 export type Recipe = {
     id: string,

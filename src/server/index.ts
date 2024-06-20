@@ -6,7 +6,8 @@ import records from "./src/routes/record.js";
 import { fileURLToPath } from 'url';
 import authRoutes from './src/routes/auth.js'; // Neue Datei für Authentifizierungsrouten
 import debug from "./src/routes/debug.js";
-import meals from "./src/routes/meals.js";
+import meal from "./src/routes/meal.js";
+import api from "./src/routes/api.js";
 
 const PORT = process.env.PORT || 5050;
 const app = express();
@@ -17,7 +18,8 @@ app.use(express.json());
 app.use("/record", records);
 app.use("/auth", authRoutes); // Authentifizierungsrouten hinzufügen
 app.use("/debug", debug);
-app.use("/meals", meals);
+app.use("/meal", meal);
+app.use("/api", api);
 app.use(express.static(path.join(__dirname, "..", 'client', 'dist')));
 
 app.get('*', (req, res) => {

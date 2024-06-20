@@ -18,42 +18,91 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
 
-    // create a new recipe
+    //Recipe 1: Spagetthi mit Garnelen und Paprika-Peperoni Sauce
     let recipe1Ingredients: Ingredient[] = [
         {
             id: uuidv4(),
             name: 'Frischkäse Brunch (Paprika-Peperoni)',
-            calories_100g: 2
-        }
+            calories_100g: 211
+        },
+        {
+            id: uuidv4(),
+            name: 'Garnelen (geschält)',
+            calories_100g: 73
+        },
+        {
+            id: uuidv4(),
+            name: 'Spagetthi',
+            calories_100g: 158
+        },
+        {
+            id: uuidv4(),
+            name: 'Knoblauchzehe (frisch gehackt)',
+            calories_100g: 141
+        },
+        {
+            id: uuidv4(),
+            name: 'Cocktailtomaten',
+            calories_100g: 15
+        },
     ]
-
     let recipe1NeededIngredients: NeededIngredient[] = [
         {
             id: uuidv4(),
             ingredient: recipe1Ingredients[0],
             amount: 1,
             unit: UnitType.amount,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe1Ingredients[1],
+            amount: 250,
+            unit: UnitType.gram,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe1Ingredients[2],
+            amount: 500,
+            unit: UnitType.gram,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe1Ingredients[3],
+            amount: 1,
+            unit: UnitType.amount,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe1Ingredients[4],
+            amount: 250,
+            unit: UnitType.gram,
         }
     ]
 
     let recipe1Recipe: Recipe[] = [
         {
             id: uuidv4(),
-            name: "Brunch Paprika-Peperoni Sauce Spagetthi mit Garnelen",
+            name: "Spagetthi mit Garnelen und Paprika-Peperoni Sauce",
             addedTime: Date.now().toString(),
             difficulty: DifficultyType.easy,
             ingredients: recipe1NeededIngredients,
-            cookConditionInfo: "Pfanne",
+            cookConditionInfo: "In der Pfanne",
             cookTimeInfo: "20 Minuten",
-            cookDescription: "",
+            cookDescription: "* Für das Rezept zunächst die Spaghetti in kochendem Salzwasser bissfest kochen.\n" +
+                "  \n" +
+                "* Währenddessen die Cocktailtomaten halbieren und den Knoblauch hacken. Den Knoblauch in einer Pfanne mit Olivenöl anschwitzen.\n" +
+                "  \n" +
+                "* Danach Garnelen tiefgefrorenen hinzufügen. Sobald diese aufgetaut sind, die Tomaten beimengen und ca. 6 Minuten anbraten.\n" +
+                "  \n" +
+                "* Zum Schluss Brunch dazu und langsam zu einer Sauce verrühren. Die Pasta mit Garnelen in tiefen Tellern servieren und genießen.",
         }
     ]
 
     let recipe1Meal: Meal = {
         id: uuidv4(),
-        name: "Brunch Paprika-Peperoni Sauce Spagetthi mit Garnelen",
+        name: "Spagetthi mit Garnelen und Paprika-Peperoni Sauce",
         diet: DietType.fish,
-        cuisine: "Standard",
+        cuisine: "Italienisch",
         recipe: recipe1Recipe[0],
         mainImage: "..",
         extraImage: ["...", "..."]
@@ -590,7 +639,7 @@ router.get("/", async (req, res) => {
         id: uuidv4(),
         name: "Wiener Schnitzel",
         diet: DietType.meat,
-        cuisine: "Standard",
+        cuisine: "Deutsch",
         recipe: recipe7Recipe[0],
         mainImage: "..",
         extraImage: ["...", "..."]
@@ -795,6 +844,8 @@ router.get("/", async (req, res) => {
         mainImage: "..",
         extraImage: ["...", "..."]
     }
+
+    await db.collection('meals').drop();
 
     await db.collection('meals').insertOne(recipe1Meal);
     await db.collection('meals').insertOne(recipe2Meal);
