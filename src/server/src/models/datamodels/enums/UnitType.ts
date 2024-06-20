@@ -3,6 +3,7 @@ export enum UnitType {
     kg = 'kg',
     ml = 'ml',
     liter = 'l',
+    bigSpoon = 'bsp',
     smallSpoon = 'sp',
     amount = ''
 }
