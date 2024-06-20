@@ -20,7 +20,9 @@ app.use("/auth", authRoutes); // Authentifizierungsrouten hinzufügen
 app.use("/debug", debug);
 app.use("/meal", meal);
 app.use("/api", api);
+app.use('/image', express.static(path.join(__dirname, 'assets', 'images')));
 app.use(express.static(path.join(__dirname, "..", 'client', 'dist')));
+
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, "..", 'client', 'dist', 'index.html'));

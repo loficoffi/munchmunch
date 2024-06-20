@@ -97,7 +97,8 @@ router.get('/dashboard', async (req, res) => {
             .sort((a, b) => a.sort - b.sort)
             .map(({value}) => value)
 
-        const randomMeal : Meal = shuffleArray(meals, getSeedFromDate())[0];
+        //const randomMeal : Meal = shuffleArray(meals, getSeedFromDate())[0];
+        const randomMeal : Meal = meals.find(x => x.name == "Knusprige Entenbrust Süss-Sauer");
 
         const dashboardData : DashboardData = {
            mealOfTheDay : randomMeal, categories : categories

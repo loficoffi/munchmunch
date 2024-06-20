@@ -2,7 +2,7 @@ import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import duck1Image from "../assets/ente1.png";
 import duck2Image from "../assets/ente2.png";
-import duck3Image from "../assets/ente3.png";
+import duck3Image from "../assets/images/ente3.png";
 
 const images = [
   {
