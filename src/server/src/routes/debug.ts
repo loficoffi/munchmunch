@@ -57,8 +57,354 @@ router.get("/", async (req, res) => {
         mainImage: "..",
         extraImage: ["...", "..."]
     }
+    // create a new recipe
+    let recipe3Ingredients: Ingredient[] = [
+        {
+            id: uuidv4(),
+            name: 'Sesamöl',
+            calories_100g: 884
+        },
+        {
+            id: uuidv4(),
+            name: 'Maisstärke',
+            calories_100g: 91
+        },
+        {
+            id: uuidv4(),
+            name: 'Ingwer',
+            calories_100g: 80
+        },
+        {
+            id: uuidv4(),
+            name: 'Knoblauchzehe',
+            calories_100g: 149
+        },
+        {
+            id: uuidv4(),
+            name: 'Reiswein',
+            calories_100g: 106
+        },
+        {
+            id: uuidv4(),
+            name: 'Tamari',
+            calories_100g: 70
+        },
+        {
+            id: uuidv4(),
+            name: 'Ahornsirup',
+            calories_100g: 247
+        },
+        {
+            id: uuidv4(),
+            name: 'Tofu Natur',
+            calories_100g: 142
+        },
+        {
+            id: uuidv4(),
+            name: 'Chilli',
+            calories_100g: 40
+        },
+        {
+            id: uuidv4(),
+            name: 'Bratöl',
+            calories_100g: 819
+        },
+        {
+            id: uuidv4(),
+            name: 'Brokkoli',
+            calories_100g: 142
+        },
+        {
+            id: uuidv4(),
+            name: 'Frühlingszwiebel',
+            calories_100g: 42
+        },
+        {
+            id: uuidv4(),
+            name: 'Paprika',
+            calories_100g: 42
+        },
+
+
+    ]
+    let recipe3NeededIngredients: NeededIngredient[] = [
+        {
+            id: uuidv4(),
+            ingredient: recipe3Ingredients[0],
+            amount: 45,
+            unit: UnitType.ml,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe3Ingredients[1],
+            amount: 6,
+            unit: UnitType.smallSpoon,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe3Ingredients[2],
+            amount: 1,
+            unit: UnitType.smallSpoon,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe3Ingredients[3],
+            amount: 2,
+            unit: UnitType.amount,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe3Ingredients[4],
+            amount: 15,
+            unit: UnitType.ml,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe3Ingredients[5],
+            amount: 90,
+            unit: UnitType.ml,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe3Ingredients[6],
+            amount: 60,
+            unit: UnitType.ml,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe3Ingredients[7],
+            amount: 400,
+            unit: UnitType.gram,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe3Ingredients[8],
+            amount: 2,
+            unit: UnitType.amount,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe3Ingredients[9],
+            amount: 30,
+            unit: UnitType.ml,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe3Ingredients[10],
+            amount: 1,
+            unit: UnitType.amount,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe3Ingredients[11],
+            amount: 1,
+            unit: UnitType.amount,
+        }
+    ]
+
+    let recipe3Recipe: Recipe[] = [
+        {
+            id: uuidv4(),
+            name: "Tofu Stir Fry",
+            addedTime: Date.now().toString(),
+            difficulty: DifficultyType.easy,
+            ingredients: recipe3NeededIngredients,
+            cookConditionInfo: "Pfanne",
+            cookTimeInfo: "30 Minuten",
+            cookDescription: "",
+        }
+    ]
+
+    let recipe3Meal: Meal = {
+        id: uuidv4(),
+        name: "Tofu Stir Fry",
+        diet: DietType.vegan,
+        cuisine: "Asiatisch",
+        recipe: recipe3Recipe[0],
+        mainImage: "..",
+        extraImage: ["...", "..."]
+    }
+
+    // create a new recipe
+    let recipe4Ingredients: Ingredient[] = [
+        {
+            id: uuidv4(),
+            name: 'Bratöl',
+            calories_100g: 819
+        },
+        {
+            id: uuidv4(),
+            name: 'Knoblauchzehe',
+            calories_100g: 149
+        },
+        {
+            id: uuidv4(),
+            name: 'Zwiebel',
+            calories_100g: 42
+        },
+        {
+            id: uuidv4(),
+            name: 'Tomatenmark',
+            calories_100g: 38
+        },
+        {
+            id: uuidv4(),
+            name: 'Karotten',
+            calories_100g: 39
+        },
+        {
+            id: uuidv4(),
+            name: 'Zucchini',
+            calories_100g: 2.2
+        },
+        {
+            id: uuidv4(),
+            name: 'Kartoffeln',
+            calories_100g: 75
+        },
+        {
+            id: uuidv4(),
+            name: 'Gemüsebrühe',
+            calories_100g: 2
+        },
+        {
+            id: uuidv4(),
+            name: 'Tomatensauce',
+            calories_100g: 40
+        },
+        {
+            id: uuidv4(),
+            name: 'Linsen',
+            calories_100g: 116
+        },
+        {
+            id: uuidv4(),
+            name: 'Rosmarin',
+            calories_100g: 131
+        },
+        {
+            id: uuidv4(),
+            name: 'Thymian',
+            calories_100g: 328
+        },
+        {
+            id: uuidv4(),
+            name: 'Kurkuma',
+            calories_100g: 338
+        },
+
+
+
+    ]
+    let recipe4NeededIngredients: NeededIngredient[] = [
+        {
+            id: uuidv4(),
+            ingredient: recipe4Ingredients[0],
+            amount: 30,
+            unit: UnitType.ml,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe4Ingredients[1],
+            amount: 2,
+            unit: UnitType.amount,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe4Ingredients[2],
+            amount: 2,
+            unit: UnitType.amount,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe4Ingredients[3],
+            amount: 30,
+            unit: UnitType.gram,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe4Ingredients[4],
+            amount: 4,
+            unit: UnitType.amount,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe4Ingredients[5],
+            amount: 1,
+            unit: UnitType.amount,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe4Ingredients[6],
+            amount: 500,
+            unit: UnitType.gram,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe4Ingredients[7],
+            amount: 1,
+            unit: UnitType.liter,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe4Ingredients[8],
+            amount: 250,
+            unit: UnitType.gram,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe4Ingredients[9],
+            amount: 190,
+            unit: UnitType.gram,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe4Ingredients[10],
+            amount: 0.5,
+            unit: UnitType.smallSpoon,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe4Ingredients[11],
+            amount: 0.5,
+            unit: UnitType.smallSpoon,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe4Ingredients[12],
+            amount: 1,
+            unit: UnitType.smallSpoon,
+        },
+
+    ]
+
+    let recipe4Recipe: Recipe[] = [
+        {
+            id: uuidv4(),
+            name: "Linsensuppe",
+            addedTime: Date.now().toString(),
+            difficulty: DifficultyType.easy,
+            ingredients: recipe4NeededIngredients,
+            cookConditionInfo: "Pfanne",
+            cookTimeInfo: "30 Minuten",
+            cookDescription: "",
+        }
+    ]
+
+    let recipe4Meal: Meal = {
+        id: uuidv4(),
+        name: "Linsensuppe",
+        diet: DietType.vegan,
+        cuisine: "Deutsch",
+        recipe: recipe4Recipe[0],
+        mainImage: "..",
+        extraImage: ["...", "..."]
+    }
+
 
     await db.collection('meals').insertOne(newMeal);
+    await db.collection('meals').insertOne(recipe3Meal);
+    await db.collection('meals').insertOne(recipe4Meal);
 
     res.status(200).json({ message: 'Recipe is successfully created! Congratulations!' });
 });
