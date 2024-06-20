@@ -1,4 +1,3 @@
-"use strict";
 /*
 // mathOperations.test.js
 const mathOps = require('./mathOperations');

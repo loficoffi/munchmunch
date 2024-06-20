@@ -1,5 +1,5 @@
-import {DietType} from "./enums/DietType.tsx";
-import {Recipe} from "./Recipe.tsx";
+import {DietType} from "./enums/DietType.js";
+import {Recipe} from "./Recipe.js";
 
 export type Meal = {
     id: string,
