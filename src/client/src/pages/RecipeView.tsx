@@ -12,7 +12,7 @@ import {
   faDrumstickBite,
   faFish,
 } from "@fortawesome/free-solid-svg-icons";
-import backgroundImage from "../assets/ente2.png";
+import backgroundImage from "../assets/images/ente2.png";
 
 const RecipeView = () => {
   const tags = [
