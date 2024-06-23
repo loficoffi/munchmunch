@@ -68,7 +68,6 @@ html, body {
 .main-recipe-infos {
     position: absolute;
     top: 30%;
-    left: 3%;
     z-index: 2;
     color: white;
     line-height: 70px;
@@ -93,33 +92,13 @@ html, body {
     z-index: 10;
 }
 
-.slick-slide {
-    justify-content: start !important;
+.meal-category-title {
+    text-color: white;
+    text-shadow: rgba(0, 0, 0, 0.9) 0px 0px 10px;
 }
 
-.slick-list {
-    align-items: start !important;
-}
-
-.slick-slide > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
-/* Ensure slider buttons are within the viewport */
-.slick-prev, .slick-next {
-    z-index: 3;
-}
-
-.slick-prev {
-    left: 5%;
-    z-index: 11;
-}
-
-.slick-next {
-    left: 95%;
+.meal-tile-bg:after {
+    box-shadow: rgba(0, 0, 0, 0.9) 0px 0px 10px;;
 }
 
 /*

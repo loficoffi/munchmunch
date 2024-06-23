@@ -1,4 +1,5 @@
 import React from 'react';
+import 'react-tooltip/dist/react-tooltip.css'
 import { Meal } from '../models/datamodels/Meal';
 import { getImageUrl } from '../utils/assetHelper.ts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -25,13 +26,12 @@ const MealTile: React.FC<MealTileProps> = ({ meal }) => {
     };
 
     return (
-        <div className="meal-tile relative group overflow-hidden rounded-2xl h-max">
+        <div className="meal-categories-swiper meal-tile relative group overflow-hidden rounded-2xl w-full h-80"> {/* Fixed height */}
             <img
                 src={imgSrc}
                 alt={meal.name}
                 onError={handleError}
-                className="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110 rounded-lg object-cover"
-            />
+                className="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110 rounded-lg object-cover"/>
             <div className="absolute top-0 left-0 bg-black bg-opacity-60 text-white p-1 rounded-tr-lg">
                 <FontAwesomeIcon icon={dietIcons[meal.diet]} />
             </div>

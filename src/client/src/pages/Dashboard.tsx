@@ -46,9 +46,9 @@ export const Dashboard: React.FC = () => {
     return (
         <div>
             {dashboardData && (
-                <div>
+                <div className="overflow-hidden">
                     <div className="main-meal-bg-img absolute bg-cover bg-center bg-no-repeat h-dvh w-full" style={{ backgroundImage: `url(${getImageUrl(dashboardData.mealOfTheDay.mainImage)})` }}/>
-                    <div className="main-recipe-div" >
+                    <div className="main-recipe-div mx-14">
                         <div className="main-recipe-infos w-2/4 md:w-1/2 mb-10 lg:w-2/3 xl:w-3/5">
                             <h1 className="main-recipe-title text-2xl md:text-5xl lg:text-5xl xl:text-6xl">
                                 KNUSPRIGE ENTENBRUST SÜSS-SAUER
@@ -67,7 +67,7 @@ export const Dashboard: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="meal-categories-container my-3 mx-14">
+                    <div className="meal-categories-container my-3 mx-14 overflow-hidden">
                         {dashboardData.categories.map(category => (
                             <MealCategory key={category.name} category={category} />
                         ))}

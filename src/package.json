@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/react-tooltip": "^4.2.4",
     "concurrently": "^8.2.2"
   },
   "dependencies": {
