@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from "react-dom";
 import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -40,7 +41,7 @@ const MealCategory: React.FC<MealCategoryProps> = ({ category }) => {
                 }}
             >
                 {category.meals.map((meal, index) => (
-                    <SwiperSlide key={`${category.name}-${meal.id}-${index}`}>
+                    <SwiperSlide id={`${category.name}-${meal.id}-${index}`} key={`${category.name}-${meal.id}-${index}`}>
                         <div
                             data-tooltip-id={`meal-tooltip-${category.name}-${meal.id}-${index}`}
                             data-tooltip-content={meal.name}
@@ -48,7 +49,7 @@ const MealCategory: React.FC<MealCategoryProps> = ({ category }) => {
                         >
                             <MealTile meal={meal} />
                         </div>
-                        <Tooltip id={`meal-tooltip-${category.name}-${meal.id}-${index}`} place="top" />
+                        <Tooltip id={`meal-tooltip-${category.name}-${meal.id}-${index}`} place="top" className="z-50"/>
                     </SwiperSlide>
                 ))}
             </Swiper>

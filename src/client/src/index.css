@@ -22,10 +22,10 @@ html, body {
 }
 
 .navbar {
-    height: auto;
-    display: block;
+    position: sticky;
+    top: 0;
     width: 100%;
-    z-index: 2;
+    z-index: 10000;
 }
 
 .main-content-container {
@@ -103,6 +103,29 @@ html, body {
 
 .fav-button {
     border-color: pink;
+}
+
+[data-tooltip-id] {
+    position: relative;
+}
+
+[data-tooltip-id]::after {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    z-index: 50; /* Ensure tooltip appears above other elements */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+[data-tooltip-id]:hover::after {
+    opacity: 1;
 }
 
 /*

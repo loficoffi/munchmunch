@@ -59,11 +59,15 @@ const router = createBrowserRouter([
 
     },
     {
-        path: "/recipe", // Pfad für das Dashboard
+        path: "/recipe/:id", // Pfad für das Dashboard
         element: <App />,
         children: [
             {
-                path: "/recipe",
+                path: "/recipe/:id/*",
+                element: <RecipeView />, // Dashboard-Komponente einfügen
+            },
+            {
+                path: "/recipe/:id",
                 element: <RecipeView />, // Dashboard-Komponente einfügen
             },
         ],

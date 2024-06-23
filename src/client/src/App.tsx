@@ -5,7 +5,7 @@ import "./index.css"
 const App = () => {
     return (
         <div className="w-full">
-            <div>
+            <div className="navbar">
                 <Navbar/>
             </div>
             <div className="main-content-container">

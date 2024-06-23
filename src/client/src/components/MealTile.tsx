@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Meal } from '../models/datamodels/Meal';
 import { getImageUrl } from '../utils/assetHelper.ts';
@@ -25,20 +26,27 @@ function randomImg(imagePaths : string[]) : string {
 const MealTile: React.FC<MealTileProps> = ({ meal }) => {
     const allImages = [...meal.extraImage, meal.mainImage]
     const [imgSrc, setImgSrc] = React.useState(getImageUrl(randomImg(allImages)));
+    const navigate = useNavigate();
 
     const handleError = () => {
         setImgSrc(mealTileFallback);
     };
 
+    const handleClick = () => {
+        navigate(`/recipe/${meal.id}/${meal.name.toString().replace(' ', '_').toLowerCase()}`);
+    };
+
     return (
-        <div className="meal-categories-swiper meal-tile relative group overflow-hidden rounded-2xl w-full h-80"> {/* Fixed height */}
+        <div onClick={handleClick}
+             className="meal-categories-swiper cursor-pointer meal-tile relative group overflow-hidden rounded-2xl w-full h-80">
             <img
                 src={imgSrc}
                 alt={meal.name}
                 onError={handleError}
-                className="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110 rounded-lg object-cover"/>
+                className="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110 rounded-lg object-cover">
+            </img>
             <div className="absolute top-0 left-0 bg-black bg-opacity-60 text-white p-1 rounded-tr-lg">
-                <FontAwesomeIcon icon={dietIcons[meal.diet]} />
+                <FontAwesomeIcon icon={dietIcons[meal.diet]}/>
             </div>
         </div>
     );
