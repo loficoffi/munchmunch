@@ -44,8 +44,8 @@ export const Dashboard: React.FC = () => {
         <div>
             {dashboardData && (
                 <div className="main-recipe-div">
-                    <img src={getImageUrl(dashboardData.mealOfTheDay.mainImage)} className="bg-image"
-                         alt="Hintergrundbild"/>
+                    <div className="main-recipe-div" style={{
+                        backgroundImage: `url(${getImageUrl(dashboardData.mealOfTheDay.mainImage)})`}}/>
                     <div className="main-recipe-infos w-2/4 md:w-1/2 mb-10 lg:w-2/3 xl:w-3/5">
                         <h1 className="main-recipe-title text-2xl md:text-5xl lg:text-5xl xl:text-6xl">KNUSPRIGE
                             ENTENBRUST SÜSS-SAUER</h1>

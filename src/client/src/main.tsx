@@ -20,12 +20,12 @@ import {ComponentPreviews, useInitial} from "./dev";
 
 const router = createBrowserRouter([
     {
-        path: "/",
-        element: <App/>,
+        path: "/", // Pfad für das Dashboard
+        element: <App />,
         children: [
             {
                 path: "/",
-                element: <RecordList/>,
+                element: <Dashboard />, // Dashboard-Komponente einfügen
             },
         ],
     },
@@ -57,16 +57,6 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register/>,
 
-    },
-    {
-        path: "/dashboard", // Pfad für das Dashboard
-        element: <App />,
-        children: [
-            {
-                path: "/dashboard",
-                element: <Dashboard />, // Dashboard-Komponente einfügen
-            },
-        ],
     },
     {
         path: "/recipe", // Pfad für das Dashboard
