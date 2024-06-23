@@ -18,8 +18,13 @@ const dietIcons = {
     vegan: faLeaf,
 };
 
+function randomImg(imagePaths : string[]) : string {
+    return imagePaths[Math.floor(Math.random() * imagePaths.length)];
+}
+
 const MealTile: React.FC<MealTileProps> = ({ meal }) => {
-    const [imgSrc, setImgSrc] = React.useState(getImageUrl(meal.mainImage));
+    const allImages = [...meal.extraImage, meal.mainImage]
+    const [imgSrc, setImgSrc] = React.useState(getImageUrl(randomImg(allImages)));
 
     const handleError = () => {
         setImgSrc(mealTileFallback);

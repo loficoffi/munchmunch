@@ -50,9 +50,7 @@ export const Dashboard: React.FC = () => {
                     <div className="main-meal-bg-img absolute bg-cover bg-center bg-no-repeat h-dvh w-full" style={{ backgroundImage: `url(${getImageUrl(dashboardData.mealOfTheDay.mainImage)})` }}/>
                     <div className="main-recipe-div mx-14">
                         <div className="main-recipe-infos w-2/4 md:w-1/2 mb-10 lg:w-2/3 xl:w-3/5">
-                            <h1 className="main-recipe-title text-2xl md:text-5xl lg:text-5xl xl:text-6xl">
-                                KNUSPRIGE ENTENBRUST SÜSS-SAUER
-                            </h1>
+                            <h1 className="main-recipe-title text-2xl md:text-5xl lg:text-5xl xl:text-6xl">{dashboardData.mealOfTheDay.name}</h1>
                             <div className="mt-2">
                                 <Link to="/recipe" className="btn btn-primary rounded-2xl bg-black border border-munch-orange py-2 px-5 text-2xl text-white">
                                     <FontAwesomeIcon icon={faUtensils} className="utensils-icon" />

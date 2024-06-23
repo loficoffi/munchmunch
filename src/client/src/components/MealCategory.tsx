@@ -13,16 +13,17 @@ interface MealCategoryProps {
     category: Category;
 }
 
-const MealCategory: React.FC<MealCategoryProps> = ({category}) => {
+const MealCategory: React.FC<MealCategoryProps> = ({ category }) => {
     return (
         <div className="mb-24 relative w-full overflow-hidden">
             <h2 className="meal-category-title text-3xl font-medium mb-4">{category.name}</h2>
             <Swiper
+                key={`${category.name}-swiper`}
                 modules={[Navigation, Pagination]}
                 spaceBetween={24}
                 slidesPerView={3}
                 navigation
-                pagination={{clickable: true}}
+                pagination={{ clickable: true }}
                 breakpoints={{
                     1024: {
                         slidesPerView: 3,
@@ -33,19 +34,22 @@ const MealCategory: React.FC<MealCategoryProps> = ({category}) => {
                     480: {
                         slidesPerView: 1,
                     },
+                    0: {
+                        slidesPerView: 1,
+                    },
                 }}
             >
-                {category.meals.map(meal => (
-                    <div>
-                        <SwiperSlide key={meal.id}>
-                            <div data-tooltip-id="meal-tooltip"
-                                 data-tooltip-content={meal.name}
-                                 data-tooltip-place="top" >
-                                <MealTile meal={meal}/>
-                            </div>
-                            <Tooltip id="meal-tooltip" place="top"/>
-                        </SwiperSlide>
-                    </div>
+                {category.meals.map((meal, index) => (
+                    <SwiperSlide key={`${category.name}-${meal.id}-${index}`}>
+                        <div
+                            data-tooltip-id={`meal-tooltip-${category.name}-${meal.id}-${index}`}
+                            data-tooltip-content={meal.name}
+                            data-tooltip-place="top"
+                        >
+                            <MealTile meal={meal} />
+                        </div>
+                        <Tooltip id={`meal-tooltip-${category.name}-${meal.id}-${index}`} place="top" />
+                    </SwiperSlide>
                 ))}
             </Swiper>
         </div>

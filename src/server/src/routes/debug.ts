@@ -104,8 +104,12 @@ router.get("/", async (req, res) => {
         diet: DietType.fish,
         cuisine: "Italienisch",
         recipe: recipe1Recipe[0],
-        mainImage: "..",
-        extraImage: ["...", "..."]
+        mainImage: "recipe1" + "mainImage",
+        extraImage: [
+            "recipe1" + "extraImage1",
+            "recipe1" + "extraImage2",
+            "recipe1" + "extraImage3",
+        ]
     }
 
     //Recipe 2: Forelle im Backofen
@@ -205,8 +209,12 @@ router.get("/", async (req, res) => {
         diet: DietType.fish,
         cuisine: "Europäisch",
         recipe: recipe2Recipe[0],
-        mainImage: "..",
-        extraImage: ["...", "..."]
+        mainImage: "recipe2" + "mainImage",
+        extraImage: [
+            "recipe2" + "extraImage1",
+            "recipe2" + "extraImage2",
+            "recipe2" + "extraImage3",
+        ]
     }
 
     // create a new recipe
@@ -372,8 +380,12 @@ router.get("/", async (req, res) => {
         diet: DietType.vegan,
         cuisine: "Asiatisch",
         recipe: recipe3Recipe[0],
-        mainImage: "..",
-        extraImage: ["...", "..."]
+        mainImage: "recipe3" + "mainImage",
+        extraImage: [
+            "recipe3" + "extraImage1",
+            "recipe3" + "extraImage2",
+            "recipe3" + "extraImage3",
+        ]
     }
 
     // create a new recipe
@@ -545,8 +557,12 @@ router.get("/", async (req, res) => {
         diet: DietType.vegan,
         cuisine: "Deutsch",
         recipe: recipe4Recipe[0],
-        mainImage: "..",
-        extraImage: ["...", "..."]
+        mainImage: "recipe4" + "mainImage",
+        extraImage: [
+            "recipe4" + "extraImage1",
+            "recipe4" + "extraImage2",
+            "recipe4" + "extraImage3",
+        ]
     }
 
     // create a new recipe
@@ -641,8 +657,12 @@ router.get("/", async (req, res) => {
         diet: DietType.meat,
         cuisine: "Deutsch",
         recipe: recipe7Recipe[0],
-        mainImage: "..",
-        extraImage: ["...", "..."]
+        mainImage: "recipe7" + "mainImage",
+        extraImage: [
+            "recipe7" + "extraImage1",
+            "recipe7" + "extraImage2",
+            "recipe7" + "extraImage3",
+        ]
     }
 
     // create a new recipe
@@ -841,8 +861,12 @@ router.get("/", async (req, res) => {
         diet: DietType.meat,
         cuisine: "Bayerisch",
         recipe: recipe8Recipe[0],
-        mainImage: "..",
-        extraImage: ["...", "..."]
+        mainImage: "recipe8" + "mainImage",
+        extraImage: [
+            "recipe8" + "extraImage1",
+            "recipe8" + "extraImage2",
+            "recipe8" + "extraImage3",
+        ]
     }
 
     // create a new recipe

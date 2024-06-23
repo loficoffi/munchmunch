@@ -54,17 +54,6 @@ html, body {
     z-index: 1;
 }
 
-/*.main-recipe-div::before {*/
-/*    content: "";*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    left: 0;*/
-/*    right: 0;*/
-/*    bottom: 0;*/
-/*    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 65%);*/
-/*    z-index: 1;*/
-/*}*/
-
 .main-recipe-infos {
     position: absolute;
     top: 30%;
@@ -98,7 +87,22 @@ html, body {
 }
 
 .meal-tile-bg:after {
-    box-shadow: rgba(0, 0, 0, 0.9) 0px 0px 10px;;
+    box-shadow: rgba(0, 0, 0, 0.9) 0px 0px 10px;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 20px; /* Icon size */
+    color: white; /* Change icon color to white */
+    text-shadow: rgba(0, 0, 0, 1) 0px 0px 10px;
+}
+
+.munch-mng-button {
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 8px;
+}
+
+.fav-button {
+    border-color: pink;
 }
 
 /*

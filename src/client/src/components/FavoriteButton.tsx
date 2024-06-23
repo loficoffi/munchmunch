@@ -6,8 +6,8 @@ const FavoriteButton = () => {
     <div>
       <button
         type="submit"
-        className="border-2 rounded-2xl bg-black">
-        <img src={heartIconImage} alt="Add" className="w-10 h-10" />
+        className="munch-mng-button fav-button border-2 rounded-2xl bg-black w-12 h-12 flex justify-center items-center">
+        <img src={heartIconImage} alt="Add" className="w-8 h-8" />
       </button>
     </div>
   );
