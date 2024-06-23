@@ -21,8 +21,7 @@ html, body {
     margin: 0;
 }
 
-.navbar
-{
+.navbar {
     height: auto;
     display: block;
     width: 100%;
@@ -35,69 +34,93 @@ html, body {
 }
 
 /*** DASHBOARD CSS ***/
-.main-recipe-div
-{
+.main-recipe-div {
+    position: relative;
     width: 100%;
-    height: 100vh;
-    background-color: black;
+    height: 50vh; /* Adjust the height as needed */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.main-recipe-div .bg-image img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-}
-
-.main-recipe-div::before {
+.main-meal-bg-img:after {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 65%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, transparent 65%);
     z-index: 1;
 }
 
-.main-recipe-infos
-{
+/*.main-recipe-div::before {*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    bottom: 0;*/
+/*    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 65%);*/
+/*    z-index: 1;*/
+/*}*/
+
+.main-recipe-infos {
     position: absolute;
-    top: 20%;
-    left: 5%;
+    top: 30%;
+    left: 3%;
     z-index: 2;
     color: white;
     line-height: 70px;
 }
 
-.main-recipe-title
-{
+.main-recipe-title {
     font-weight: bold;
     text-color: white;
-    text-shadow: rgba(0,0,0,0.9) 0px 0px 10px;
+    text-shadow: rgba(0, 0, 0, 0.9) 0px 0px 10px;
 }
 
-.to-recipe-title
-{
+.to-recipe-title {
     margin-left: 10px;
 }
 
-.utensils-icon
-{
+.utensils-icon {
     color: #FDA640;
 }
 
+.meal-categories-container {
+    position: relative;
+    z-index: 10;
+}
+
+.slick-slide {
+    justify-content: start !important;
+}
+
+.slick-list {
+    align-items: start !important;
+}
+
+.slick-slide > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Ensure slider buttons are within the viewport */
+.slick-prev, .slick-next {
+    z-index: 3;
+}
+
+.slick-prev {
+    left: 5%;
+    z-index: 11;
+}
+
+.slick-next {
+    left: 95%;
+}
 
 /*
 
@@ -302,6 +325,7 @@ button:focus-visible {
     text-align: center;
 
 }
+
 .inputconfirmPassword {
     border-bottom: 2px solid #FF8A00;
     border-radius: 15px;
@@ -316,14 +340,14 @@ button:focus-visible {
     color: white;
 }
 
-.RegButton{
+.RegButton {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 
-.RegButtonInput{
+.RegButtonInput {
     font-size: 20px;
     font-weight: normal;
     display: flex;
@@ -335,7 +359,7 @@ button:focus-visible {
     color: white;
 }
 
-.loginlink{
+.loginlink {
     font-size: 20px;
     font-weight: normal;
     display: flex;
@@ -358,7 +382,7 @@ button:focus-visible {
 
 /*Login*/
 
-.loginEmail{
+.loginEmail {
     font-size: 20px;
     font-weight: normal;
     display: flex;
@@ -367,7 +391,7 @@ button:focus-visible {
     text-align: center;
 }
 
-.loginInputEmail{
+.loginInputEmail {
     border-bottom: 2px solid #FF8A00;
     border-radius: 15px;
     background-color: #3C3C3C;
@@ -381,7 +405,7 @@ button:focus-visible {
     color: white;
 }
 
-.loginPasswort{
+.loginPasswort {
     font-size: 20px;
     font-weight: normal;
     display: flex;
@@ -390,7 +414,7 @@ button:focus-visible {
     text-align: center;
 }
 
-.loginInputPasswort{
+.loginInputPasswort {
     border-bottom: 2px solid #FF8A00;
     border-radius: 15px;
     background-color: #3C3C3C;
@@ -404,14 +428,14 @@ button:focus-visible {
     color: white;
 }
 
-.loginButton{
+.loginButton {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 
-.loginButtonInput{
+.loginButtonInput {
     font-size: 20px;
     font-weight: normal;
     display: flex;
@@ -423,13 +447,15 @@ button:focus-visible {
     color: white;
 
 }
-.or{
-   color: white;
+
+.or {
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
+
 .regLink {
     font-size: 20px;
     font-weight: normal;
@@ -441,3 +467,4 @@ button:focus-visible {
     color: white;
 
 }
+

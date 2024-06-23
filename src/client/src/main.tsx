@@ -14,7 +14,7 @@ import Login from "./pages/Login.tsx";
 import Register from "./pages/Register.tsx";
 import MyRecipes from "./pages/MyRecipes.tsx";
 
-import './index.css';
+import './index.css';;
 import {DevSupport} from "@react-buddy/ide-toolbox";
 import {ComponentPreviews, useInitial} from "./dev";
 
@@ -83,8 +83,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <DevSupport ComponentPreviews={ComponentPreviews}
-                    useInitialHook={useInitial}
-        >
+                    useInitialHook={useInitial}>
             <RouterProvider router={router}/>
         </DevSupport>
     </React.StrictMode>,
