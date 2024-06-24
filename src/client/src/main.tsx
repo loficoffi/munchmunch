@@ -6,8 +6,6 @@ import {
 } from "react-router-dom";
 
 import App from './App.tsx';
-import Record from "./components/Record";
-import RecordList from "./components/RecordList.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
 import RecipeView from "./pages/RecipeView.tsx";
 import Login from "./pages/Login.tsx";
@@ -26,26 +24,6 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Dashboard />, // Dashboard-Komponente einfügen
-            },
-        ],
-    },
-    {
-        path: "/edit/:id",
-        element: <App/>,
-        children: [
-            {
-                path: "/edit/:id",
-                element: <Record/>,
-            },
-        ],
-    },
-    {
-        path: "/create",
-        element: <App/>,
-        children: [
-            {
-                path: "/create",
-                element: <Record/>,
             },
         ],
     },

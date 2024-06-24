@@ -8,31 +8,16 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faUtensils} from '@fortawesome/free-solid-svg-icons'
 import {DashboardData} from "../models/interfaces/DashboardData.ts";
 import {fetchDashboardData} from "../services/dashboardService.ts";
-import config from "../config/config.ts";
 import {getImageUrl} from "../utils/assetHelper.ts";
 import FavoriteButton from "../components/FavoriteButton.tsx";
-import MealTile from '../components/MealTile';
 import MealCategory from '../components/MealCategory';
 
 export const Dashboard: React.FC = () => {
-    const [backgroundImage, setBackgroundImage] = useState('');
     const [dashboardData, setDashboardData] = useState<DashboardData | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const pickRandomImage = () => {
-            //array with images for testing random background (later for recipes?)
-            const randomImages = [
-                spagetthiBG,
-                chickenBG,
-            ];
-            const randomImage = randomImages[Math.floor(Math.random() * randomImages.length)];
-            setBackgroundImage(randomImage);
-        };
-
-        pickRandomImage();
-
         fetchDashboardData().then(data => {
             setDashboardData(data);
             setLoading(false);

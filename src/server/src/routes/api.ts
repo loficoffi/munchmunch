@@ -8,7 +8,6 @@ import {Recipe} from '../models/datamodels/Recipe.js';
 import {DifficultyType} from "../models/datamodels/enums/DifficultyType.js";
 import {DashboardData} from "../models/interfaces/DashboardData.js";
 import {getSeedFromDate, shuffleArray} from "../utils/RandomHelper.js"
-import getSeed = jest.getSeed;
 
 const router = express.Router();
 

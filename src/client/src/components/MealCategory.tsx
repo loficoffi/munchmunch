@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from "react-dom";
 import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
