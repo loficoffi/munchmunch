@@ -12,11 +12,11 @@ interface MealTileProps {
     meal: Meal;
 }
 
-const dietIcons = {
-    fish: faFish,
-    meat: faDrumstickBite,
-    veggie: faCarrot,
-    vegan: faLeaf,
+const dietIcons : any = {
+    fish: [faFish, "#c085ff"],
+    meat: [faDrumstickBite, "#ff8585"],
+    veggie: [faCarrot, "#b8ff85"],
+    vegan: [faLeaf, "#87ff85"],
 };
 
 function randomImg(imagePaths : string[]) : string {
@@ -45,8 +45,8 @@ const MealTile: React.FC<MealTileProps> = ({ meal }) => {
                 onError={handleError}
                 className="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110 rounded-lg object-cover">
             </img>
-            <div className="absolute top-0 left-0 bg-black bg-opacity-60 text-white p-1 rounded-tr-lg">
-                <FontAwesomeIcon icon={dietIcons[meal.diet]}/>
+            <div className="absolute w-12 h-12 top-0 left-0 bg-black bg-opacity-70 text-white p-1 rounded-br-full flex justify-center items-center pr-3 pb-3">
+                <FontAwesomeIcon icon={dietIcons[meal.diet][0]} color={dietIcons[meal.diet][1]} size="lg"/>
             </div>
         </div>
     );
