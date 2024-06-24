@@ -14,7 +14,7 @@ import Login from "./pages/Login.tsx";
 import Register from "./pages/Register.tsx";
 import MyRecipes from "./pages/MyRecipes.tsx";
 
-import './index.css';;
+import './index.css';
 import {DevSupport} from "@react-buddy/ide-toolbox";
 import {ComponentPreviews, useInitial} from "./dev";
 
