@@ -48,7 +48,7 @@ router.get('/dashboard', async (req, res) => {
                     .map(({value}) => value)
             },
             {
-                name: "Aus der italienischen Küche 🤌",
+                name: "Aus der italienischen Küche 🇮🇹",
                 meals: meals.filter(x => x.cuisine == "Italienisch")
                     .map(value => ({value, sort: Math.random()}))
                     .sort((a, b) => a.sort - b.sort)
