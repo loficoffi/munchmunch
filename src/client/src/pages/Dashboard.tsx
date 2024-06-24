@@ -52,7 +52,7 @@ export const Dashboard: React.FC = () => {
                         <div className="main-recipe-infos w-2/4 md:w-1/2 mb-10 lg:w-2/3 xl:w-3/5">
                             <h1 className="main-recipe-title text-2xl md:text-5xl lg:text-5xl xl:text-6xl">{dashboardData.mealOfTheDay.name}</h1>
                             <div className="mt-2">
-                                <Link to="/recipe" className="btn btn-primary rounded-2xl bg-black border border-munch-orange py-2 px-5 text-2xl text-white">
+                                <Link to={`/recipe/${dashboardData.mealOfTheDay.id}/${dashboardData.mealOfTheDay.name.toString().replace(' ', '_').toLowerCase()}`} className="btn btn-primary rounded-2xl bg-black border border-munch-orange py-2 px-5 text-2xl text-white">
                                     <FontAwesomeIcon icon={faUtensils} className="utensils-icon" />
                                     <span className="to-recipe-title">Zum Gericht</span>
                                 </Link>
