@@ -12,10 +12,18 @@ import {getImageUrl} from "../utils/assetHelper.ts";
 import FavoriteButton from "../components/FavoriteButton.tsx";
 import MealCategory from '../components/MealCategory';
 
+import {Simulate} from "react-dom/test-utils";
+import {Account} from "../models/datamodels/Account.ts";
+import {fetchUserData} from "../services/accountService.ts";
+import api, {setAuthToken} from "../utils/api.ts";
+
+
 export const Dashboard: React.FC = () => {
     const [dashboardData, setDashboardData] = useState<DashboardData | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+
+    const [userData, setUserData] = useState<Account | null>(null);
 
     useEffect(() => {
         fetchDashboardData().then(data => {
@@ -27,6 +35,46 @@ export const Dashboard: React.FC = () => {
             setLoading(false);
         })
     }, []);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            setAuthToken(token);
+            fetchUserData().then(userData => {
+                setUserData(userData);
+                setLoading(false);
+            }).catch(err => {
+                setError('Failed to fetch user data Dashboard');
+                setLoading(false);
+            });
+        }
+    }, []);
+
+    const addFavoriteMeal = async() => {
+
+        try {
+            //create an updated profile in account with added favorite recipe
+            const updatedProfile = {
+                ...userData.profile,
+                //add the recipe
+                favouriteMeals: [...userData.profile.favouriteMeals, dashboardData.mealOfTheDay]
+            };
+
+            //create an updated account with updated profile
+            const updatedUser = {
+                ...userData,
+                profile: updatedProfile
+            };
+
+            //also update it in backend
+            const response = await api.post('/meal/updateProfile', updatedUser);
+            console.log(response.data); // Erfolgsmeldung oder aktualisierte Benutzerdaten im Backend
+
+            setUserData(updatedUser); //update userdata in frontend
+        } catch (error) {
+            console.error('Error updating user profile:', error);
+        }
+    }
 
     return (
         <div>
@@ -46,7 +94,7 @@ export const Dashboard: React.FC = () => {
                                 <div className="mr-2">
                                     <AddButton />
                                 </div>
-                                <FavoriteButton />
+                                <FavoriteButton onClick={addFavoriteMeal} />
                             </div>
                         </div>
                     </div>
