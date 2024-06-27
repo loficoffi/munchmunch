@@ -4,6 +4,7 @@ import { Meal } from '../models/datamodels/Meal.js';
 import db from "../db/connection.js";
 import { DietType } from '../models/datamodels/enums/DietType.js';
 import { Recipe } from '../models/datamodels/Recipe.js';
+import {ObjectId} from "mongodb";
 
 const router = express.Router();
 
@@ -30,5 +31,25 @@ router.get('/all', async (req, res) => {
         res.status(500).json({ error: "Failed to fetch meals" });
     }
 });
+
+//update userprofile if new data was added in frontend
+router.post('/updateProfile', async (req, res) => {
+    try {
+        const updatedUser = req.body;
+
+        //update user in database with new data in profile
+        const result = await db.collection('users').findOneAndUpdate(
+            { _id: new ObjectId(updatedUser._id) },
+            { $set: { profile: updatedUser.profile } },
+        );
+
+        res.status(200).send('User profile updated successfully');
+    } catch (error) {
+        console.error('Error updating user profile:', error);
+        res.status(500).send('Internal server error');
+    }
+});
+
+
 
 export default router;
