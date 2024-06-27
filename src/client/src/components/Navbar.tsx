@@ -16,7 +16,7 @@ import {
 
 const navigation = [
   { name: "Home", href: "/", current: true },
-  { name: "Meine Rezepte", href: "myrecipes", current: false },
+  { name: "Meine Rezepte", href: "/myrecipes", current: false },
   { name: "Kategorien", href: "#", current: false },
   { name: <FontAwesomeIcon icon={faSearch} />, href: "#", current: false },
   { name: "Zufällige Empfehlung", href: "/recipe", current: false },
