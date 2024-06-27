@@ -10,7 +10,7 @@ import { AuthResponse} from  '../models/datamodels/types.js';
 const router = express.Router();
 
 router.post('/register', async (req, res) => {
-    const { fName, lName, email, password, profileImage } = req.body;
+    const { fName, lName, email, password} = req.body;
 
     if (!fName || !lName || !email || !password) {
         return res.status(400).json({ message: 'All fields are required' });
@@ -22,7 +22,7 @@ router.post('/register', async (req, res) => {
             return res.status(400).json({ message: 'User already exists' });
         }
 
-        const newUser: Account = await createUser({ fName, lName, email, password, profileImage });
+        const newUser: Account = await createUser({ fName, lName, email, password });
 
         const token = jwt.sign({ id: newUser._id }, config.jwt_secret, {
             expiresIn: '1h',

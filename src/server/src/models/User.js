@@ -18,10 +18,9 @@ export async function findUserByEmail(email) {
  * @param {string} param0.lName
  * @param {string} param0.email
  * @param {string} param0.password
- * @param {string} [param0.profileImage]
  * @returns {Promise<Account>}
  */
-export async function createUser({ fName, lName, email, password, profileImage }) {
+export async function createUser({ fName, lName, email, password, }) {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 

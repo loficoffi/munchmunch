@@ -9,7 +9,6 @@ export default function Register() {
     const [password, setPassword] = useState<string>("");
     const [fName, setFName] = useState<string>("");
     const [lName, setLName] = useState<string>("");
-    const [profileImage, setProfileImage] = useState<string>("");
     const [registrationMessage, setRegistrationMessage] = useState<string>("");
     const navigate = useNavigate();
 
@@ -27,7 +26,6 @@ export default function Register() {
                 lName,
                 email,
                 password,
-                profileImage
             });
             setRegistrationMessage("Registrierung erfolgreich!");
             const { token } = response.data;
@@ -94,15 +92,6 @@ export default function Register() {
                            type="password"
                            id="confirmPassword"
                            name="confirmPassword"
-                    />
-                </div>
-                <div className="profileImage">
-                    <input className="inputProfileImage"
-                           placeholder="Profile Image URL"
-                           type="text"
-                           id="profileImage"
-                           name="profileImage"
-                           onChange={(e) => setProfileImage(e.target.value)}
                     />
                 </div>
                 <div className="RegButton"> <button className="RegButtonInput" type="submit">Registrieren</button> </div>
