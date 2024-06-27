@@ -1,13 +1,42 @@
+// db/models/user.js
 import db from '../db/connection.js';
-import { ObjectId } from 'mongodb';
-const usersCollection = db.collection('users');
-export const createUser = async (userData) => {
-    const result = await usersCollection.insertOne(userData);
-    return result.insertedId;
-};
-export const findUserByEmail = async (email) => {
-    return await usersCollection.findOne({ email });
-};
-export const findUserById = async (id) => {
-    return await usersCollection.findOne({ _id: new ObjectId(id) });
-};
+import bcrypt from 'bcryptjs';
+
+/**
+ * Finds a user by email
+ * @param {string} email
+ * @returns {Promise<Account | null>}
+ */
+export async function findUserByEmail(email) {
+    return await db.collection('users').findOne({ email });
+}
+
+/**
+ * Creates a new user
+ * @param {Object} param0
+ * @param {string} param0.fName
+ * @param {string} param0.lName
+ * @param {string} param0.email
+ * @param {string} param0.password
+ * @param {string} [param0.profileImage]
+ * @returns {Promise<Account>}
+ */
+export async function createUser({ fName, lName, email, password, profileImage }) {
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    const newUser = {
+        email,
+        password: hashedPassword,
+        profile: {
+            firstName: fName,
+            lastName: lName,
+            profileImage: profileImage || '',
+            favouriteMeals: [],
+            savedMeals: []
+        }
+    };
+
+    const result = await db.collection('users').insertOne(newUser);
+    return result.ops[0];
+}

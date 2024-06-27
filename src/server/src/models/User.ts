@@ -1,17 +1,80 @@
-import db from '../db/connection.js';
-import { ObjectId } from 'mongodb';
+import { Collection, Document, InsertOneResult, WithId } from 'mongodb';
+import db from '../db/connection';
+import bcrypt from 'bcryptjs';
 
-const usersCollection = db.collection('users');
+export interface AccountProfile {
+    firstName: string;
+    lastName: string;
+    profileImage: string;
+    favouriteMeals: string[];
+    savedMeals: string[];
+}
 
-export const createUser = async (userData : any) => {
-    const result = await usersCollection.insertOne(userData);
-    return result.insertedId;
-};
+export interface Account {
+    email: string;
+    password: string;
+    profile: AccountProfile;
+}
 
-export const findUserByEmail = async (email : any) => {
-    return await usersCollection.findOne({ email });
-};
+/**
+ * Finds a user by email
+ * @param {string} email
+ * @returns {Promise<Account | null>}
+ */
+export async function findUserByEmail(email: string): Promise<Account | null> {
+    const result = await db.collection('users').findOne({ email });
+    if (!result) {
+        return null;
+    }
+    return result as unknown as Account; // Cast the result to Account type
+}
 
-export const findUserById = async (id : any) => {
-    return await usersCollection.findOne({ _id: new ObjectId(id) });
-};
+/**
+ * Creates a new user
+ * @param {Object} param0
+ * @param {string} param0.fName
+ * @param {string} param0.lName
+ * @param {string} param0.email
+ * @param {string} param0.password
+ * @param {string} [param0.profileImage]
+ * @returns {Promise<Account>}
+ */
+export async function createUser({
+                                     fName,
+                                     lName,
+                                     email,
+                                     password,
+                                     profileImage
+                                 }: {
+    fName: string;
+    lName: string;
+    email: string;
+    password: string;
+    profileImage?: string;
+}): Promise<Account> {
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    const newUser: Account = {
+        email,
+        password: hashedPassword,
+        profile: {
+            firstName: fName,
+            lastName: lName,
+            profileImage: profileImage || '',
+            favouriteMeals: [],
+            savedMeals: []
+        }
+    };
+
+    const result: InsertOneResult<Document> = await db.collection('users').insertOne(newUser);
+    const insertedUser = result.insertedId
+        ? await db.collection('users').findOne({ _id: result.insertedId })
+        : null;
+
+    if (!insertedUser) {
+        throw new Error('Error creating user');
+    }
+
+    return insertedUser as unknown as Account; // Cast the inserted user to Account type
+}
