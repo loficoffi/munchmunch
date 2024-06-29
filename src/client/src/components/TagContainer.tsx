@@ -4,8 +4,9 @@ import Tag from "./Tag.tsx";
 interface TagContainerProps {
   tags: {
     name: string;
-    icon?: React.ReactNode;
+    icon?: any;
     backgroundColor: string;
+    textColor?: string;
     onClick?: () => void;
   }[];
 }
@@ -20,6 +21,7 @@ const TagContainer: React.FC<TagContainerProps> = ({ tags }) => {
           name={tag.name}
           icon={tag.icon}
           backgroundColor={tag.backgroundColor}
+          textColor={tag.textColor}
           onClick={tag.onClick}
         />
       ))}
