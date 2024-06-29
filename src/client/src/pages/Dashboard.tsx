@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import AddButton from "../components/AddButton.tsx";
-import spagetthiBG from '../assets/images/spagetthi-test-bg.jpg';
-import chickenBG from '../assets/images/test-bg-dashboard.png'
 import '../index.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faUtensils} from '@fortawesome/free-solid-svg-icons'
+import {faUtensils, faHeart, faMinus, faPlus} from '@fortawesome/free-solid-svg-icons'
+import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons'
 import {DashboardData} from "../models/interfaces/DashboardData.ts";
 import {fetchDashboardData} from "../services/dashboardService.ts";
 import {getImageUrl} from "../utils/assetHelper.ts";
@@ -16,14 +15,18 @@ import {Simulate} from "react-dom/test-utils";
 import {Account} from "../models/datamodels/Account.ts";
 import {fetchUserData} from "../services/accountService.ts";
 import api, {setAuthToken} from "../utils/api.ts";
+import { Meal } from '../models/datamodels/Meal.ts';
 
 
 export const Dashboard: React.FC = () => {
     const [dashboardData, setDashboardData] = useState<DashboardData | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [faveMealWasAdded, setFaveMealAddStatus] = useState<boolean | null>(false);
+    const [savedMealWasAdded, setSavedMealAddStatus] = useState<boolean | null>(false);
 
     const [userData, setUserData] = useState<Account | null>(null);
+
 
     useEffect(() => {
         fetchDashboardData().then(data => {
@@ -36,6 +39,7 @@ export const Dashboard: React.FC = () => {
         })
     }, []);
 
+    //get userdata if token exists
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
@@ -43,21 +47,88 @@ export const Dashboard: React.FC = () => {
             fetchUserData().then(userData => {
                 setUserData(userData);
                 setLoading(false);
+
+                //check if mealoftheday already exists in users account for setting the right icon in add and fave button
+                //with function "some" it gives true or false back
+                const faveMealExistsAlready = userData.profile.favouriteMeals.some(meal => meal.id == dashboardData.mealOfTheDay.id);
+                setFaveMealAddStatus(faveMealExistsAlready);
+
+                const saveMealExistsAlready = userData.profile.savedMeals.some(meal => meal.id == dashboardData.mealOfTheDay.id);
+                setSavedMealAddStatus(saveMealExistsAlready);
+
             }).catch(err => {
-                setError('Failed to fetch user data Dashboard');
+                setError('No user is logged in.');
                 setLoading(false);
             });
         }
-    }, []);
+    }, [dashboardData]);
 
-    const addFavoriteMeal = async() => {
+
+    const addFavoriteMeal = async () => {
 
         try {
+            const checkIfMealExists = userData.profile.favouriteMeals.some(meal => meal.id == dashboardData.mealOfTheDay.id);
+            let updateFavouriteMeals: Meal[];
+
+            if (checkIfMealExists)
+            {
+                //get a new array with filter without the one which was in it
+                updateFavouriteMeals = userData.profile.favouriteMeals.filter(meal => meal.id !== dashboardData.mealOfTheDay.id);
+                setFaveMealAddStatus(false);
+            }
+            else
+            {
+                //add meal to favourite meals
+                updateFavouriteMeals = [...userData.profile.favouriteMeals, dashboardData.mealOfTheDay];
+                setFaveMealAddStatus(true);
+            }
+
             //create an updated profile in account with added favorite recipe
             const updatedProfile = {
                 ...userData.profile,
-                //add the recipe
-                favouriteMeals: [...userData.profile.favouriteMeals, dashboardData.mealOfTheDay]
+                favouriteMeals: updateFavouriteMeals
+            };
+
+            //create an updated account with updated profile
+            const updatedUser = {
+                ...userData,
+                profile: updatedProfile
+            };
+
+            //also update it in backend
+            const response = await api.post('/meal/updateProfile', updatedUser);
+            console.log(response.data);
+
+            setUserData(updatedUser); //update userdata in frontend
+        } catch (error) {
+            console.error('Error updating user profile:', error);
+        }
+    }
+
+    const addSavedMeal = async () => {
+
+        try {
+            const checkIfSavedMealExists = userData.profile.savedMeals.some(meal => meal.id == dashboardData.mealOfTheDay.id);
+            let updateSavedMeals: Meal[];
+
+            if (checkIfSavedMealExists)
+            {
+
+                //get a new array without the one which was in it
+                updateSavedMeals = userData.profile.savedMeals.filter(meal => meal.id !== dashboardData.mealOfTheDay.id);
+                setSavedMealAddStatus(false);
+            }
+            else
+            {
+                //add meal to favourite meals
+                updateSavedMeals = [...userData.profile.savedMeals, dashboardData.mealOfTheDay];
+                setSavedMealAddStatus(true);
+            }
+
+            //create an updated profile in account with added favorite recipe
+            const updatedProfile = {
+                ...userData.profile,
+                savedMeals: updateSavedMeals
             };
 
             //create an updated account with updated profile
@@ -72,7 +143,7 @@ export const Dashboard: React.FC = () => {
 
             setUserData(updatedUser); //update userdata in frontend
         } catch (error) {
-            console.error('Error updating user profile:', error);
+            console.error('Error updating user profile: ', error);
         }
     }
 
@@ -92,9 +163,14 @@ export const Dashboard: React.FC = () => {
                             </div>
                             <div className="flex">
                                 <div className="mr-2">
-                                    <AddButton />
+                                    <AddButton
+                                        onClick={addSavedMeal}
+                                        icon={savedMealWasAdded && userData && userData.profile ? faMinus : faPlus}/>
                                 </div>
-                                <FavoriteButton onClick={addFavoriteMeal} />
+                                <FavoriteButton
+                                    onClick={addFavoriteMeal}
+                                    icon={faveMealWasAdded && userData && userData.profile ? faHeart : farHeart}
+                                />
                             </div>
                         </div>
                     </div>
