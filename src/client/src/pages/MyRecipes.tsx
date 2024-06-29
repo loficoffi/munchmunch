@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import TagContainer from "../components/TagContainer.tsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSeedling, faDrumstickBite, faFish } from '@fortawesome/free-solid-svg-icons';
+import { faSeedling, faDrumstickBite, faFish, faUtensils } from '@fortawesome/free-solid-svg-icons';
 import '../index.css';
 import {Account} from "../models/datamodels/Account.ts";
 import {fetchUserData} from "../services/accountService.ts";
@@ -12,18 +12,33 @@ import MealTile from "../components/MealTile.tsx";
 import {Tooltip} from "react-tooltip";
 
 export const MyRecipes = () => {
-    //array for the food category tags to render them in the tag-container
-    const tags = [
-        { name: 'Veggie', icon: <FontAwesomeIcon icon={faSeedling} />, backgroundColor: 'bg-veggie-green text-vegan-yellow', onClick: () => getRecipesFromTag('Veggie') },
-        { name: 'Vegan', icon: <FontAwesomeIcon icon={faSeedling} />, backgroundColor: 'bg-vegan-yellow text-veggie-green', onClick: () => getRecipesFromTag('Vegan') },
-        { name: 'Fleisch', icon: <FontAwesomeIcon icon={faDrumstickBite} />, backgroundColor: 'bg-meat-rosa text-white', onClick: () => getRecipesFromTag('Fleisch') },
-        { name: 'Fisch', icon: <FontAwesomeIcon icon={faFish} />, backgroundColor: 'bg-fish-blue text-white', onClick: () => getRecipesFromTag('Fisch') },
+    //array for the favourite category tags to render them in the tag-container
+    const favedTags = [
+        { name: 'Alles', icon: <FontAwesomeIcon icon={faUtensils} />, backgroundColor: 'bg-munch-orange text-white', onClick: () => getFaveActiveTagName('Alles') },
+        { name: 'Veggie', icon: <FontAwesomeIcon icon={faSeedling} />, backgroundColor: 'bg-veggie-green text-vegan-yellow', onClick: () => getFaveActiveTagName('Veggie') },
+        { name: 'Vegan', icon: <FontAwesomeIcon icon={faSeedling} />, backgroundColor: 'bg-vegan-yellow text-veggie-green', onClick: () => getFaveActiveTagName('Vegan') },
+        { name: 'Fleisch', icon: <FontAwesomeIcon icon={faDrumstickBite} />, backgroundColor: 'bg-meat-rosa text-white', onClick: () => getFaveActiveTagName('Fleisch') },
+        { name: 'Fisch', icon: <FontAwesomeIcon icon={faFish} />, backgroundColor: 'bg-fish-blue text-white', onClick: () => getFaveActiveTagName('Fisch') },
+    ];
+
+    //array for the saved category tags to render them in the tag-container
+    const savedTags = [
+        { name: 'Alles', icon: <FontAwesomeIcon icon={faUtensils} />, backgroundColor: 'bg-munch-orange text-white', onClick: () => getSaveActiveTagName('Alles') },
+        { name: 'Veggie', icon: <FontAwesomeIcon icon={faSeedling} />, backgroundColor: 'bg-veggie-green text-vegan-yellow', onClick: () => getSaveActiveTagName('Veggie') },
+        { name: 'Vegan', icon: <FontAwesomeIcon icon={faSeedling} />, backgroundColor: 'bg-vegan-yellow text-veggie-green', onClick: () => getSaveActiveTagName('Vegan') },
+        { name: 'Fleisch', icon: <FontAwesomeIcon icon={faDrumstickBite} />, backgroundColor: 'bg-meat-rosa text-white', onClick: () => getSaveActiveTagName('Fleisch') },
+        { name: 'Fisch', icon: <FontAwesomeIcon icon={faFish} />, backgroundColor: 'bg-fish-blue text-white', onClick: () => getSaveActiveTagName('Fisch') },
     ];
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
+    const [activeFaveTag, setActiveFaveTag] = useState<string | null>(null);
+    const [activeSaveTag, setActiveSaveTag] = useState<string | null>(null);
     const [userData, setUserData] = useState<Account | null>(null);
+
+    const [activeFaveDietMealArray, setFaveDietMealArray] = useState([]);
+    const [activeSaveDietMealArray, setSaveDietMealArray] = useState([]);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -31,6 +46,8 @@ export const MyRecipes = () => {
             setAuthToken(token);
             fetchUserData().then(userData => {
                 setUserData(userData);
+                setActiveFaveTag("Alles");
+                setActiveSaveTag("Alles");
                 setLoading(false);
             }).catch(err => {
                 setError('Failed to fetch user data Favourite Recipe View');
@@ -39,11 +56,68 @@ export const MyRecipes = () => {
         }
     }, []);
 
-    console.log(userData);
 
-    //TODO: implemented function for getting all recipes with the clicked tag
-    const getRecipesFromTag = (tagName: string) => {
-        console.log(`Tag ${tagName} is clicked!`);
+    //it only renders when activeCategory or userdata changes
+    useEffect(() => {
+        if (userData) {
+            let faveMealsArray = [];
+            switch (activeFaveTag) {
+                case 'Alles':
+                    faveMealsArray = userData.profile.favouriteMeals || [];
+                    break;
+                case 'Veggie':
+                    faveMealsArray = userData.profile.favouriteMeals.filter(meal => meal.diet == "veggie") || [];
+                    break;
+                case 'Vegan':
+                    faveMealsArray = userData.profile.favouriteMeals.filter(meal => meal.diet == "vegan") || [];
+                    break;
+                case 'Fleisch':
+                    faveMealsArray = userData.profile.favouriteMeals.filter(meal => meal.diet == "meat") || [];
+                    break;
+                case 'Fisch':
+                    faveMealsArray = userData.profile.favouriteMeals.filter(meal => meal.diet == "fish") || [];
+                    break;
+                default:
+                    faveMealsArray = userData.profile.favouriteMeals|| [];
+            }
+            setFaveDietMealArray(faveMealsArray);
+        }
+    }, [activeFaveTag, userData]);
+
+    useEffect(() => {
+        if (userData) {
+            let savedMealsArray = [];
+            switch (activeSaveTag) {
+                case 'Alles':
+                    savedMealsArray = userData.profile.savedMeals || [];
+                    break;
+                case 'Veggie':
+                    savedMealsArray = userData.profile.savedMeals.filter(meal => meal.diet == "veggie") || [];
+                    break;
+                case 'Vegan':
+                    savedMealsArray = userData.profile.savedMeals.filter(meal => meal.diet == "vegan") || [];
+                    break;
+                case 'Fleisch':
+                    savedMealsArray = userData.profile.savedMeals.filter(meal => meal.diet == "meat") || [];
+                    break;
+                case 'Fisch':
+                    savedMealsArray = userData.profile.savedMeals.filter(meal => meal.diet == "fish") || [];
+                    break;
+                default:
+                    savedMealsArray = userData.profile.savedMeals || [];
+            }
+            setSaveDietMealArray(savedMealsArray)
+        }
+    }, [activeSaveTag, userData]);
+
+
+    //getting active tag name
+    const getFaveActiveTagName = (tagName: string) => {
+        setActiveFaveTag(tagName);
+    };
+
+    const getSaveActiveTagName = (tagName: string) => {
+        setActiveSaveTag(tagName);
     };
 
     return (
@@ -54,7 +128,7 @@ export const MyRecipes = () => {
                         Lieblingsrezepte
                     </h1>
                     <div className="mt-5 ml-7 md:ml-14">
-                        <TagContainer tags={tags}/>
+                        <TagContainer tags={favedTags}/>
                     </div>
                     <div className="meal-categories-container my-3 mx-14 overflow-hidden">
                         <div className="mb-15 relative w-full overflow-hidden">
@@ -80,8 +154,8 @@ export const MyRecipes = () => {
                                     },
                                 }}
                             >
-                                {userData && userData.profile && userData.profile.favouriteMeals && (
-                                    userData.profile.favouriteMeals.map((favouriteMeal, index) => (
+                                {userData && userData.profile && activeFaveDietMealArray && (
+                                    activeFaveDietMealArray.map((favouriteMeal, index) => (
                                         <SwiperSlide id={`${favouriteMeal.name}-${favouriteMeal.id}-${index}`}
                                                      key={`${favouriteMeal.name}-${favouriteMeal.id}-${index}`}>
                                             <div
@@ -107,7 +181,8 @@ export const MyRecipes = () => {
                         Gemerkte Rezepte
                     </h1>
                     <div className="mt-5 ml-7 md:ml-14">
-                        <TagContainer tags={tags}/>
+                        <TagContainer
+                            tags={savedTags} />
                     </div>
                     <div className="meal-categories-container my-3 mx-14 overflow-hidden">
                         <div className="mb-24 relative w-full overflow-hidden">
@@ -133,8 +208,8 @@ export const MyRecipes = () => {
                                     },
                                 }}
                             >
-                                {userData && userData.profile && userData.profile.favouriteMeals && (
-                                    userData.profile.favouriteMeals.map((favouriteMeal, index) => (
+                                {userData && userData.profile && activeSaveDietMealArray && (
+                                    activeSaveDietMealArray.map((favouriteMeal, index) => (
                                         <SwiperSlide id={`${favouriteMeal.name}-${favouriteMeal.id}-${index}`}
                                                      key={`${favouriteMeal.name}-${favouriteMeal.id}-${index}`}>
                                             <div
