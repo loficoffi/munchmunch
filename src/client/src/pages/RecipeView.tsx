@@ -5,39 +5,10 @@ import IngredientsContainer from "../components/IngredientsContainer.tsx";
 import CookingDirections from "../components/CookingDirections.tsx";
 import CookingDetails from "../components/CookingDetails.tsx";
 import RecipeViewGallery from "../components/RecipeViewGallery.tsx";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faSeedling,
-  faDrumstickBite,
-  faFish,
-} from "@fortawesome/free-solid-svg-icons";
 import { useLocation } from "react-router-dom";
 import { Meal } from "../models/datamodels/Meal.ts";
-import { getImageUrl } from "../utils/assetHelper.ts";
+import { getImageUrl, getTags } from "../utils/assetHelper.ts";
 import FavoriteButton from "../components/FavoriteButton.tsx";
-
-const tags = [
-  {
-    name: "Veggie",
-    icon: <FontAwesomeIcon icon={faSeedling} />,
-    backgroundColor: "bg-veggie-green text-vegan-yellow",
-  },
-  {
-    name: "Vegan",
-    icon: <FontAwesomeIcon icon={faSeedling} />,
-    backgroundColor: "bg-vegan-yellow text-veggie-green",
-  },
-  {
-    name: "Fleisch",
-    icon: <FontAwesomeIcon icon={faDrumstickBite} />,
-    backgroundColor: "bg-meat-rosa text-white",
-  },
-  {
-    name: "Fisch",
-    icon: <FontAwesomeIcon icon={faFish} />,
-    backgroundColor: "bg-fish-blue text-white",
-  },
-];
 
 const RecipeView = () => {
   const location = useLocation();
@@ -46,7 +17,8 @@ const RecipeView = () => {
 
   const imgSrc = allImages.map((p) => getImageUrl(p));
 
-  console.log("imgSrc", imgSrc);
+  const tags = getTags(meal);
+  console.log(tags);
 
   return (
     <div className="bg-black font-sans min-h-screen flex flex-col">
