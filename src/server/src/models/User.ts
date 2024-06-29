@@ -1,44 +1,14 @@
-import { Collection, Document, InsertOneResult, WithId } from 'mongodb';
 import db from '../db/connection';
 import bcrypt from 'bcryptjs';
+import { ObjectId } from 'mongodb';
+import { Account } from '../models/datamodels/Account';
+import {AccountProfile} from '../models/datamodels/AccountProfile';
 
-export interface AccountProfile {
-    firstName: string;
-    lastName: string;
-    profileImage: string;
-    favouriteMeals: string[];
-    savedMeals: string[];
-}
-
-export interface Account {
-    email: string;
-    password: string;
-    profile: AccountProfile;
-}
-
-/**
- * Finds a user by email
- * @param {string} email
- * @returns {Promise<Account | null>}
- */
 export async function findUserByEmail(email: string): Promise<Account | null> {
     const result = await db.collection('users').findOne({ email });
-    if (!result) {
-        return null;
-    }
-    return result as unknown as Account; // Cast the result to Account type
+    return result as Account | null; // Cast the result to Account type
 }
 
-/**
- * Creates a new user
- * @param {Object} param0
- * @param {string} param0.fName
- * @param {string} param0.lName
- * @param {string} param0.email
- * @param {string} param0.password
- * @param {string} [param0.profileImage]
- * @returns {Promise<Account>}
- */
 export async function createUser({
                                      fName,
                                      lName,
@@ -55,26 +25,32 @@ export async function createUser({
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
+    const newProfile: {
+        firstName: string;
+        lastName: string;
+        savedMeals: any[];
+        favouriteMeals: any[];
+        profileImage: string
+    } = {
+        firstName: fName,
+        lastName: lName,
+        profileImage: profileImage || '',
+        favouriteMeals: [],
+        savedMeals: []
+    };
+
     const newUser: Account = {
         email,
         password: hashedPassword,
-        profile: {
-            firstName: fName,
-            lastName: lName,
-            profileImage: profileImage || '',
-            favouriteMeals: [],
-            savedMeals: []
-        }
+        profile: newProfile
     };
 
-    const result: InsertOneResult<Document> = await db.collection('users').insertOne(newUser);
-    const insertedUser = result.insertedId
-        ? await db.collection('users').findOne({ _id: result.insertedId })
-        : null;
+    const result = await db.collection('users').insertOne(newUser);
+    const insertedUser = await db.collection('users').findOne({ _id: result.insertedId });
 
     if (!insertedUser) {
         throw new Error('Error creating user');
     }
 
-    return insertedUser as unknown as Account; // Cast the inserted user to Account type
+    return insertedUser as Account; // Cast the inserted user to Account type
 }
