@@ -15,6 +15,8 @@ import { useLocation } from "react-router-dom";
 import { Meal } from "../models/datamodels/Meal.ts";
 import { getImageUrl } from "../utils/assetHelper.ts";
 import FavoriteButton from "../components/FavoriteButton.tsx";
+import {faUtensils, faHeart, faMinus, faPlus} from '@fortawesome/free-solid-svg-icons'
+import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons'
 
 const tags = [
   {
@@ -57,8 +59,14 @@ const RecipeView = () => {
         <div className="bg-black bg-opacity-50 p-4">
           <RecipeTitle recipeTitle={meal.name} />
           <div className="flex flex-row mb-4">
-            <AddButton />
-            <FavoriteButton />
+            <AddButton
+                onClick={"test"}
+                icon={faPlus}
+            />
+            <FavoriteButton
+                onClick={"test"}
+                icon={farHeart}
+            />
           </div>
           <TagContainer tags={tags} />
         </div>
@@ -68,8 +76,14 @@ const RecipeView = () => {
           <div className="hidden lg:block">
             <RecipeTitle recipeTitle={meal.name} />
             <div className="flex flex-row mb-4">
-              <AddButton />
-              <FavoriteButton />
+              <AddButton
+                  onClick={"test"}
+                  icon={faPlus}
+              />
+              <FavoriteButton
+                  onClick={"test"}
+                  icon={farHeart}
+              />
             </div>
             <TagContainer tags={tags} />
           </div>
