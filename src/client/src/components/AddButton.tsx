@@ -1,13 +1,28 @@
 import React from "react";
-import plusIconImage from '../assets/plusIcon.png';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 
-const AddButton = () => {
+interface ButtonProps {
+    icon: IconDefinition;
+    onClick: () => void;
+}
+
+const AddButton = ( {onClick, icon}) => {
+
+    const handleClick = () => {
+        //go into onClick function which was given from component
+        if (onClick) {
+            onClick();
+        }
+    };
+
   return (
     <div>
       <button
         type="submit"
-        className="munch-mng-button border-2 rounded-2xl bg-black w-12 h-12 flex justify-center items-center">
-        <img src={plusIconImage} alt="Add" className="w-8 h-8" />
+        className="munch-mng-button border-2 rounded-2xl bg-black w-12 h-12 flex justify-center items-center"
+        onClick={handleClick}>
+          <FontAwesomeIcon icon={icon} className="utensils-icon w-8 h-8" />
       </button>
     </div>
   );

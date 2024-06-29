@@ -1,7 +1,13 @@
 import React from "react";
-import heartIconImage from '../assets/heartRed.png';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 
-const FavoriteButton = ( { onClick }) => {
+interface ButtonProps {
+    icon: IconDefinition;
+    onClick: () => void;
+}
+
+const FavoriteButton = ( { onClick, icon}) => {
 
     const handleClick = () => {
         //go into onClick function which was given from component
@@ -16,7 +22,7 @@ const FavoriteButton = ( { onClick }) => {
         type="submit"
         className="munch-mng-button fav-button border-2 rounded-2xl bg-black w-12 h-12 flex justify-center items-center"
         onClick={handleClick}>
-        <img src={heartIconImage} alt="Add" className="w-8 h-8" />
+          <FontAwesomeIcon icon={icon} className="utensils-icon w-8 h-8" />
       </button>
     </div>
   );
