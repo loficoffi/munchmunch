@@ -18,105 +18,79 @@ import MealTile from "../components/MealTile.tsx";
 import { Tooltip } from "react-tooltip";
 
 export const MyRecipes = () => {
-  //array for the food category tags to render them in the tag-container
+
+  //array for the favourite category tags to render them in the tag-container
   const tags = [
+    {
+      name: "Alles",
+      icon: faUtensils,
+      backgroundColor: "#FF8A00",
+      onClick: () => getFaveActiveTagName("Alles"),
+    },
     {
       name: "Veggie",
       icon: faSeedling,
       backgroundColor: "#3F8345",
-      onClick: () => getRecipesFromTag("Veggie"),
+      textColor: "#FFF734",
+      onClick: () => getFaveActiveTagName("Veggie"),
     },
     {
       name: "Vegan",
       icon: faSeedling,
       backgroundColor: "#FFF734",
-      textColor: "#000000",
-      onClick: () => getRecipesFromTag("Vegan"),
+      textColor: "#3F8345",
+      onClick: () => getFaveActiveTagName("Vegan"),
     },
     {
       name: "Fleisch",
       icon: faDrumstickBite,
       backgroundColor: "#B27777",
-      onClick: () => getRecipesFromTag("Fleisch"),
+      onClick: () => getFaveActiveTagName("Fleisch"),
     },
     {
       name: "Fisch",
       icon: faFish,
       backgroundColor: "#6881DB",
-      onClick: () => getRecipesFromTag("Fisch"),
-    },
-  ];
-  //array for the favourite category tags to render them in the tag-container
-  const favedTags = [
-    {
-      name: "Alles",
-      icon: <FontAwesomeIcon icon={faUtensils} />,
-      backgroundColor: "bg-munch-orange text-white",
-      onClick: () => getFaveActiveTagName("Alles"),
-    },
-    {
-      name: "Veggie",
-      icon: <FontAwesomeIcon icon={faSeedling} />,
-      backgroundColor: "bg-veggie-green text-vegan-yellow",
-      onClick: () => getFaveActiveTagName("Veggie"),
-    },
-    {
-      name: "Vegan",
-      icon: <FontAwesomeIcon icon={faSeedling} />,
-      backgroundColor: "bg-vegan-yellow text-veggie-green",
-      onClick: () => getFaveActiveTagName("Vegan"),
-    },
-    {
-      name: "Fleisch",
-      icon: <FontAwesomeIcon icon={faDrumstickBite} />,
-      backgroundColor: "bg-meat-rosa text-white",
-      onClick: () => getFaveActiveTagName("Fleisch"),
-    },
-    {
-      name: "Fisch",
-      icon: <FontAwesomeIcon icon={faFish} />,
-      backgroundColor: "bg-fish-blue text-white",
       onClick: () => getFaveActiveTagName("Fisch"),
     },
   ];
 
-  //TODO: implemented function for getting all recipes with the clicked tag
-  const getRecipesFromTag = (tagName: string) => {
-    console.log(`Tag ${tagName} is clicked!`);
-  };
   //array for the saved category tags to render them in the tag-container
   const savedTags = [
     {
       name: "Alles",
-      icon: <FontAwesomeIcon icon={faUtensils} />,
-      backgroundColor: "bg-munch-orange text-white",
+      icon: faUtensils,
+      backgroundColor: "#FF8A00",
       onClick: () => getSaveActiveTagName("Alles"),
     },
     {
       name: "Veggie",
-      icon: <FontAwesomeIcon icon={faSeedling} />,
-      backgroundColor: "bg-veggie-green text-vegan-yellow",
+      icon: faSeedling,
+      backgroundColor: "#3F8345",
+      textColor: "#FFF734",
       onClick: () => getSaveActiveTagName("Veggie"),
     },
     {
       name: "Vegan",
-      icon: <FontAwesomeIcon icon={faSeedling} />,
-      backgroundColor: "bg-vegan-yellow text-veggie-green",
+      icon: faSeedling,
+      backgroundColor: "#FFF734",
+      textColor: "#3F8345",
       onClick: () => getSaveActiveTagName("Vegan"),
     },
     {
       name: "Fleisch",
-      icon: <FontAwesomeIcon icon={faDrumstickBite} />,
-      backgroundColor: "bg-meat-rosa text-white",
+      icon: faDrumstickBite,
+      backgroundColor: "#B27777",
       onClick: () => getSaveActiveTagName("Fleisch"),
     },
     {
       name: "Fisch",
-      icon: <FontAwesomeIcon icon={faFish} />,
-      backgroundColor: "bg-fish-blue text-white",
+      icon: faFish,
+      backgroundColor: "#6881DB",
       onClick: () => getSaveActiveTagName("Fisch"),
     },
   ];
+
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -237,7 +211,7 @@ export const MyRecipes = () => {
           <h1 className="text-2xl md:ml-14">Lieblingsrezepte</h1>
           <div className="mt-5 ml-7 md:ml-14">
             {userData ? (
-              <TagContainer tags={favedTags} />
+              <TagContainer tags={tags} />
             ) : (
               <p
                 className={
