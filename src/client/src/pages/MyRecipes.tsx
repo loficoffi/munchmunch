@@ -1,6 +1,5 @@
 import React from "react";
 import TagContainer from "../components/TagContainer.tsx";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSeedling,
   faDrumstickBite,
