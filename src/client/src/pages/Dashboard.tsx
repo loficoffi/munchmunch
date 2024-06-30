@@ -161,17 +161,19 @@ export const Dashboard: React.FC = () => {
                                     <span className="to-recipe-title">Zum Gericht</span>
                                 </Link>
                             </div>
-                            <div className="flex">
-                                <div className="mr-2">
-                                    <AddButton
-                                        onClick={addSavedMeal}
-                                        icon={savedMealWasAdded && userData && userData.profile ? faMinus : faPlus}/>
+                            {userData &&
+                                <div className="flex">
+                                    <div className="mr-2">
+                                        <AddButton
+                                            onClick={addSavedMeal}
+                                            icon={savedMealWasAdded && userData && userData.profile ? faMinus : faPlus}/>
+                                    </div>
+                                    <FavoriteButton
+                                        onClick={addFavoriteMeal}
+                                        icon={faveMealWasAdded && userData && userData.profile ? faHeart : farHeart}
+                                    />
                                 </div>
-                                <FavoriteButton
-                                    onClick={addFavoriteMeal}
-                                    icon={faveMealWasAdded && userData && userData.profile ? faHeart : farHeart}
-                                />
-                            </div>
+                            }
                         </div>
                     </div>
                     <div className="meal-categories-container my-3 mx-14 overflow-hidden">
