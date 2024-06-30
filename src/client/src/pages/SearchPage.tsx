@@ -5,7 +5,12 @@ import SearchFilter from "../components/SearchFilter.tsx";
 
 
 
-export default function SearchPage () {
+
+const SearchPage: React.FC = () =>  {
+
+
+
+
 
 
     return(
@@ -13,8 +18,8 @@ export default function SearchPage () {
         <div className="searchPage">
             <div className="sidebar-container"><SearchFilter/></div>
             <div className="main-content"><Searchbar/></div>
-            <div className="main-content-container"></div>
         </div>
 
     );
-}
+};
+export default SearchPage;
