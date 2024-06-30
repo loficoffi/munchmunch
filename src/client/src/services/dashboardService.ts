@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { DashboardData } from '../models/interfaces/DashboardData';
 import config from '../config/config.ts';
+import api from "../utils/api.ts";
 
 // Function to fetch dashboard data
 export async function fetchDashboardData(): Promise<DashboardData> {
     try {
-        const response = await axios.get<DashboardData>(`${config.apiUrl}/api/dashboard`);
+        const response = await api.get('/api/dashboard');
         return response.data; // Axios automatically parses the JSON, so you can return directly
     } catch (error) {
         console.error('Failed to fetch dashboard data:', error);

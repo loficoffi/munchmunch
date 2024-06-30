@@ -8,7 +8,6 @@ import {Recipe} from '../models/datamodels/Recipe.js';
 import {DifficultyType} from "../models/datamodels/enums/DifficultyType.js";
 import {DashboardData} from "../models/interfaces/DashboardData.js";
 import {getSeedFromDate, shuffleArray} from "../utils/RandomHelper.js"
-import getSeed = jest.getSeed;
 
 const router = express.Router();
 
@@ -48,7 +47,7 @@ router.get('/dashboard', async (req, res) => {
                     .map(({value}) => value)
             },
             {
-                name: "Aus der italienischen Küche 🤌",
+                name: "Aus der italienischen Küche 🇮🇹",
                 meals: meals.filter(x => x.cuisine == "Italienisch")
                     .map(value => ({value, sort: Math.random()}))
                     .sort((a, b) => a.sort - b.sort)
@@ -97,8 +96,8 @@ router.get('/dashboard', async (req, res) => {
             .sort((a, b) => a.sort - b.sort)
             .map(({value}) => value)
 
-        //const randomMeal : Meal = shuffleArray(meals, getSeedFromDate())[0];
-        const randomMeal : Meal = meals.find(x => x.name == "Knusprige Entenbrust Süss-Sauer");
+        const randomMeal : Meal = shuffleArray(meals, getSeedFromDate())[0];
+        //const randomMeal : Meal = meals.find(x => x.name == "Knusprige Entenbrust Süss-Sauer");
 
         const dashboardData : DashboardData = {
            mealOfTheDay : randomMeal, categories : categories

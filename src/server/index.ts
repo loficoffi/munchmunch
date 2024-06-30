@@ -8,6 +8,7 @@ import authRoutes from './src/routes/auth.js'; // Neue Datei für Authentifizier
 import debug from "./src/routes/debug.js";
 import meal from "./src/routes/meal.js";
 import api from "./src/routes/api.js";
+import account from "./src/routes/account.js"
 
 const PORT = process.env.PORT || 5050;
 const app = express();
@@ -17,6 +18,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/record", records);
 app.use("/auth", authRoutes); // Authentifizierungsrouten hinzufügen
+app.use("/account", account);
 app.use("/debug", debug);
 app.use("/meal", meal);
 app.use("/api", api);

@@ -3,15 +3,15 @@ import express from 'express';
 // This will help us connect to the database
 import db from "../db/connection.js";
 
-import {Recipe} from "../models/datamodels/Recipe";
-import {DifficultyType} from "../models/datamodels/enums/DifficultyType";
-import {NeededIngredient} from "../models/datamodels/NeededIngredient";
-import {Meal} from "../models/datamodels/Meal";
+import { Recipe } from "../models/datamodels/Recipe";
+import { DifficultyType } from "../models/datamodels/enums/DifficultyType";
+import { NeededIngredient } from "../models/datamodels/NeededIngredient";
+import { Meal } from "../models/datamodels/Meal";
 
-import {v4 as uuidv4} from "uuid";
-import {Ingredient} from "../models/datamodels/Ingredient";
-import {UnitType} from "../models/datamodels/enums/UnitType";
-import {DietType} from "../models/datamodels/enums/DietType";
+import { v4 as uuidv4 } from "uuid";
+import { Ingredient } from "../models/datamodels/Ingredient";
+import { UnitType } from "../models/datamodels/enums/UnitType";
+import { DietType } from "../models/datamodels/enums/DietType";
 
 
 const router = express.Router();
@@ -104,8 +104,12 @@ router.get("/", async (req, res) => {
         diet: DietType.fish,
         cuisine: "Italienisch",
         recipe: recipe1Recipe[0],
-        mainImage: "..",
-        extraImage: ["...", "..."]
+        mainImage: "recipe1" + "mainImage",
+        extraImage: [
+            "recipe1" + "extraImage1",
+            "recipe1" + "extraImage2",
+            "recipe1" + "extraImage3",
+        ]
     }
 
     //Recipe 2: Forelle im Backofen
@@ -205,8 +209,12 @@ router.get("/", async (req, res) => {
         diet: DietType.fish,
         cuisine: "Europäisch",
         recipe: recipe2Recipe[0],
-        mainImage: "..",
-        extraImage: ["...", "..."]
+        mainImage: "recipe2" + "mainImage",
+        extraImage: [
+            "recipe2" + "extraImage1",
+            "recipe2" + "extraImage2",
+            "recipe2" + "extraImage3",
+        ]
     }
 
     // create a new recipe
@@ -372,8 +380,12 @@ router.get("/", async (req, res) => {
         diet: DietType.vegan,
         cuisine: "Asiatisch",
         recipe: recipe3Recipe[0],
-        mainImage: "..",
-        extraImage: ["...", "..."]
+        mainImage: "recipe3" + "mainImage",
+        extraImage: [
+            "recipe3" + "extraImage1",
+            "recipe3" + "extraImage2",
+            "recipe3" + "extraImage3",
+        ]
     }
 
     // create a new recipe
@@ -545,8 +557,181 @@ router.get("/", async (req, res) => {
         diet: DietType.vegan,
         cuisine: "Deutsch",
         recipe: recipe4Recipe[0],
-        mainImage: "..",
-        extraImage: ["...", "..."]
+        mainImage: "recipe4" + "mainImage",
+        extraImage: [
+            "recipe4" + "extraImage1",
+            "recipe4" + "extraImage2",
+            "recipe4" + "extraImage3",
+        ]
+    }
+
+    let recipe5Ingredients: Ingredient[] = [
+        {
+            id: uuidv4(),
+            name: 'SpeiseStaerke',
+            calories_100g: 381
+        },
+        {
+            id: uuidv4(),
+            name: 'alte Semmel',
+            calories_100g: 310
+        },
+        {
+            id: uuidv4(),
+            name: 'SpeiseStaerke',
+            calories_100g: 381
+        },
+        {
+            id: uuidv4(),
+            name: 'Kartoffeln, mehlig kochend',
+            calories_100g: 71
+        },
+        {
+            id: uuidv4(),
+            name: 'Butter',
+            calories_100g: 717
+        }
+    ]
+
+    let recipe5NeededIngredients: NeededIngredient[] = [
+        {
+            id: uuidv4(),
+            ingredient: recipe5Ingredients[0],
+            amount: 0,
+            unit: UnitType.amount,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe5Ingredients[1],
+            amount: 3,
+            unit: UnitType.amount,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe5Ingredients[2],
+            amount: 1,
+            unit: UnitType.kg,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe5Ingredients[3],
+            amount: 25,
+            unit: UnitType.gram,
+        },
+    ]
+
+    let recipe5Recipe: Recipe[] = [
+        {
+            id: uuidv4(),
+            name: "Thüringer Klösse",
+            addedTime: Date.now().toString(),
+            difficulty: DifficultyType.middle,
+            ingredients: recipe5NeededIngredients,
+            cookConditionInfo: "Pfanne",
+            cookTimeInfo: "1 Stunde 10 Minuten",
+            cookDescription: "*Die geschälten Kartoffel roh mit der feinen Scheibe reiben. Zwei Drittel der Menge in einem Leinentuch gründlich ausdrücken. Die Masse soll so trocken wie nur irgend möglich sein. In Thühringen benutzt man dazu spezielle Pressen!\n"
+                + "* Das verbliebene Drittel wird mit etwas Salz und Wasser zu einem sämigen Kartoffelbrei gekocht.\n"
+                + "*Die ausgedrückten Kartoffelflocken werden in einen großen Topf gleichmäßig verteilt. Der kochendheiße, sämige Kartoffelbrei wird darüber gegosssen und alles mit einer Holzkelle kräftig verrührt. Danach wird die Masse bei mittlerer Hitze abgebrannt. Abbrennen: Den Teig rühren, rühren, rühren bis er sich als großer Kloß vom Topfboden löst. Der Kloßteig ist jetzt fertig.\n"
+                + "*Brötchen in kleine Würfel schneiden und in etwas Butter goldbraun braten.\n"
+                + "* Klöße wollen schwimmen: Einen großen Topf mit reichlich kräftig gesalzenem Wasser zum Kochen bringen. Hitze zurück drehen bis das Wasser nur noch siedet, nicht mehr sprudelt.\n"
+                + "* Mit angefeuchteten Händen werden aus der noch warmen Masse klöße abgedreht. In die Mitte eines jeden Kloßes werden einige der Semmelwürfel eingearbeitet, sie erhöhen den Geschmack und etziehen dem Kloß Feuchtigkeit. Nach 10-15 Minuten schwimmen die Klöße an der Oberfläche und sind jetzt servierfähig. \n"
+                + "* Klöße schmecken mit Semmelbutter besonders gut. Dazu einfach Semmelbrösel in Butter goldbraun braten und über die Klöße geben."
+        }
+    ]
+
+    let recipe5Meal: Meal = {
+        id: uuidv4(),
+        name: "Thüringer Klösse",
+        diet: DietType.veggie,
+        cuisine: "deutsch",
+        recipe: recipe5Recipe[0],
+        mainImage: "recipe5" + "mainImage",
+        extraImage: [
+            "recipe5" + "extraImage1",
+            "recipe5" + "extraImage2",
+            "recipe5" + "extraImage3",
+        ]
+    }
+
+    let recipe6Ingredients: Ingredient[] = [
+        {
+            id: uuidv4(),
+            name: 'Paprikaschote',
+            calories_100g: 282
+        },
+        {
+            id: uuidv4(),
+            name: 'Zucchini',
+            calories_100g: 17
+        },
+        {
+            id: uuidv4(),
+            name: 'Eier',
+            calories_100g: 155
+        },
+        {
+            id: uuidv4(),
+            name: 'Olivenöl',
+            calories_100g: 884
+        }
+    ]
+
+    let recipe6NeededIngredients: NeededIngredient[] = [
+        {
+            id: uuidv4(),
+            ingredient: recipe6Ingredients[0],
+            amount: 2,
+            unit: UnitType.amount,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe6Ingredients[1],
+            amount: 1,
+            unit: UnitType.amount,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe6Ingredients[2],
+            amount: 6,
+            unit: UnitType.amount,
+        },
+        {
+            id: uuidv4(),
+            ingredient: recipe6Ingredients[3],
+            amount: 4,
+            unit: UnitType.smallSpoon,
+        },
+    ]
+
+    let recipe6Recipe: Recipe[] = [
+        {
+            id: uuidv4(),
+            name: "Frittata",
+            addedTime: Date.now().toString(),
+            difficulty: DifficultyType.easy,
+            ingredients: recipe6NeededIngredients,
+            cookConditionInfo: "Backofen 180C",
+            cookTimeInfo: "35 Minuten",
+            cookDescription: "*Paprikaschoten putzen, entkernen und in 2 cm große Würfel schneiden.\n"
+                + "*Zucchini putzen, längs halbieren und in 1 cm breite Scheiben schneiden.Frischkäse, Eier, Salz und Cayennepfeffer in ein hohes Gefäß geben und mit dem Schneidstab pürieren.\n"
+                + "*Olivenöl in einer beschichteten, feuerfesten Pfanne(ca. 22 cm Ø) erhitzen.Gemüse darin bei mittlerer Hitze 8 - 10 Min.dünsten.Eier - Frischkäsemasse darübergießen und zugedeckt ca. 2 - 3 Min.stocken lassen.\n"
+                + "*Frittata offen im heißen Ofen bei 180 Grad auf der mittleren Schiene ca. 15 - 20 Min.fertig backen(Umluft nicht empfehlenswert).Die Eier - Frischkäsemasse soll durchgehend gestockt sein.\n"
+                + "*Frittata vorsichtig vom Pfannenrand lösen, auf einen großen Teller gleiten lassen und in Stücke schneiden."
+        }
+    ]
+
+    let recipe6Meal: Meal = {
+        id: uuidv4(),
+        name: "Frittata",
+        diet: DietType.veggie,
+        cuisine: "Italienisch",
+        recipe: recipe6Recipe[0],
+        mainImage: "recipe6" + "mainImage",
+        extraImage: [
+            "recipe6" + "extraImage1",
+            "recipe6" + "extraImage2",
+            "recipe6" + "extraImage3",
+        ]
     }
 
     // create a new recipe
@@ -641,8 +826,12 @@ router.get("/", async (req, res) => {
         diet: DietType.meat,
         cuisine: "Deutsch",
         recipe: recipe7Recipe[0],
-        mainImage: "..",
-        extraImage: ["...", "..."]
+        mainImage: "recipe7" + "mainImage",
+        extraImage: [
+            "recipe7" + "extraImage1",
+            "recipe7" + "extraImage2",
+            "recipe7" + "extraImage3",
+        ]
     }
 
     // create a new recipe
@@ -841,8 +1030,12 @@ router.get("/", async (req, res) => {
         diet: DietType.meat,
         cuisine: "Bayerisch",
         recipe: recipe8Recipe[0],
-        mainImage: "..",
-        extraImage: ["...", "..."]
+        mainImage: "recipe8" + "mainImage",
+        extraImage: [
+            "recipe8" + "extraImage1",
+            "recipe8" + "extraImage2",
+            "recipe8" + "extraImage3",
+        ]
     }
 
     // create a new recipe
@@ -1175,144 +1368,9 @@ router.get("/", async (req, res) => {
     await db.collection('meals').insertOne(recipe8Meal);
     await db.collection('meals').insertOne(recipe9Meal);
 
-    res.status(200).json({message: 'Recipe is successfully created! Congratulations!'});
+    res.status(200).json({ message: 'Recipe is successfully created! Congratulations!' });
 });
 
-router.post("/kloesse", async (req, res) => {
-    let kloesse: Meal = {
-        id: uuidv4(),
-        name: "Thüringer Klösse",
-        diet: DietType.veggie,
-        cuisine: "German",
-        recipe: {
-            id: uuidv4(),
-            name: "Thüringer Klösse",
-            addedTime: "20",
-            difficulty: DifficultyType.middle,
-            ingredients: [
-                {
-                    id: uuidv4(),
-                    ingredient: {
-                        id: uuidv4(),
-                        name: "Speisestaerke",
-                        calories_100g: 2
-                    },
-                    amount: 1,
-                    unit: UnitType.amount
-                },
-                {
-                    id: uuidv4(),
-                    ingredient: {
-                        id: uuidv4(),
-                        name: "alte Semmel",
-                        calories_100g: 2
-                    },
-                    amount: 3,
-                    unit: UnitType.amount
-                },
-                {
-                    id: uuidv4(),
-                    ingredient: {
-                        id: uuidv4(),
-                        name: "Kartoffeln, mehlig kochend",
-                        calories_100g: 2
-                    },
-                    amount: 1,
-                    unit: UnitType.kg
-                },
-                {
-                    id: uuidv4(),
-                    ingredient: {
-                        id: uuidv4(),
-                        name: "Butter",
-                        calories_100g: 2
-                    },
-                    amount: 25,
-                    unit: UnitType.gram
-                },
-            ],
-            cookConditionInfo: "Pfanne",
-            cookTimeInfo: "1 Stunde 10 Minuten",
-            cookDescription: ""
-        },
-        mainImage: "..",
-        extraImage: [
-            "...",
-            "..."
-        ]
-    }
-    console.log("inserting frittata")
-    await db.collection('meals').insertOne(kloesse);
 
-    res.status(200).json({message: 'Kloesse is successfully created! Congratulations!'});
-});
-
-router.get("/frittata", async (req, res) => {
-    let frittata: Meal = {
-        id: uuidv4(),
-        name: "Gemüse Frittata",
-        diet: DietType.veggie,
-        cuisine: "italienisch",
-        recipe: {
-            id: uuidv4(),
-            name: "Gemüse Frittata",
-            addedTime: "20",
-            difficulty: DifficultyType.easy,
-            ingredients: [
-                {
-                    id: uuidv4(),
-                    ingredient: {
-                        id: uuidv4(),
-                        name: "Paprikaschote",
-                        calories_100g: 2
-                    },
-                    amount: 2,
-                    unit: UnitType.amount
-                },
-                {
-                    id: uuidv4(),
-                    ingredient: {
-                        id: uuidv4(),
-                        name: "Zucchini",
-                        calories_100g: 2
-                    },
-                    amount: 1,
-                    unit: UnitType.amount
-                },
-                {
-                    id: uuidv4(),
-                    ingredient: {
-                        id: uuidv4(),
-                        name: "Eier",
-                        calories_100g: 2
-                    },
-                    amount: 6,
-                    unit: UnitType.amount
-                },
-                {
-                    id: uuidv4(),
-                    ingredient: {
-                        id: uuidv4(),
-                        name: "Öl",
-                        calories_100g: 2
-                    },
-                    amount: 4,
-                    unit: UnitType.smallSpoon
-                },
-            ],
-            cookConditionInfo: "Ofen 180C",
-            cookTimeInfo: "35 min",
-            cookDescription: ""
-        },
-        mainImage: "..",
-        extraImage: [
-            "...",
-            "..."
-        ]
-    }
-    await db.collection('meals').insertOne(frittata);
-
-    res.status(200).json({message: 'Frittata is successfully created! Congratulations!'});
-});
 
 export default router;

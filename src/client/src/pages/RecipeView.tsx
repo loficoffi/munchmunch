@@ -1,63 +1,61 @@
-import RecipeTitle from "../components/RecipeTitle.tsx";
-import AddButton from "../components/AddButton.tsx";
-import FavouriteButton from "../components/FavouriteButton.tsx";
-import TagContainer from "../components/TagContainer.tsx";
-import IngredientsContainer from "../components/IngredientsContainer.tsx";
-import CookingDirections from "../components/CookingDirections.tsx";
-import CookingDetails from "../components/CookingDetails.tsx";
-import RecipeViewGallery from "../components/RecipeViewGallery.tsx";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import RecipeTitle from "../components/RecipeTitle";
+import AddButton from "../components/AddButton";
+import TagContainer from "../components/TagContainer";
+import IngredientsContainer from "../components/IngredientsContainer";
+import CookingDirections from "../components/CookingDirections";
+import CookingDetails from "../components/CookingDetails";
+import RecipeViewGallery from "../components/RecipeViewGallery";
+import { useParams } from "react-router-dom";
+import { Meal } from "../models/datamodels/Meal";
+import { getImageUrl, getTags } from "../utils/assetHelper";
+import FavoriteButton from "../components/FavoriteButton";
+import { useEffect, useState } from "react";
+import api from "../utils/api";
 import {
-  faSeedling,
-  faDrumstickBite,
-  faFish,
+  faUtensils,
+  faHeart,
+  faMinus,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import backgroundImage from "../assets/images/ente2.png";
+import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 
 const RecipeView = () => {
-  const tags = [
-    {
-      name: "Veggie",
-      icon: <FontAwesomeIcon icon={faSeedling} />,
-      backgroundColor: "bg-veggie-green text-vegan-yellow",
-      onClick: () => getRecipesFromTag("Veggie"),
-    },
-    {
-      name: "Vegan",
-      icon: <FontAwesomeIcon icon={faSeedling} />,
-      backgroundColor: "bg-vegan-yellow text-veggie-green",
-      onClick: () => getRecipesFromTag("Vegan"),
-    },
-    {
-      name: "Fleisch",
-      icon: <FontAwesomeIcon icon={faDrumstickBite} />,
-      backgroundColor: "bg-meat-rosa text-white",
-      onClick: () => getRecipesFromTag("Fleisch"),
-    },
-    {
-      name: "Fisch",
-      icon: <FontAwesomeIcon icon={faFish} />,
-      backgroundColor: "bg-fish-blue text-white",
-      onClick: () => getRecipesFromTag("Fisch"),
-    },
-  ];
+  const { id } = useParams<{ id: string }>();
+  const [meal, setMeal] = useState<Meal | null>(null);
 
-  const getRecipesFromTag = (tagName: string) => {
-    console.log(`Tag ${tagName} is clicked!`);
-  };
+  useEffect(() => {
+    const fetchMeal = async () => {
+      try {
+        const response = await api.get(`/meal/${id}`);
+        setMeal(response.data);
+      } catch (error) {
+        console.error("Error fetching meal:", error);
+      }
+    };
+    fetchMeal();
+  }, [id]);
 
-  const recipeTitle = "Knusprige Entenbrust Süss Sauer";
+  if (!meal) {
+    return <div>Loading...</div>;
+  }
+  const tags = getTags(meal);
+  const allImages = meal.extraImage
+    ? [...meal.extraImage, meal.mainImage]
+    : [meal.mainImage];
+
+  const imgSrc = allImages.map((p) => getImageUrl(p));
+
   return (
     <div className="bg-black font-sans min-h-screen flex flex-col">
       <div
         className="lg:hidden bg-cover bg-center p-4"
-        style={{ backgroundImage: `url(${backgroundImage})` }}
+        style={{ backgroundImage: `url(${getImageUrl(meal.mainImage)})` }}
       >
         <div className="bg-black bg-opacity-50 p-4">
-          <RecipeTitle recipeTitle={recipeTitle} />
+          <RecipeTitle recipeTitle={meal.name} />
           <div className="flex flex-row mb-4">
-            <AddButton />
-            <FavouriteButton />
+            <AddButton onClick={"test"} icon={faPlus} />
+            <FavoriteButton onClick={"test"} icon={farHeart} />
           </div>
           <TagContainer tags={tags} />
         </div>
@@ -65,21 +63,35 @@ const RecipeView = () => {
       <div className="flex flex-col lg:flex-row justify-center p-4">
         <div className="w-full lg:w-2/4 p-4">
           <div className="hidden lg:block">
-            <RecipeTitle recipeTitle={recipeTitle} />
+            <RecipeTitle recipeTitle={meal.name} />
             <div className="flex flex-row mb-4">
-              <AddButton />
-              <FavouriteButton />
+              <AddButton onClick={"test"} icon={faPlus} />
+              <FavoriteButton onClick={"test"} icon={farHeart} />
             </div>
             <TagContainer tags={tags} />
           </div>
-          <div className="flex flex-row mb-2">
-            <IngredientsContainer />
-            <CookingDetails />
+          <div className="flex flex-row mb-2 items-start">
+            {meal.recipe && (
+              <IngredientsContainer ingredients={meal.recipe.ingredients} />
+            )}
+            <div className="flex-shrink-0 -ml-10">
+              {meal.recipe && (
+                <CookingDetails
+                  details={[
+                    meal.recipe.cookTimeInfo,
+                    meal.recipe.difficulty,
+                    meal.recipe.cookConditionInfo,
+                  ]}
+                />
+              )}
+            </div>
           </div>
-          <CookingDirections />
+          {meal.recipe && (
+            <CookingDirections description={meal.recipe.cookDescription} />
+          )}
         </div>
-        <div className="hidden lg:flex w-2/4 p-2 items-center">
-          <RecipeViewGallery />
+        <div className="hidden lg:flex w-3/4 p-10">
+          <RecipeViewGallery images={imgSrc} />
         </div>
       </div>
     </div>
