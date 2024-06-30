@@ -1,24 +1,42 @@
-import RecipeTitle from "../components/RecipeTitle.tsx";
-import AddButton from "../components/AddButton.tsx";
-import TagContainer from "../components/TagContainer.tsx";
-import IngredientsContainer from "../components/IngredientsContainer.tsx";
-import CookingDirections from "../components/CookingDirections.tsx";
-import CookingDetails from "../components/CookingDetails.tsx";
-import RecipeViewGallery from "../components/RecipeViewGallery.tsx";
-import { useLocation } from "react-router-dom";
-import { Meal } from "../models/datamodels/Meal.ts";
-import { getImageUrl, getTags } from "../utils/assetHelper.ts";
-import FavoriteButton from "../components/FavoriteButton.tsx";
+import RecipeTitle from "../components/RecipeTitle";
+import AddButton from "../components/AddButton";
+import TagContainer from "../components/TagContainer";
+import IngredientsContainer from "../components/IngredientsContainer";
+import CookingDirections from "../components/CookingDirections";
+import CookingDetails from "../components/CookingDetails";
+import RecipeViewGallery from "../components/RecipeViewGallery";
+import { useParams } from "react-router-dom";
+import { Meal } from "../models/datamodels/Meal";
+import { getImageUrl, getTags } from "../utils/assetHelper";
+import FavoriteButton from "../components/FavoriteButton";
+import { useEffect, useState } from "react";
+import api from "../utils/api";
 
 const RecipeView = () => {
-  const location = useLocation();
-  const { meal } = location.state as { meal: Meal };
-  const allImages = [...meal.extraImage, meal.mainImage];
+  const { id } = useParams<{ id: string }>();
+  const [meal, setMeal] = useState<Meal | null>(null);
+
+  useEffect(() => {
+    const fetchMeal = async () => {
+      try {
+        const response = await api.get(`/meal/${id}`);
+        setMeal(response.data);
+      } catch (error) {
+        console.error("Error fetching meal:", error);
+      }
+    };
+    fetchMeal();
+  }, [id]);
+
+  if (!meal) {
+    return <div>Loading...</div>;
+  }
+  const tags = getTags(meal);
+  const allImages = meal.extraImage
+    ? [...meal.extraImage, meal.mainImage]
+    : [meal.mainImage];
 
   const imgSrc = allImages.map((p) => getImageUrl(p));
-
-  const tags = getTags(meal);
-  console.log(tags);
 
   return (
     <div className="bg-black font-sans min-h-screen flex flex-col">
@@ -46,18 +64,24 @@ const RecipeView = () => {
             <TagContainer tags={tags} />
           </div>
           <div className="flex flex-row mb-2 items-start">
-            <IngredientsContainer ingredients={meal.recipe.ingredients} />
+            {meal.recipe && (
+              <IngredientsContainer ingredients={meal.recipe.ingredients} />
+            )}
             <div className="flex-shrink-0 -ml-10">
-              <CookingDetails
-                details={[
-                  meal.recipe.cookTimeInfo,
-                  meal.recipe.difficulty,
-                  meal.recipe.cookConditionInfo,
-                ]}
-              />
+              {meal.recipe && (
+                <CookingDetails
+                  details={[
+                    meal.recipe.cookTimeInfo,
+                    meal.recipe.difficulty,
+                    meal.recipe.cookConditionInfo,
+                  ]}
+                />
+              )}
             </div>
           </div>
-          <CookingDirections description={meal.recipe.cookDescription} />
+          {meal.recipe && (
+            <CookingDirections description={meal.recipe.cookDescription} />
+          )}
         </div>
         <div className="hidden lg:flex w-3/4 p-10">
           <RecipeViewGallery images={imgSrc} />
