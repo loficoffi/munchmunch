@@ -516,7 +516,7 @@ button:focus-visible {
 }
 
 /*SearchFilter*/
-.filter-sidebar {
+.filterSidebar {
     border: 2px solid #ccc;
     border-radius: 10px;
     padding: 20px;
@@ -525,16 +525,16 @@ button:focus-visible {
     box-sizing: border-box;
 }
 
-.filter-option {
+.filterOption {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
 }
 
-.filter-option input {
+.filterOption input {
     margin-right: 10px;
 }
 
-.filter-sidebar h2 {
+.filterSidebar h2 {
     margin-bottom: 20px;
 }

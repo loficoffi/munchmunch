@@ -22,7 +22,7 @@ const navigation = [
   { name: "Home", href: "/"},
   { name: "Meine Rezepte", href: "/myrecipes"},
   { name: "Kategorien", href: "#"},
-  { name: <FontAwesomeIcon icon={faSearch} />},
+  { name: <FontAwesomeIcon icon={faSearch} />, href:"/searchpage"  },
   { name: "Zufällige Empfehlung", href: "/recipe"},
 ];
 
