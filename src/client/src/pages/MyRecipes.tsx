@@ -128,105 +128,118 @@ export const MyRecipes = () => {
                         Lieblingsrezepte
                     </h1>
                     <div className="mt-5 ml-7 md:ml-14">
+                        {userData ? (
                         <TagContainer tags={favedTags}/>
+                        ) : <p className={"rounded-lg border border-munch-orange p-5 w-3/6 ml-16 md:ml-0"}>
+                            Logge dich ein um Rezepte in den Favoriten zu speichern!</p>
+                        }
                     </div>
-                    <div className="meal-categories-container my-3 mx-14 overflow-hidden">
-                        <div className="mb-15 relative w-full overflow-hidden">
-                            <Swiper
-                                key={'swiper'}
-                                modules={[Navigation, Pagination]}
-                                spaceBetween={24}
-                                slidesPerView={3}
-                                navigation
-                                pagination={{clickable: true}}
-                                breakpoints={{
-                                    1024: {
-                                        slidesPerView: 3,
-                                    },
-                                    600: {
-                                        slidesPerView: 2,
-                                    },
-                                    480: {
-                                        slidesPerView: 1,
-                                    },
-                                    0: {
-                                        slidesPerView: 1,
-                                    },
-                                }}
-                            >
-                                {userData && userData.profile && activeFaveDietMealArray && (
-                                    activeFaveDietMealArray.map((favouriteMeal, index) => (
-                                        <SwiperSlide id={`${favouriteMeal.name}-${favouriteMeal.id}-${index}`}
-                                                     key={`${favouriteMeal.name}-${favouriteMeal.id}-${index}`}>
-                                            <div
-                                                data-tooltip-id={`meal-tooltip-${favouriteMeal.name}-${favouriteMeal.id}-${index}`}
-                                                data-tooltip-content={favouriteMeal.name}
-                                                data-tooltip-place="top"
-                                            >
-                                                <MealTile meal={favouriteMeal}/>
-                                            </div>
-                                            <Tooltip
-                                                id={`meal-tooltip-${favouriteMeal.name}-${favouriteMeal.id}-${index}`}
-                                                place="top"
-                                                className="z-50"/>
-                                        </SwiperSlide>
-                                    ))
-                                )}
-                            </Swiper>
+                    {userData &&
+                        <div className="meal-categories-container my-3 mx-14 overflow-hidden">
+                            <div className="mb-15 relative w-full overflow-hidden">
+                                <Swiper
+                                    key={'swiper'}
+                                    modules={[Navigation, Pagination]}
+                                    spaceBetween={24}
+                                    slidesPerView={3}
+                                    navigation
+                                    pagination={{clickable: true}}
+                                    breakpoints={{
+                                        1024: {
+                                            slidesPerView: 3,
+                                        },
+                                        600: {
+                                            slidesPerView: 2,
+                                        },
+                                        480: {
+                                            slidesPerView: 1,
+                                        },
+                                        0: {
+                                            slidesPerView: 1,
+                                        },
+                                    }}
+                                >
+                                    {userData && userData.profile && activeFaveDietMealArray && (
+                                        activeFaveDietMealArray.map((favouriteMeal, index) => (
+                                            <SwiperSlide id={`${favouriteMeal.name}-${favouriteMeal.id}-${index}`}
+                                                         key={`${favouriteMeal.name}-${favouriteMeal.id}-${index}`}>
+                                                <div
+                                                    data-tooltip-id={`meal-tooltip-${favouriteMeal.name}-${favouriteMeal.id}-${index}`}
+                                                    data-tooltip-content={favouriteMeal.name}
+                                                    data-tooltip-place="top"
+                                                >
+                                                    <MealTile meal={favouriteMeal}/>
+                                                </div>
+                                                <Tooltip
+                                                    id={`meal-tooltip-${favouriteMeal.name}-${favouriteMeal.id}-${index}`}
+                                                    place="top"
+                                                    className="z-50"/>
+                                            </SwiperSlide>
+                                        ))
+                                    )}
+                                </Swiper>
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
+
                 <div className="saved-recipes mt-10">
                     <h1 className="text-2xl md:ml-14">
                         Gemerkte Rezepte
                     </h1>
-                    <div className="mt-5 ml-7 md:ml-14">
-                        <TagContainer
-                            tags={savedTags} />
-                    </div>
-                    <div className="meal-categories-container my-3 mx-14 overflow-hidden">
-                        <div className="mb-24 relative w-full overflow-hidden">
-                            <Swiper
-                                key={'swiper'}
-                                modules={[Navigation, Pagination]}
-                                spaceBetween={24}
-                                slidesPerView={3}
-                                navigation
-                                pagination={{clickable: true}}
-                                breakpoints={{
-                                    1024: {
-                                        slidesPerView: 3,
-                                    },
-                                    600: {
-                                        slidesPerView: 2,
-                                    },
-                                    480: {
-                                        slidesPerView: 1,
-                                    },
-                                    0: {
-                                        slidesPerView: 1,
-                                    },
-                                }}
-                            >
-                                {userData && userData.profile && activeSaveDietMealArray && (
-                                    activeSaveDietMealArray.map((favouriteMeal, index) => (
-                                        <SwiperSlide id={`${favouriteMeal.name}-${favouriteMeal.id}-${index}`}
-                                                     key={`${favouriteMeal.name}-${favouriteMeal.id}-${index}`}>
-                                            <div
-                                                data-tooltip-id={`meal-tooltip-${favouriteMeal.name}-${favouriteMeal.id}-${index}`}
-                                                data-tooltip-content={favouriteMeal.name}
-                                                data-tooltip-place="top"
-                                            >
-                                                <MealTile meal={favouriteMeal}/>
-                                            </div>
-                                            <Tooltip id={`meal-tooltip-${favouriteMeal.name}-${favouriteMeal.id}-${index}`} place="top"
-                                                 className="z-50"/>
-                                    </SwiperSlide>
-                                ))
-                                )}
-                            </Swiper>
+                        <div className="mt-5 ml-7 md:ml-14">
+                            {userData ? (
+                            <TagContainer
+                                tags={savedTags}/>
+                            ) : <p className={"rounded-lg border border-munch-orange p-5 w-3/6 ml-16 md:ml-0"}>
+                                Logge dich ein um Rezepte in der Merkliste zu speichern!</p> }
                         </div>
-                    </div>
+
+                    {userData && (
+                        <div className="meal-categories-container my-3 mx-14 overflow-hidden">
+                        <div className="mb-24 relative w-full overflow-hidden">
+                                <Swiper
+                                    key={'swiper'}
+                                    modules={[Navigation, Pagination]}
+                                    spaceBetween={24}
+                                    slidesPerView={3}
+                                    navigation
+                                    pagination={{clickable: true}}
+                                    breakpoints={{
+                                        1024: {
+                                            slidesPerView: 3,
+                                        },
+                                        600: {
+                                            slidesPerView: 2,
+                                        },
+                                        480: {
+                                            slidesPerView: 1,
+                                        },
+                                        0: {
+                                            slidesPerView: 1,
+                                        },
+                                    }}
+                                >
+                                    {userData && userData.profile && activeSaveDietMealArray && (
+                                        activeSaveDietMealArray.map((favouriteMeal, index) => (
+                                            <SwiperSlide id={`${favouriteMeal.name}-${favouriteMeal.id}-${index}`}
+                                                         key={`${favouriteMeal.name}-${favouriteMeal.id}-${index}`}>
+                                                <div
+                                                    data-tooltip-id={`meal-tooltip-${favouriteMeal.name}-${favouriteMeal.id}-${index}`}
+                                                    data-tooltip-content={favouriteMeal.name}
+                                                    data-tooltip-place="top"
+                                                >
+                                                    <MealTile meal={favouriteMeal}/>
+                                                </div>
+                                                <Tooltip id={`meal-tooltip-${favouriteMeal.name}-${favouriteMeal.id}-${index}`} place="top"
+                                                     className="z-50"/>
+                                        </SwiperSlide>
+                                    ))
+                                    )}
+                                </Swiper>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
 
