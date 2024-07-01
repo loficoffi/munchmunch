@@ -84,3 +84,5 @@ Refer to the docker-deploy.yml for CI/CD configurations which automate the deplo
 ### LICENSE
 
 Refer to the LICENSE file. This project is licensed under the MIT license.
+
+### Made with ❤️ by Raffael Friedl | Catharina-Emilia Ahrens | Maximilian Lippmann  | Juliana Kühn
