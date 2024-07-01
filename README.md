@@ -40,15 +40,15 @@ Create a .env file in the root directory and update it with your specific settin
 
 3. **Install dependencies**
 
-# General dependencies
+#### General dependencies
 cd src
 npm install
 
-# Backend dependencies
+#### Backend dependencies
 cd server
 npm install
 
-# Frontend dependencies
+#### Frontend dependencies
 cd ../client
 npm install
 
