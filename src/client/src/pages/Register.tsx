@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate  } from "react-router-dom";
-import axios from "axios"
 import config from "../config/config.ts";
+import {v4 as uuidv4} from "uuid";
+import {Account} from "../models/datamodels/Account.ts";
+import api from "../utils/api.ts";
 
 export default function Register() {
 
@@ -12,7 +14,7 @@ export default function Register() {
     const [registrationMessage, setRegistrationMessage] = useState("");
     const navigate = useNavigate();
 
-    async function submit(e)
+    async function submit(e: { preventDefault: () => void; })
     {
         e.preventDefault();
 
@@ -23,19 +25,27 @@ export default function Register() {
         }
 
         try {
-            const response = await axios.post(`${config.apiUrl}/auth/register`, {
-                fName,
-                lName,
-                email,
-                password
-            });
+
+            const newUser: Account = {
+                id: uuidv4(),
+                profile: {
+                    id: uuidv4(),
+                    firstName: fName,
+                    lastName: lName,
+                    profileImage: '',
+                    favouriteMeals: [],
+                    savedMeals: [],
+                },
+                email: email,
+                password: password,
+            };
+
+            const response = await api.post(`${config.apiUrl}/auth/register`, newUser);
+
             setRegistrationMessage("Registrierung erfolgreich!");
-            const { token } = response.data;
-            // Token im localStorage speichern
-            localStorage.setItem('token', token);
 
             // Weiterleitung
-            navigate('/');
+            navigate('/login');
         }
         catch (error) {
             if (error.response.status === 400 && error.response.data.message === 'User already exists') {
