@@ -70,7 +70,7 @@ This command will set up both the frontend and backend services as specified in 
 
 ## Testing
 
-# To run the automated tests for this project:
+### To run the automated tests for this project:
 cd server
 npm run jest
 
