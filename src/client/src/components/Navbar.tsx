@@ -64,7 +64,6 @@ export default function NavigatonBar() {
   const handleClick = async (item) => {
     if (item.special && item.special === "randomMeal") {
       const meal : Meal = (await api.get("/meal/random")).data;
-      console.log(meal);
       setCurrent("/recipe");
       navigate(`/recipe/${meal.id}/${meal.name}`);
     } else {
