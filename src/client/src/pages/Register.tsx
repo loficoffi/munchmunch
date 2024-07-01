@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import config from "../config/config.ts";
 import { v4 as uuidv4 } from "uuid";
-import { Account } from "../models/datamodels/Account.ts";
 import api from "../utils/api.ts";
 import logo from '../assets/munchLogoBig.png';
 import bgImage from '../assets/images/collageBg.png'; // Assuming you save the image in src/assets folder
@@ -39,7 +38,7 @@ export default function Register() {
                 password: password,
             };
 
-            const response = await api.post(`${config.apiUrl}/auth/register`, newUser);
+            await api.post(`${config.apiUrl}/auth/register`, newUser);
 
             setRegistrationMessage("Registrierung erfolgreich!");
 

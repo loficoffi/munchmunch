@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
-import axios from "axios";
 import config from "../config/config.ts";
-import {Account} from "../models/datamodels/Account.ts";
 import {v4 as uuidv4} from "uuid";
 import api, {setAuthToken} from "../utils/api.ts";
 import {fetchUserData} from "../services/accountService.ts";

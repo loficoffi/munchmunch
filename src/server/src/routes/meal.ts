@@ -4,8 +4,7 @@ import { Meal } from '../models/datamodels/Meal.js';
 import db from "../db/connection.js";
 import { DietType } from '../models/datamodels/enums/DietType.js';
 import { Recipe } from '../models/datamodels/Recipe.js';
-import { Collection } from 'mongoose';
-import { ObjectId, WithId } from 'mongodb';
+import { ObjectId } from 'mongodb';
 
 const router = express.Router();
 
@@ -38,7 +37,7 @@ router.post('/updateProfile', async (req, res) => {
         const updatedUser = req.body;
 
         //update user in database with new data in profile
-        const result = await db.collection('users').findOneAndUpdate(
+        await db.collection('users').findOneAndUpdate(
             { _id: new ObjectId(updatedUser._id) },
             { $set: { profile: updatedUser.profile } },
         );
@@ -53,12 +52,7 @@ router.post('/updateProfile', async (req, res) => {
 router.get('/random', async (req, res) => {
     try {
         let collection = await db.collection("meals");
-        let count = await collection.countDocuments();
-        if (count === 0) {
-            return res.status(404).json({ error: "No meals found" });
-        }
 
-        let randomIndex : number = Math.floor(Math.random() * count);
         let result = await collection.aggregate([
             { $sample: { size: 1 } }
         ]).toArray();
