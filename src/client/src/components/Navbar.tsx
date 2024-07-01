@@ -235,9 +235,7 @@ export default function NavigatonBar() {
               {navigation.map((item, index) => (
                 <DisclosureButton
                   key={index}
-                  as="a"
-                  href={item.href}
-                  onClick={() => handleClick(window.location.pathname)}
+                  onClick={() => handleClick(item)}
                   className={classNames(
                       current === item.href
                       ? "text-munch-orange"
