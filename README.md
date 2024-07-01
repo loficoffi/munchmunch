@@ -31,12 +31,12 @@ MunchMunch is a MERN-stack based culinary web application designed to enhance us
 
 1. **Clone the repository**
   
-git clone https://github.com/yourusername/munchmunch.git
-cd munchmunch
+	git clone https://github.com/yourusername/munchmunch.git
+	cd munchmunch
    
 2. **Set up environment variables**
 
-Create a .env file in the root directory and update it with your specific settings (e.g., database URL, API keys, secret keys for JWT).
+	Create a .env file in the root directory and update it with your specific settings (e.g., database URL, API keys, secret keys for JWT).
 
 3. **Install dependencies**
 
