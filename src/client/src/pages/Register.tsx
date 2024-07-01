@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Link, useNavigate  } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import config from "../config/config.ts";
-import {v4 as uuidv4} from "uuid";
-import {Account} from "../models/datamodels/Account.ts";
+import { v4 as uuidv4 } from "uuid";
+import { Account } from "../models/datamodels/Account.ts";
 import api from "../utils/api.ts";
+import logo from '../assets/munchLogoBig.png';
+import bgImage from '../assets/images/collageBg.png'; // Assuming you save the image in src/assets folder
 
 export default function Register() {
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [fName, setFName] = useState("");
@@ -14,19 +15,17 @@ export default function Register() {
     const [registrationMessage, setRegistrationMessage] = useState("");
     const navigate = useNavigate();
 
-    async function submit(e: { preventDefault: () => void; })
-    {
+    async function submit(e) {
         e.preventDefault();
 
-        // Überprüfe, ob alle Felder ausgefüllt sind
+        // Check if all fields are filled
         if (!email || !password || !fName || !lName) {
             setRegistrationMessage("Alle Felder sind erforderlich");
             return;
         }
 
         try {
-
-            const newUser: Account = {
+            const newUser = {
                 id: uuidv4(),
                 profile: {
                     id: uuidv4(),
@@ -44,10 +43,9 @@ export default function Register() {
 
             setRegistrationMessage("Registrierung erfolgreich!");
 
-            // Weiterleitung
+            // Redirect
             navigate('/login');
-        }
-        catch (error) {
+        } catch (error) {
             if (error.response.status === 400 && error.response.data.message === 'User already exists') {
                 setRegistrationMessage("Benutzer mit dieser E-Mail existiert bereits");
             } else {
@@ -56,73 +54,70 @@ export default function Register() {
         }
     }
 
-
-
     return (
-        <form onSubmit={submit} >
-            <div className="bg-black ">
-                <div>
-                    <h1 className="title">Munch</h1>
-                    <h1 className="titleReverse">hcnuM</h1>
+        <div className="min-h-screen flex items-center justify-center bg-cover bg-center"
+             style={{ backgroundImage: `url(${bgImage})` }}>
+            <div className="flex flex-col items-center w-96">
+                <div className="mb-12">
+                    <img src={logo} alt="Munch Logo" className="w-56"/>
                 </div>
-                <div>
-                <h2 className="description">Entdecke und genieße mit MunchMunch! Deine kulinarische Reise beginnt hier. Probier's aus und lass dich inspirieren!</h2>
+                <div className="bg-gray-900 p-8 rounded-lg shadow-2xl shadow-black w-full max-w-md">
+                    <form onSubmit={submit}>
+                        <div className="mb-4">
+                            <input
+                                className="w-full px-3 py-2 border rounded-lg bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500"
+                                onChange={(e) => { setFName(e.target.value) }}
+                                placeholder="Vorname"
+                                type="text"
+                                id="firstName"
+                                name="firstName"
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <input
+                                className="w-full px-3 py-2 border rounded-lg bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500"
+                                onChange={(e) => { setLName(e.target.value) }}
+                                placeholder="Nachname"
+                                type="text"
+                                id="lastName"
+                                name="lastName"
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <input
+                                className="w-full px-3 py-2 border rounded-lg bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500"
+                                onChange={(e) => { setEmail(e.target.value) }}
+                                placeholder="Email"
+                                type="email"
+                                id="email"
+                                name="email"
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <input
+                                className="w-full px-3 py-2 border rounded-lg bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500"
+                                onChange={(e) => { setPassword(e.target.value) }}
+                                placeholder="Passwort"
+                                type="password"
+                                id="password"
+                                name="password"
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <input
+                                className="w-full px-3 py-2 border rounded-lg bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500"
+                                placeholder="Passwort wiederholen"
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                            />
+                        </div>
+                        <button className="w-full py-2 px-4 bg-orange-500 hover:bg-orange-600 rounded-lg text-white font-semibold transition duration-200">Registrieren</button>
+                    </form>
+                    {registrationMessage && <p className="mt-4 text-center text-red-500">{registrationMessage}</p>}
+                    <p className="mt-6 text-center text-gray-500">Bereits registriert? <Link to="/login" className="text-orange-600 hover:underline">Hier einloggen</Link></p>
                 </div>
-                <div className="fname">
-
-                    <input className="inputfname"
-                           placeholder="First Name"
-                           type="text"
-                           id="firstName"
-                           name="firstName"
-                           onChange={(e) => setFName(e.target.value)}
-
-                    />
-                </div>
-                <div className="lname">
-                    <input className="inputlname"
-                        placeholder="Last Name"
-                        type="text"
-                        id="lastName"
-                        name="lastName"
-                        onChange={(e) => setLName(e.target.value)}
-
-                    />
-                </div>
-                <div className="emailtag">
-                    <input className="inputemail"
-                        placeholder="Email"
-                        type="email"
-                        id="email"
-                        name="email"
-                        onChange={(e) => setEmail(e.target.value)}
-
-                    />
-                </div>
-                <div className="passwordtag">
-                    <input className="inputpassword"
-                        placeholder="Password"
-                        type="password"
-                        id="password"
-                        name="password"
-                        onChange={(e) => setPassword(e.target.value)}
-
-                    />
-                </div>
-                <div className="confirmPasswordtag">
-                    <input className="inputconfirmPassword"
-                        placeholder="Confirm Password"
-                        type="password"
-                        id="confirmPassword"
-                        name="confirmPassword"
-                    />
-                </div>
-               <div className="RegButton"> <button className="RegButtonInput" type="submit">Registrieren</button> </div>
-                {registrationMessage && <p className="registrationMessage">{registrationMessage}</p>}
-                <p className="loginlink">
-                    Bereits registriert? <Link to="/login">Hier einloggen</Link>
-                </p>
             </div>
-        </form>
+        </div>
     );
 }
