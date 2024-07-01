@@ -54,13 +54,10 @@ npm install
 
 ### Running Locally
 
-# Start the backend server
-cd server
-npm start
+Go into the main folder where the folders client and server reside.
+Then type:
 
-# In a new terminal, start the frontend client
-cd client
-npm start
+npm run start:dev
 
 The application should now be running on localhost:5173 (frontend) and localhost:5050 (backend), or other ports specified in your environment settings.
 
