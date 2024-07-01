@@ -68,17 +68,17 @@ docker-compose up --build
 
 This command will set up both the frontend and backend services as specified in the docker-compose.yml file.
 
-### Testing
+## Testing
 
 # To run the automated tests for this project:
 cd server
 npm run jest
 
-### Deployment
+## Deployment
 
 Refer to the docker-deploy.yml for CI/CD configurations which automate the deployment process using GitHub Actions to push to your AWS EC2 instance.
 
-### LICENSE
+## LICENSE
 
 Refer to the LICENSE file. This project is licensed under the MIT license.
 
