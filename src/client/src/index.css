@@ -530,3 +530,27 @@ button:focus-visible {
     color: #6b7280;
 }
 
+.markdown-style h1,
+.markdown-style h2,
+.markdown-style h3,
+.markdown-style h4,
+.markdown-style h5,
+.markdown-style h6 {
+    font-weight: normal;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.markdown-style h1 {
+    font-size: 2em;
+}
+
+.markdown-style h2 {
+    font-size: 1.5em;
+}
+
+.markdown-style h3 {
+    font-size: 1.17em;
+}
+
