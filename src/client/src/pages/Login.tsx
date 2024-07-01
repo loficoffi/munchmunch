@@ -60,9 +60,9 @@ export default function Login() {
         <div className="min-h-screen flex items-center justify-center bg-cover bg-center"
              style={{backgroundImage: `url(${bgImage})`}}>
             <div className="flex flex-col items-center w-96">
-                <div className="mb-12">
+                <Link to="/" className="mb-12">
                     <img src={logo} alt="Munch Logo" className="w-56"/>
-                </div>
+                </Link>
                 <div className="bg-gray-900 p-8 rounded-lg shadow-2xl shadow-black w-full max-w-md">
                     <form onSubmit={submit}>
                         <div className="mb-4">

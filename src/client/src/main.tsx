@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard.tsx";
 import RecipeView from "./pages/RecipeView.tsx";
 import Login from "./pages/Login.tsx";
 import Register from "./pages/Register.tsx";
+import About from "./pages/About.tsx";
 import MyRecipes from "./pages/MyRecipes.tsx";
 
 import "./index.css";
@@ -31,6 +32,16 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/about", // Pfad für das Dashboard
+    element: <App />,
+    children: [
+      {
+        path: "/about",
+        element: <About />, // Dashboard-Komponente einfügen
+      },
+    ],
   },
   {
     path: "/recipe/:id", // Pfad für das Dashboard

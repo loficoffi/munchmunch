@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import MunchLogo from "../assets/munchlogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faBars } from "@fortawesome/free-solid-svg-icons";
@@ -15,15 +15,16 @@ import {
 } from "@headlessui/react";
 import {useEffect, useState} from "react";
 import {fetchUserData} from "../services/accountService.ts";
-import {setAuthToken} from "../utils/api.ts";
+import api, {setAuthToken} from "../utils/api.ts";
 import {Account} from "../models/datamodels/Account.ts";
+import {Meal} from "../models/datamodels/Meal.ts";
 
 const navigation = [
   { name: "Home", href: "/"},
   { name: "Meine Rezepte", href: "/myrecipes"},
-  { name: "Kategorien", href: "#"},
+  { name: "Über", href: "/about"},
   { name: <FontAwesomeIcon icon={faSearch} />},
-  { name: "Zufällige Empfehlung", href: "/recipe"},
+  { name: "Zufällige Empfehlung", href: "/recipe", special: "randomMeal"},
 ];
 
 function classNames(...classes: string[]) {
@@ -37,6 +38,8 @@ export default function NavigatonBar() {
   const [error, setError] = useState<string | null>(null);
   const [userData, setUserData] = useState<Account | null>(null);
   const [userInitials, setUserInitials] = useState<string | null>(null);
+
+  const navigate = useNavigate();
 
   //get userdata if token exists
   useEffect(() => {
@@ -58,8 +61,16 @@ export default function NavigatonBar() {
     }
   }, []);
 
-  const handleClick = (name: string) => {
-    setCurrent(name);
+  const handleClick = async (item) => {
+    if (item.special && item.special === "randomMeal") {
+      const meal : Meal = (await api.get("/meal/random")).data;
+      console.log(meal);
+      setCurrent("/recipe");
+      navigate(`/recipe/${meal.id}/${meal.name}`);
+    } else {
+      setCurrent(item.href);
+      navigate(item.href);
+    }
   };
 
   const logoutUser = () => {
@@ -97,20 +108,19 @@ export default function NavigatonBar() {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item, index) => (
-                      <a
-                        key={index}
-                        href={item.href}
-                        onClick={() => handleClick(window.location.pathname)}
-                        className={classNames(
-                            current === item.href
-                            ? "text-munch-orange underline underline-offset-8"
-                            : "text-white hover:border border-munch-orange hover:text-white",
-                          "rounded-md px-3 py-2 text-sm font-regular"
-                        )}
-                        aria-current={current === item.href ? "page" : undefined}
-                      >
-                        {item.name}
-                      </a>
+                        <a
+                            key={index}
+                            onClick={() => handleClick(item)}  // Passing the entire item to the handler
+                            className={classNames(
+                                current === item.href
+                                    ? "text-munch-orange underline underline-offset-8"
+                                    : "text-white hover:border border-munch-orange hover:text-white",
+                                "rounded-md px-3 py-2 text-sm font-regular cursor-pointer"
+                            )}
+                            aria-current={current === item.href ? "page" : undefined}
+                        >
+                          {item.name}
+                        </a>
                     ))}
                   </div>
                 </div>
@@ -125,7 +135,7 @@ export default function NavigatonBar() {
                             href={"/login"}
                             className={"rounded-lg border border-munch-orange bg-munch-orange px-3 py-1 text-black font-medium"}
                         >
-                          Login
+                        Login
                         </a>
                       </div>
                     </div>
@@ -151,16 +161,17 @@ export default function NavigatonBar() {
                   <Menu as="div" className="relative ml-1">
                     <div>
                       <MenuButton
-                          className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                          className="relative flex items-center justify-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                      >
                         <span className="absolute -inset-1.5"/>
                         <span className="sr-only">Open user menu</span>
-                        {userData &&
-                        <p
-                            className="h-8 w-8 rounded-full bg-munch-orange pt-1 font-semibold"
-                        >
-                          {userInitials}
-                        </p>
-                        }
+                        {userData && (
+                            <p
+                                className="flex items-center justify-center h-8 w-8 rounded-full bg-munch-orange font-semibold"
+                            >
+                              {userInitials}
+                            </p>
+                        )}
                       </MenuButton>
                     </div>
                     <Transition

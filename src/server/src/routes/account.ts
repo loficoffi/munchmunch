@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/get', async (req: Request, res: Response) => {
     const token = req.headers.authorization?.split(' ')[1];
-    console.log(token);
+    //console.log(token);
 
     if (!token) {
         return res.status(401).json({ message: 'No token provided' });
@@ -30,7 +30,7 @@ router.get('/get', async (req: Request, res: Response) => {
             return res.status(401).json({ message: 'Invalid token' });
         }
     } catch (err) {
-        console.error(err);
+        //console.error(err);
         return res.status(401).json({ message: 'Invalid token' });
     }
 })

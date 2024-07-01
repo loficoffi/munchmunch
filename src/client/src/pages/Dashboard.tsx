@@ -184,7 +184,7 @@ export const Dashboard: React.FC = () => {
                 </div>
             )}
             {!dashboardData && <p>Loading...</p>}
-            {error && <p>Error: {error}</p>}
+            {/*{error && <p>Error: {error}</p>}*/}
         </div>
     );
 }
