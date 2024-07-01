@@ -143,7 +143,7 @@ export default function NavigatonBar() {
                   <div
                       className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                     <div>
-                      <div className="flex space-x-4">
+                      <div className="hidden md:flex md:space-x-4">
                         <p
                             className={"text-munch-orange font-medium"}
                         >

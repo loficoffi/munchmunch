@@ -14,7 +14,7 @@ interface TagContainerProps {
 const TagContainer: React.FC<TagContainerProps> = ({ tags }) => {
   return (
     //tags.map is for rendering more than one tags in tag-container
-    <div className="flex flex-wrap gap-2 mb-5">
+    <div className="flex flex-wrap gap-2 mb-5 mx-auto justify-center md:justify-start">
       {tags.map((tag, index) => (
         <Tag
           key={index}
