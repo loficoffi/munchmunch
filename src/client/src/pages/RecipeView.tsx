@@ -170,10 +170,15 @@ const RecipeView: React.FC = () => {
       >
         <div className="bg-black bg-opacity-50 p-4">
           <RecipeTitle recipeTitle={meal.name} />
-          <div className="flex flex-row mb-4">
-            <AddButton onClick={"test"} icon={faPlus} />
-            <FavoriteButton onClick={"test"} icon={farHeart} />
-          </div>
+          {userData &&
+              <div className="flex flex-row mb-5">
+                <AddButton onClick={addSavedMeal} icon={savedMealWasAdded && userData && userData.profile ? faMinus : faPlus} />
+                <FavoriteButton
+                    onClick={addFavoriteMeal}
+                    icon={faveMealWasAdded && userData && userData.profile ? faHeart : farHeart}
+                />
+              </div>
+          }
           <TagContainer tags={tags} />
         </div>
       </div>
