@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TagContainer from "../components/TagContainer.tsx";
 import "../index.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSeedling,
   faDrumstickBite,
@@ -206,16 +205,16 @@ export const MyRecipes = () => {
 
   return (
     <div>
-      <div className="myrecipes-container text-center mt-10 ml-0 mt-5 md:text-left md:ml-2">
+      <div className="myrecipes-container text-center ml-0 mt-10 md:text-left md:ml-2">
         <div className="favorite-recipes">
           <h1 className="text-2xl md:ml-14">Lieblingsrezepte</h1>
-          <div className="mt-5 ml-7 md:ml-14">
+          <div className="mt-5 inline-block mx-auto  md:ml-14">
             {userData ? (
               <TagContainer tags={tags} />
             ) : (
               <p
                 className={
-                  "rounded-lg border border-munch-orange p-5 w-3/6 ml-16 md:ml-0"
+                  "rounded-lg border border-munch-orange p-5 w-3/6 mx-auto md:ml-0"
                 }
               >
                 Logge dich ein um Rezepte in den Favoriten zu speichern!
@@ -277,13 +276,13 @@ export const MyRecipes = () => {
 
         <div className="saved-recipes mt-10">
           <h1 className="text-2xl md:ml-14">Gemerkte Rezepte</h1>
-          <div className="mt-5 ml-7 md:ml-14">
+          <div className="mt-5 inline-block mx-auto md:ml-14">
             {userData ? (
               <TagContainer tags={savedTags} />
             ) : (
               <p
                 className={
-                  "rounded-lg border border-munch-orange p-5 w-3/6 ml-16 md:ml-0"
+                  "rounded-lg border border-munch-orange p-5 w-3/6 mx-auto md:ml-0"
                 }
               >
                 Logge dich ein um Rezepte in der Merkliste zu speichern!

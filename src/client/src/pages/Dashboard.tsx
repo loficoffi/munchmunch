@@ -11,7 +11,6 @@ import {getImageUrl} from "../utils/assetHelper.ts";
 import FavoriteButton from "../components/FavoriteButton.tsx";
 import MealCategory from '../components/MealCategory';
 
-import {Simulate} from "react-dom/test-utils";
 import {Account} from "../models/datamodels/Account.ts";
 import {fetchUserData} from "../services/accountService.ts";
 import api, {setAuthToken} from "../utils/api.ts";
@@ -184,7 +183,7 @@ export const Dashboard: React.FC = () => {
                 </div>
             )}
             {!dashboardData && <p>Loading...</p>}
-            {error && <p>Error: {error}</p>}
+            {/*{error && <p>Error: {error}</p>}*/}
         </div>
     );
 }

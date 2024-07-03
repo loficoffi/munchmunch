@@ -88,13 +88,17 @@ router.get("/", async (req, res) => {
             ingredients: recipe1NeededIngredients,
             cookConditionInfo: "In der Pfanne",
             cookTimeInfo: "20 Minuten",
-            cookDescription: "* Für das Rezept zunächst die Spaghetti in kochendem Salzwasser bissfest kochen.\n" +
-                "  \n" +
-                "* Währenddessen die Cocktailtomaten halbieren und den Knoblauch hacken. Den Knoblauch in einer Pfanne mit Olivenöl anschwitzen.\n" +
-                "  \n" +
-                "* Danach Garnelen tiefgefrorenen hinzufügen. Sobald diese aufgetaut sind, die Tomaten beimengen und ca. 6 Minuten anbraten.\n" +
-                "  \n" +
-                "* Zum Schluss Brunch dazu und langsam zu einer Sauce verrühren. Die Pasta mit Garnelen in tiefen Tellern servieren und genießen.",
+            cookDescription: "## Schritt 1\n" +
+                "Spaghetti in kochendem Salzwasser bissfest kochen.\n" +
+                "\n" +
+                "## Schritt 2\n" +
+                "Cocktailtomaten halbieren, Knoblauch hacken, und Knoblauch in Olivenöl anschwitzen.\n" +
+                "\n" +
+                "## Schritt 3\n" +
+                "Tiefgefrorene Garnelen hinzufügen, auftauen lassen, Tomaten zugeben und ca. 6 Minuten anbraten.\n" +
+                "\n" +
+                "## Schritt 4\n" +
+                "Brunch unterrühren, bis eine Sauce entsteht. Spaghetti mit Sauce servieren.",
         }
     ]
 
@@ -193,13 +197,20 @@ router.get("/", async (req, res) => {
             ingredients: recipe2NeededIngredients,
             cookConditionInfo: "Backofen 200 Grad (Ober-/Unterhitze)",
             cookTimeInfo: "25 Minuten",
-            cookDescription: "* Für die Forelle im Backofen das Backrohr auf 200 Grad, Ober-/Unterhitze vorheizen.\n" +
-                "  \n" +
-                "* In der Zwischenzeit die Kräuter waschen und gut abtropfen lassen. Danach die küchenfertigen Forellen unter fließendem Wasser abspülen (innen und außen) und mit Küchenpapier trocken tupfen.\n" +
-                "  \n" +
-                "* Die Fische innen und außen mit Salz würzen und kräftig mit Öl einreiben. In die Bauchhöhle der Forellen Thymianzweige, Rosmarinzweige, Petersilie und eine kleingehackte Knoblauchzehe stecken und mit Pfeffer mit Zitronensaft würzen.\n" +
-                "  \n" +
-                "* Nun die Fische auf ein mit Backpapier ausgelegtes Backlech legen (oder in eine Alutasse) und im Backrohr etwa 15 Minuten braten. Damit der Fisch eine schöne Farbe bekommt, für die letzten 5 Minuten, die Backofen-Temperatur auf 240 Grad erhöhen.",
+            cookDescription: "## Schritt 1\n" +
+                "Für die Forelle im Backofen das Backrohr auf 200 Grad, Ober-/Unterhitze vorheizen.\n" +
+                "\n" +
+                "## Schritt 2\n" +
+                "In der Zwischenzeit die Kräuter waschen und gut abtropfen lassen.\n" +
+                "\n" +
+                "## Schritt 3\n" +
+                "Danach die küchenfertigen Forellen unter fließendem Wasser abspülen (innen und außen) und mit Küchenpapier trocken tupfen.\n" +
+                "\n" +
+                "## Schritt 4\n" +
+                "Die Fische innen und außen mit Salz würzen und kräftig mit Öl einreiben. In die Bauchhöhle der Forellen Thymianzweige, Rosmarinzweige, Petersilie und eine kleingehackte Knoblauchzehe stecken und mit Pfeffer und Zitronensaft würzen.\n" +
+                "\n" +
+                "## Schritt 5\n" +
+                "Nun die Fische auf ein mit Backpapier ausgelegtes Backblech legen (oder in eine Alutasse) und im Backrohr etwa 15 Minuten braten. Damit der Fisch eine schöne Farbe bekommt, für die letzten 5 Minuten die Backofen-Temperatur auf 240 Grad erhöhen.",
         }
     ]
 
@@ -370,7 +381,38 @@ router.get("/", async (req, res) => {
             ingredients: recipe3NeededIngredients,
             cookConditionInfo: "Pfanne",
             cookTimeInfo: "30 Minuten",
-            cookDescription: "",
+            cookDescription: "## Schritt 1\n" +
+                "Reis nach Anleitung zubereiten. Brokkoli nach Belieben kurz dünsten.\n" +
+                "\n" +
+                "## Schritt 2\n" +
+                "Tofu aus der Verpackung nehmen, in ein Küchentuch einwickeln und trocken pressen.\n" +
+                "\n" +
+                "## Schritt 3\n" +
+                "Sesamöl, Maisstärke, Ingwer, Knoblauch, Reiswein, Tamari, Ahornsirup in einer Schüssel verquirlen.\n" +
+                "\n" +
+                "## Schritt 4\n" +
+                "Tofu in kleine Stücke schneiden.\n" +
+                "\n" +
+                "## Schritt 5\n" +
+                "Tofu mit Tamari, Sesamöl, Chilis, Ahornsirup marinieren.\n" +
+                "\n" +
+                "## Schritt 6\n" +
+                "Tofu in Maisstärke wälzen, dann in einer Pfanne mit Bratöl anbraten.\n" +
+                "\n" +
+                "## Schritt 7\n" +
+                "Tofu aus der Pfanne nehmen.\n" +
+                "\n" +
+                "## Schritt 8\n" +
+                "Gemüse in der Pfanne anschwitzen.\n" +
+                "\n" +
+                "## Schritt 9\n" +
+                "Mit der Sauce ablöschen und köcheln lassen.\n" +
+                "\n" +
+                "## Schritt 10\n" +
+                "Tofu wieder hinzufügen und köcheln, bis alles gut verbunden ist.\n" +
+                "\n" +
+                "## Schritt 11\n" +
+                "Mit Reis, frischem Koriander, Limetten, Sesam, Chili Sauce servieren.",
         }
     ]
 
@@ -547,7 +589,17 @@ router.get("/", async (req, res) => {
             ingredients: recipe4NeededIngredients,
             cookConditionInfo: "Pfanne",
             cookTimeInfo: "30 Minuten",
-            cookDescription: "",
+            cookDescription: "## Schritt 1\n" +
+                "Berglinsen waschen, abtropfen lassen und für 15 Minuten in Brühe kochen.\n" +
+                "\n" +
+                "## Schritt 2\n" +
+                "Kartoffeln und Suppengrün waschen, schälen und fein würfeln. In einem zweiten Topf Butterschmalz erhitzen und das Gemüse darin andünsten.\n" +
+                "\n" +
+                "## Schritt 3\n" +
+                "Die gekochten Linsen samt Brühe über das angedünstete Gemüse geben und alles zusammen nochmals 10 Minuten köcheln lassen.\n" +
+                "\n" +
+                "## Schritt 4\n" +
+                "Petersilie waschen, trocknen, hacken und zur Suppe geben. Mit Weißweinessig, Salz und Pfeffer abschmecken. Nach Belieben mit Schnittlauch garnieren.",
         }
     ]
 
@@ -629,13 +681,26 @@ router.get("/", async (req, res) => {
             ingredients: recipe5NeededIngredients,
             cookConditionInfo: "Pfanne",
             cookTimeInfo: "1 Stunde 10 Minuten",
-            cookDescription: "*Die geschälten Kartoffel roh mit der feinen Scheibe reiben. Zwei Drittel der Menge in einem Leinentuch gründlich ausdrücken. Die Masse soll so trocken wie nur irgend möglich sein. In Thühringen benutzt man dazu spezielle Pressen!\n"
-                + "* Das verbliebene Drittel wird mit etwas Salz und Wasser zu einem sämigen Kartoffelbrei gekocht.\n"
-                + "*Die ausgedrückten Kartoffelflocken werden in einen großen Topf gleichmäßig verteilt. Der kochendheiße, sämige Kartoffelbrei wird darüber gegosssen und alles mit einer Holzkelle kräftig verrührt. Danach wird die Masse bei mittlerer Hitze abgebrannt. Abbrennen: Den Teig rühren, rühren, rühren bis er sich als großer Kloß vom Topfboden löst. Der Kloßteig ist jetzt fertig.\n"
-                + "*Brötchen in kleine Würfel schneiden und in etwas Butter goldbraun braten.\n"
-                + "* Klöße wollen schwimmen: Einen großen Topf mit reichlich kräftig gesalzenem Wasser zum Kochen bringen. Hitze zurück drehen bis das Wasser nur noch siedet, nicht mehr sprudelt.\n"
-                + "* Mit angefeuchteten Händen werden aus der noch warmen Masse klöße abgedreht. In die Mitte eines jeden Kloßes werden einige der Semmelwürfel eingearbeitet, sie erhöhen den Geschmack und etziehen dem Kloß Feuchtigkeit. Nach 10-15 Minuten schwimmen die Klöße an der Oberfläche und sind jetzt servierfähig. \n"
-                + "* Klöße schmecken mit Semmelbutter besonders gut. Dazu einfach Semmelbrösel in Butter goldbraun braten und über die Klöße geben."
+            cookDescription: "## Schritt 1\n" +
+                "Die geschälten Kartoffeln roh mit der feinen Scheibe reiben. Zwei Drittel der Menge in einem Leinentuch gründlich ausdrücken. Die Masse soll so trocken wie nur irgend möglich sein. In Thüringen benutzt man dazu spezielle Pressen!\n" +
+                "\n" +
+                "## Schritt 2\n" +
+                "Das verbliebene Drittel wird mit etwas Salz und Wasser zu einem sämigen Kartoffelbrei gekocht.\n" +
+                "\n" +
+                "## Schritt 3\n" +
+                "Die ausgedrückten Kartoffelflocken werden in einen großen Topf gleichmäßig verteilt. Der kochendheiße, sämige Kartoffelbrei wird darüber gegossen und alles mit einer Holzkelle kräftig verrührt. Den Teig rühren, rühren, rühren bis er sich als großer Kloß vom Topfboden löst. Der Kloßteig ist jetzt fertig.\n" +
+                "\n" +
+                "## Schritt 4\n" +
+                "Brötchen in kleine Würfel schneiden und in etwas Butter goldbraun braten.\n" +
+                "\n" +
+                "## Schritt 5\n" +
+                "Einen großen Topf mit reichlich kräftig gesalzenem Wasser zum Kochen bringen. Hitze zurück drehen bis das Wasser nur noch siedet, nicht mehr sprudelt.\n" +
+                "\n" +
+                "## Schritt 6\n" +
+                "Mit angefeuchteten Händen Klöße aus der noch warmen Masse abdrehen, in die Mitte eines jeden Kloßes einige der Semmelwürfel einarbeiten. Nach 10-15 Minuten schwimmen die Klöße an der Oberfläche und sind servierfähig.\n" +
+                "\n" +
+                "## Schritt 7\n" +
+                "Klöße schmecken mit Semmelbutter besonders gut. Dazu einfach Semmelbrösel in Butter goldbraun braten und über die Klöße geben."
         }
     ]
 
@@ -712,11 +777,21 @@ router.get("/", async (req, res) => {
             ingredients: recipe6NeededIngredients,
             cookConditionInfo: "Backofen 180C",
             cookTimeInfo: "35 Minuten",
-            cookDescription: "*Paprikaschoten putzen, entkernen und in 2 cm große Würfel schneiden.\n"
-                + "*Zucchini putzen, längs halbieren und in 1 cm breite Scheiben schneiden.Frischkäse, Eier, Salz und Cayennepfeffer in ein hohes Gefäß geben und mit dem Schneidstab pürieren.\n"
-                + "*Olivenöl in einer beschichteten, feuerfesten Pfanne(ca. 22 cm Ø) erhitzen.Gemüse darin bei mittlerer Hitze 8 - 10 Min.dünsten.Eier - Frischkäsemasse darübergießen und zugedeckt ca. 2 - 3 Min.stocken lassen.\n"
-                + "*Frittata offen im heißen Ofen bei 180 Grad auf der mittleren Schiene ca. 15 - 20 Min.fertig backen(Umluft nicht empfehlenswert).Die Eier - Frischkäsemasse soll durchgehend gestockt sein.\n"
-                + "*Frittata vorsichtig vom Pfannenrand lösen, auf einen großen Teller gleiten lassen und in Stücke schneiden."
+            cookDescription: "## Schritt 1\n" +
+                "Paprikaschoten putzen, entkernen und in 2 cm große Würfel schneiden.\n" +
+                "\n" +
+                "## Schritt 2\n" +
+                "Zucchini putzen, längs halbieren und in 1 cm breite Scheiben schneiden. Frischkäse, Eier, Salz und Cayennepfeffer in ein hohes Gefäß geben und mit dem Schneidstab pürieren.\n" +
+                "\n" +
+                "## Schritt 3\n" +
+                "Olivenöl in einer beschichteten, feuerfesten Pfanne (ca. 22 cm Ø) erhitzen. Gemüse darin bei mittlerer Hitze 8-10 Minuten dünsten. Eier-Frischkäsemasse darüber gießen und zugedeckt ca. 2-3 Minuten stocken lassen.\n" +
+                "\n" +
+                "## Schritt 4\n" +
+                "Frittata offen im heißen Ofen bei 180 Grad auf der mittleren Schiene ca. 15-20 Minuten fertig backen (Umluft nicht empfehlenswert). Die Eier-Frischkäsemasse soll durchgehend gestockt sein.\n" +
+                "\n" +
+                "## Schritt 5\n" +
+                "Frittata vorsichtig vom Pfannenrand lösen, auf einen großen Teller gleiten lassen und in Stücke schneiden."
+
         }
     ]
 
@@ -816,7 +891,23 @@ router.get("/", async (req, res) => {
             ingredients: recipe7NeededIngredients,
             cookConditionInfo: "Pfanne",
             cookTimeInfo: "30 Minuten",
-            cookDescription: "",
+            cookDescription: "## Schritt 1\n" +
+                "Die Kalbsschnitzel zwischen Klarsichtfolie legen und mit einem Fleischklopfer auf eine Dicke von 3-4 mm plattieren. Danach auf beiden Seiten salzen.\n" +
+                "\n" +
+                "## Schritt 2\n" +
+                "Drei flache Teller vorbereiten: einen mit Mehl, einen mit verquirlten Eiern und einen mit Semmelbröseln. Die Eier leicht salzen und verquirlen.\n" +
+                "\n" +
+                "## Schritt 3\n" +
+                "Die Schnitzel zuerst in Mehl wenden, überschüssiges Mehl abklopfen. Dann durch die Eier ziehen und schließlich in den Semmelbröseln wenden, ohne die Brösel fest anzudrücken.\n" +
+                "\n" +
+                "## Schritt 4\n" +
+                "In einer großen Pfanne ausreichend Butterschmalz oder eine Mischung aus Pflanzenöl und Butter auf 175°C erhitzen. Es sollte genug Fett in der Pfanne sein, damit die Schnitzel darin schwimmen können.\n" +
+                "\n" +
+                "## Schritt 5\n" +
+                "Die Schnitzel in das heiße Fett geben und durch vorsichtige Schwenkbewegungen der Pfanne dafür sorgen, dass das heiße Fett über die Oberseite der Schnitzel läuft. Dies erzeugt die charakteristische wellige Panade. Nach ca. 2-4 Minuten wenden und die andere Seite goldbraun backen.\n" +
+                "\n" +
+                "## Schritt 6\n" +
+                "Die Schnitzel aus der Pfanne nehmen, auf Küchenpapier abtropfen lassen und sofort servieren. Mit Zitronenscheiben garnieren.\n",
         }
     ]
 
@@ -1020,7 +1111,17 @@ router.get("/", async (req, res) => {
             ingredients: recipe8NeededIngredients,
             cookConditionInfo: "Topf",
             cookTimeInfo: "2 Stunden 5 Minuten",
-            cookDescription: "",
+            cookDescription: "## Schritt 1\n" +
+                "Für das Rehragout zunächst das Wurzelwerk (Karotten, gelbe Rüben, Selleriewurzel), Schalotte sowie den Speck grob würfeln. Das Rehfleisch ebenfalls in mundgerechte Würfel schneiden, salzen, pfeffern und kurz stehen lassen.\n" +
+                "\n" +
+                "## Schritt 2\n" +
+                "Die Wurzelwerk-, Zwiebel- und Speckwürfel in etwas heißem Fett kräftig anbraten. Das Fleisch zugeben und ebenfalls anbraten. Mit Rotweinlikör ablöschen und vollständig einkochen lassen. Preiselbeeren einmengen und sämtliche Gewürze zugeben. Wenig Suppe zugießen (das Fleisch soll nur knapp bedeckt sein) und je nach Qualität 70-90 Minuten weich dünsten. Währenddessen wiederholt umrühren und bei Bedarf frische Suppe nachgießen.\n" +
+                "\n" +
+                "## Schritt 3\n" +
+                "Das weiche Fleisch mit einem Schaumlöffel herausheben und warm stellen. Je nach gewünschter Saucenmenge noch etwas Suppe zugießen und kräftig aufkochen lassen. Die Sauce passieren (abseihen). Mehl mit Sauerrahm glatt rühren, einrühren und mit Salz, Pfeffer und Zitronensaft abschmecken. Mollig einkochen lassen. Fleisch und gekochte Maroni zugeben und alles nochmals gut erwärmen.\n" +
+                "\n" +
+                "## Schritt 4\n" +
+                "Das Rehragout auf vorgewärmten Tellern anrichten. Einen gehäuften Kaffeelöffel Preiselbeeren auf je eine Orangenscheibe geben und neben das Rehragout platzieren. Das Ragout selbst mit einem Tupfer Rahm garnieren. Als Beilage eignen sich Semmelknödel, Spätzle oder Kohlsprossen mit Speck.\n",
         }
     ]
 
@@ -1340,7 +1441,29 @@ router.get("/", async (req, res) => {
             ingredients: recipe9NeededIngredients,
             cookConditionInfo: "Wok",
             cookTimeInfo: "3 Stunden 30 Minuten",
-            cookDescription: "",
+            cookDescription: "## Schritt 1\n" +
+                "Die Ente abspülen, trocken tupfen und in Stücke schneiden. Mit Salz und Pfeffer würzen.\n" +
+                "\n" +
+                "## Schritt 2\n" +
+                "Die Stücke in Speisestärke wälzen, bis sie gleichmäßig bedeckt sind.\n" +
+                "\n" +
+                "## Schritt 3\n" +
+                "Öl in einem Wok oder einer tiefen Pfanne erhitzen und die Entenstücke darin knusprig braten. Herausnehmen und auf Küchenpapier abtropfen lassen.\n" +
+                "\n" +
+                "## Schritt 4\n" +
+                "Paprika, Möhren und Ananas klein schneiden. Knoblauch und Ingwer fein hacken.\n" +
+                "\n" +
+                "## Schritt 5\n" +
+                "Das Gemüse in der gleichen Pfanne anbraten, Knoblauch und Ingwer hinzufügen und kurz mitbraten.\n" +
+                "\n" +
+                "## Schritt 6\n" +
+                "Sojasauce, Essig, Zucker, Ananassaft und Ketchup vermischen und zum Gemüse geben. Kurz aufkochen lassen.\n" +
+                "\n" +
+                "## Schritt 7\n" +
+                "Die Entenstücke wieder in die Pfanne geben und alles gut vermengen.\n" +
+                "\n" +
+                "## Schritt 8\n" +
+                "Mit Reis servieren und genießen.",
         }
     ]
 
@@ -1364,6 +1487,8 @@ router.get("/", async (req, res) => {
     await db.collection('meals').insertOne(recipe2Meal);
     await db.collection('meals').insertOne(recipe3Meal);
     await db.collection('meals').insertOne(recipe4Meal);
+    await db.collection('meals').insertOne(recipe5Meal);
+    await db.collection('meals').insertOne(recipe6Meal);
     await db.collection('meals').insertOne(recipe7Meal);
     await db.collection('meals').insertOne(recipe8Meal);
     await db.collection('meals').insertOne(recipe9Meal);
