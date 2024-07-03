@@ -110,4 +110,19 @@ router.get('/dashboard', async (req, res) => {
     }
 });
 
+router.get('/categories', async (req, res) => {
+    try {
+        let collection = await db.collection("meals");
+        let results = await collection.find({}).toArray();
+
+        // Get unique categories
+        const categories = [...new Set(results.map(result => result.cuisine))];
+
+        res.status(200).json(categories);
+    } catch (error) {
+        console.error("Error fetching categories:", error);
+        res.status(500).json({ error: "Failed to fetch categories" });
+    }
+});
+
 export default router;

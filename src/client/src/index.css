@@ -559,17 +559,20 @@ button:focus-visible {
 }
 
 .sidebar-container {
-    flex: 0 0 200px; /* Fixe Breite für die Sidebar */
-    height: 100vh;
-    box-sizing: border-box;
+    width: 20%;
+    padding: 1rem;
 }
 
 .main-content {
-    flex: 1;
-    padding: 20px;
+    width: 80%;
+    padding: 1rem;
 }
 
-
+.meal-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
 /*SearchBar*/
 
 .searchBar {

@@ -100,4 +100,52 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// In meal.ts oder einem neuen Router (filter.ts)
+router.get('/filters', async (req, res) => {
+    try {
+        let collection = await db.collection("meals");
+        let results = await collection.find({}).toArray();
+
+        const cuisines = [...new Set(results.map(result => result.cuisine))];
+        const diets = [...new Set(results.map(result => result.diet))];
+        const difficulties = [...new Set(results.map(result => result.recipe.difficulty))];
+
+        res.json({ cuisines, diets, difficulties });
+    } catch (error) {
+        console.error("Error fetching filters:", error);
+        res.status(500).json({ error: "Failed to fetch filters" });
+    }
+});
+
+router.get('/filtered', async (req, res) => {
+    try {
+        const { cuisines, diets, difficulties } = req.query;
+
+        let collection = await db.collection("meals");
+        let query: any = {};
+
+        if (typeof cuisines === 'string') query['cuisine'] = { $in: cuisines.split(',') };
+        if (typeof diets === 'string') query['diet'] = { $in: diets.split(',') };
+        if (typeof difficulties === 'string') query['recipe.difficulty'] = { $in: difficulties.split(',') };
+
+        let results = await collection.find(query).toArray();
+
+        const meals: Meal[] = results.map(result => ({
+            id: result._id.toString(),
+            name: result.name,
+            diet: result.diet as DietType,
+            cuisine: result.cuisine,
+            recipe: result.recipe as Recipe,
+            mainImage: result.mainImage,
+            extraImage: result.extraImage
+        }));
+
+        res.json(meals);
+    } catch (error) {
+        console.error("Error fetching filtered meals:", error);
+        res.status(500).json({ error: "Failed to fetch filtered meals" });
+    }
+});
+
+
 export default router;

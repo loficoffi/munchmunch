@@ -19,6 +19,8 @@
     "concurrently": "^8.2.2"
   },
   "dependencies": {
-    "@types/jest": "^29.5.12"
+    "@types/jest": "^29.5.12",
+    "react-markdown": "^9.0.1",
+    "remark-gfm": "^4.0.0"
   }
 }
