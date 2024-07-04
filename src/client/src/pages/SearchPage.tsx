@@ -13,6 +13,7 @@ const SearchPage: React.FC = () => {
     const [selectedCuisine, setSelectedCuisine] = useState<string | null>(null);
     const [selectedDiet, setSelectedDiet] = useState<string | null>(null);
     const [selectedDifficulty, setSelectedDifficulty] = useState<string | null>(null);
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
         async function fetchMeals() {
@@ -66,7 +67,13 @@ const SearchPage: React.FC = () => {
         }
     }, [selectedDifficulty, allMeals]);
 
-
+    useEffect(() => {
+        if (searchTerm) {
+            const regex = new RegExp(searchTerm, 'i'); // Erstelle eine RegExp mit dem eingegebenen Suchbegriff (case-insensitive)
+            const filteredMeals = allMeals.filter(meal => regex.test(meal.name)); // Filtere nach dem Namen der
+            setActiveMealArray(filteredMeals);
+        }
+    }, [searchTerm, allMeals]);
 
     const handleCuisineSelect = (cuisine : string) => {
 
@@ -90,13 +97,18 @@ const SearchPage: React.FC = () => {
 
         console.log("Alle Ist Gecklicked");
     };
+    const handleSearchBar = (searchTerm) => {
 
+        setSearchTerm(searchTerm);
+
+        console.log("SearchBar ist aktiv");
+    };
 
     return (
         <div className="search-page">
              <div className="sidebar-container"> <SearchFilter onCuisineSelect={handleCuisineSelect} onDietSelect={handleDietSelect} onDifficultySelect={handleDifficultySelect} onAllSelect={handleAllSelect} /></div>
             <div className="main-content">
-                <Searchbar />
+                 <Searchbar onSearchBarSelect={handleSearchBar}/>
                 <div className="meal-grid">
                     {activeMealArray.map(meal => (
                         <MealTile key={meal.id} meal={meal} />
