@@ -106,7 +106,7 @@ const SearchPage: React.FC = () => {
 
     return (
         <div className="search-page">
-             <div className="sidebar-container"> <SearchFilter onCuisineSelect={handleCuisineSelect} onDietSelect={handleDietSelect} onDifficultySelect={handleDifficultySelect} onAllSelect={handleAllSelect} /></div>
+             <div className="sidebar-container min-w-44 md:max-w-72 lg:max-w-72 "  > <SearchFilter onCuisineSelect={handleCuisineSelect} onDietSelect={handleDietSelect} onDifficultySelect={handleDifficultySelect} onAllSelect={handleAllSelect} /></div>
             <div className="main-content">
                  <Searchbar onSearchBarSelect={handleSearchBar}/>
                 <div className="meal-grid">
