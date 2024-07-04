@@ -23,11 +23,11 @@ router.get('/all', async (req, res) => {
             mainImage: result.mainImage,
             extraImage: result.extraImage
         }));
-        console.log(meals);
+        //console.log(meals);
         res.json(meals);  // Send the response only once
     } catch (error) {
-        console.error("Error fetching meals:", error);
-        res.status(500).json({ error: "Failed to fetch meals" });
+        console.error("Error fetching All meals:", error);
+        res.status(500).json({ error: "Failed to fetch all meals" });
     }
 });
 
@@ -100,23 +100,25 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// In meal.ts oder einem neuen Router (filter.ts)
 router.get('/filters', async (req, res) => {
     try {
-        let collection = await db.collection("meals");
-        let results = await collection.find({}).toArray();
+        const mealsCollection = db.collection('meals');
+        const cuisines = await mealsCollection.distinct('cuisine');
+        const diets = await mealsCollection.distinct('diet');
+        const difficulties = await mealsCollection.distinct('recipe.difficulty');
 
-        const cuisines = [...new Set(results.map(result => result.cuisine))];
-        const diets = [...new Set(results.map(result => result.diet))];
-        const difficulties = [...new Set(results.map(result => result.recipe.difficulty))];
-
-        res.json({ cuisines, diets, difficulties });
+        res.json({
+            cuisines,
+            diets,
+            difficulties
+        });
     } catch (error) {
         console.error("Error fetching filters:", error);
         res.status(500).json({ error: "Failed to fetch filters" });
     }
 });
 
+// Endpunkt zum Abrufen gefilterter Mahlzeiten
 router.get('/filtered', async (req, res) => {
     try {
         const { cuisines, diets, difficulties } = req.query;
@@ -124,9 +126,15 @@ router.get('/filtered', async (req, res) => {
         let collection = await db.collection("meals");
         let query: any = {};
 
-        if (typeof cuisines === 'string') query['cuisine'] = { $in: cuisines.split(',') };
-        if (typeof diets === 'string') query['diet'] = { $in: diets.split(',') };
-        if (typeof difficulties === 'string') query['recipe.difficulty'] = { $in: difficulties.split(',') };
+        if (cuisines && typeof cuisines === 'string') {
+            query['cuisine'] = { $in: cuisines.split(',') };
+        }
+        if (diets && typeof diets === 'string') {
+            query['diet'] = { $in: diets.split(',') };
+        }
+        if (difficulties && typeof difficulties === 'string') {
+            query['recipe.difficulty'] = { $in: difficulties.split(',') };
+        }
 
         let results = await collection.find(query).toArray();
 

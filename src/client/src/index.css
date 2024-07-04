@@ -575,6 +575,9 @@ button:focus-visible {
 }
 /*SearchBar*/
 
+.search-page {
+    display: flex;
+}
 .searchBar {
     display: flex;
     align-items: center;
@@ -585,6 +588,16 @@ button:focus-visible {
     background: #3C3C3C;
 }
 
+
+.main-content {
+    flex: 3;
+    padding: 20px;
+}
+.meal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
 
 .searchInput {
     border: none;
@@ -603,7 +616,6 @@ button:focus-visible {
     border: 2px solid #ccc;
     border-radius: 10px;
     padding: 20px;
-    width: 200px;
     height: 80vh;
     box-sizing: border-box;
 }
@@ -612,6 +624,7 @@ button:focus-visible {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+
 }
 
 .filterOption input {

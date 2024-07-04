@@ -5,72 +5,100 @@ import MealTile from '../components/MealTile.tsx';
 import api from "../utils/api.ts";
 import { Meal } from "../models/datamodels/Meal.ts";
 
-interface SelectedFilters {
-    cuisines: string[];
-    diets: string[];
-    difficulties: string[];
-}
+
 
 const SearchPage: React.FC = () => {
-    const [meals, setMeals] = useState<Meal[]>([]);
-    const [filters, setFilters] = useState<SelectedFilters>({ cuisines: [], diets: [], difficulties: [] });
+    const [allMeals, setAllMeals] = useState<Meal[]>([]);
+    const [activeMealArray, setActiveMealArray] = useState<Meal[]>([]);
+    const [selectedCuisine, setSelectedCuisine] = useState<string | null>(null);
+    const [selectedDiet, setSelectedDiet] = useState<string | null>(null);
+    const [selectedDifficulty, setSelectedDifficulty] = useState<string | null>(null);
 
     useEffect(() => {
         async function fetchMeals() {
             try {
                 const response = await api.get('/meal/all');
-                setMeals(response.data);
+                const meals = response.data;
+                setAllMeals(meals);
+                setActiveMealArray(meals);
+                setSelectedCuisine(null);
             } catch (error) {
-                console.error("Error fetching meals:", error);
+                console.error("Error fetching all meals:", error);
             }
         }
+        console.log("Aktive: " + activeMealArray);
 
+        // Load all meals initially
         fetchMeals();
     }, []);
 
     useEffect(() => {
-        async function fetchFilteredMeals() {
-            try {
-                const response = await api.get('/meal/filtered', {
-                    params: {
-                        cuisines: filters.cuisines.join(','),
-                        diets: filters.diets.join(','),
-                        difficulties: filters.difficulties.join(',')
-                    }
-                });
-                setMeals(response.data);
-            } catch (error) {
-                console.error("Error fetching filtered meals:", error);
-            }
-        }
-
-        if (filters.cuisines.length > 0 || filters.diets.length > 0 || filters.difficulties.length > 0) {
-            fetchFilteredMeals();
+        if (selectedCuisine === null) {
+            // Wenn keine Cuisine ausgewählt ist, zeige alle Mahlzeiten an
+            setActiveMealArray(allMeals);
         } else {
-            async function fetchMeals() {
-                try {
-                    const response = await api.get('/meal/all');
-                    setMeals(response.data);
-                } catch (error) {
-                    console.error("Error fetching meals:", error);
-                }
-            }
-
-            fetchMeals();
+            // Filtere Mahlzeiten nach der ausgewählten Küche
+            const filteredMeals = allMeals.filter(meal => meal.cuisine === selectedCuisine);
+            setActiveMealArray(filteredMeals);
         }
-    }, [filters]);
+    }, [selectedCuisine, allMeals]);
 
-    const handleFilterChange = (newFilters: SelectedFilters) => {
-        setFilters(newFilters);
+    useEffect(() => {
+        if (selectedDiet === null) {
+            // Wenn keine Cuisine ausgewählt ist, zeige alle Mahlzeiten an
+            setActiveMealArray(allMeals);
+        } else {
+            // Filtere Mahlzeiten nach der ausgewählten Küche
+            const filteredMeals = allMeals.filter(meal => meal.diet === selectedDiet);
+            setActiveMealArray(filteredMeals);
+        }
+    }, [selectedDiet, allMeals]);
+
+
+    useEffect(() => {
+        if (selectedDifficulty === null) {
+            // Wenn keine Cuisine ausgewählt ist, zeige alle Mahlzeiten an
+            setActiveMealArray(allMeals);
+        } else {
+            // Filtere Mahlzeiten nach der ausgewählten Küche
+            const filteredMeals = allMeals.filter(meal => meal.recipe.difficulty === selectedDifficulty);
+            setActiveMealArray(filteredMeals);
+        }
+    }, [selectedDifficulty, allMeals]);
+
+
+
+    const handleCuisineSelect = (cuisine : string) => {
+
+        setSelectedCuisine(cuisine);
+        console.log(cuisine + " Ist Gecklicked");
     };
 
+    const handleDietSelect = (diet : string) => {
+
+        setSelectedDiet(diet);
+        console.log(diet + " Ist Gecklicked");
+    };
+    const handleDifficultySelect = (difficulty : string) => {
+
+        setSelectedDifficulty(difficulty);
+        console.log(difficulty + " Ist Gecklicked");
+    };
+    const handleAllSelect = () => {
+
+        setActiveMealArray(allMeals);
+
+        console.log("Alle Ist Gecklicked");
+    };
+
+
     return (
-        <div className="searchPage">
-            <div className="sidebar-container"><SearchFilter onFilterChange={handleFilterChange} /></div>
+        <div className="search-page">
+             <div className="sidebar-container"> <SearchFilter onCuisineSelect={handleCuisineSelect} onDietSelect={handleDietSelect} onDifficultySelect={handleDifficultySelect} onAllSelect={handleAllSelect} /></div>
             <div className="main-content">
                 <Searchbar />
                 <div className="meal-grid">
-                    {meals.map(meal => (
+                    {activeMealArray.map(meal => (
                         <MealTile key={meal.id} meal={meal} />
                     ))}
                 </div>
