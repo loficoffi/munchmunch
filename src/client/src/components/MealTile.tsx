@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "react-tooltip/dist/react-tooltip.css";
 import { Meal } from "../models/datamodels/Meal";
-import { getImageUrl } from "../utils/assetHelper.ts";
+import { getImageUrl, getTags } from "../utils/assetHelper.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLeaf,
@@ -12,6 +12,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "../index.css";
 import mealTileFallback from "../assets/images/mealTileFallback.png";
+import FavoriteButton from "./FavoriteButton.tsx";
+import TagContainer from "./TagContainer.tsx";
 
 interface MealTileProps {
   meal: Meal;
@@ -64,6 +66,14 @@ const MealTile: React.FC<MealTileProps> = ({ meal }) => {
           color={dietIcons[meal.diet][1]}
           size="lg"
         />
+      </div>
+      <div className="absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center">
+        <div className="text-white text-2xl">
+          <div>{meal.name}</div>
+          <div className="my-5">
+            <TagContainer tags={getTags(meal)} />
+          </div>
+        </div>
       </div>
     </div>
   );
