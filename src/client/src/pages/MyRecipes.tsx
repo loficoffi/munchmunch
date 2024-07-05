@@ -133,6 +133,7 @@ export const MyRecipes = () => {
               (meal) => meal.diet == "veggie"
             ) || [];
           break;
+
         case "Vegan":
           faveMealsArray =
             userData.profile.favouriteMeals.filter(
@@ -214,7 +215,7 @@ export const MyRecipes = () => {
             ) : (
               <p
                 className={
-                  "rounded-lg border border-munch-orange p-5 w-3/6 mx-auto md:ml-0"
+                  "rounded-lg border border-munch-orange p-5 w-3/6 mx-auto md:ml-0 md:w-auto"
                 }
               >
                 Logge dich ein um Rezepte in den Favoriten zu speichern!
@@ -261,11 +262,6 @@ export const MyRecipes = () => {
                         >
                           <MealTile meal={favouriteMeal} />
                         </div>
-                        <Tooltip
-                          id={`meal-tooltip-${favouriteMeal.name}-${favouriteMeal.id}-${index}`}
-                          place="top"
-                          className="z-50"
-                        />
                       </SwiperSlide>
                     ))}
                 </Swiper>
@@ -282,7 +278,7 @@ export const MyRecipes = () => {
             ) : (
               <p
                 className={
-                  "rounded-lg border border-munch-orange p-5 w-3/6 mx-auto md:ml-0"
+                  "rounded-lg border border-munch-orange p-5 w-3/6 mx-auto md:ml-0 md:w-auto"
                 }
               >
                 Logge dich ein um Rezepte in der Merkliste zu speichern!
@@ -330,11 +326,6 @@ export const MyRecipes = () => {
                         >
                           <MealTile meal={favouriteMeal} />
                         </div>
-                        <Tooltip
-                          id={`meal-tooltip-${favouriteMeal.name}-${favouriteMeal.id}-${index}`}
-                          place="top"
-                          className="z-50"
-                        />
                       </SwiperSlide>
                     ))}
                 </Swiper>
