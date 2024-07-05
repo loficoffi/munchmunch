@@ -1,4 +1,4 @@
-import {NavLink, useNavigate} from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import MunchLogo from "../assets/munchlogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faBars } from "@fortawesome/free-solid-svg-icons";
@@ -13,18 +13,18 @@ import {
   MenuItems,
   Transition,
 } from "@headlessui/react";
-import {useEffect, useState} from "react";
-import {fetchUserData} from "../services/accountService.ts";
-import api, {setAuthToken} from "../utils/api.ts";
-import {Account} from "../models/datamodels/Account.ts";
-import {Meal} from "../models/datamodels/Meal.ts";
+import { useEffect, useState } from "react";
+import { fetchUserData } from "../services/accountService.ts";
+import api, { setAuthToken } from "../utils/api.ts";
+import { Account } from "../models/datamodels/Account.ts";
+import { Meal } from "../models/datamodels/Meal.ts";
 
 const navigation = [
-  { name: "Home", href: "/"},
-  { name: "Meine Rezepte", href: "/myrecipes"},
-  { name: "Über", href: "/about"},
-  { name: <FontAwesomeIcon icon={faSearch} /> , href:"/searchpage" },
-  { name: "Zufällige Empfehlung", href: "/recipe", special: "randomMeal"},
+  { name: "Home", href: "/" },
+  { name: "Meine Rezepte", href: "/myrecipes" },
+  { name: "Über", href: "/about" },
+  { name: <FontAwesomeIcon icon={faSearch} />, href: "/searchpage" },
+  { name: "Zufällige Empfehlung", href: "/recipe", special: "randomMeal" },
 ];
 
 function classNames(...classes: string[]) {
@@ -32,7 +32,6 @@ function classNames(...classes: string[]) {
 }
 
 export default function NavigatonBar() {
-
   const [current, setCurrent] = useState(window.location.pathname);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -43,27 +42,30 @@ export default function NavigatonBar() {
 
   //get userdata if token exists
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (token) {
       setAuthToken(token);
-      fetchUserData().then(userData => {
-        setUserData(userData);
+      fetchUserData()
+        .then((userData) => {
+          setUserData(userData);
 
-        const userInitials = userData.profile.firstName.charAt(0).toUpperCase() + userData.profile.lastName.charAt(0).toUpperCase();
-        setUserInitials(userInitials);
+          const userInitials =
+            userData.profile.firstName.charAt(0).toUpperCase() +
+            userData.profile.lastName.charAt(0).toUpperCase();
+          setUserInitials(userInitials);
 
-        setLoading(false);
-
-      }).catch(err => {
-        setError('No user is logged in.');
-        setLoading(false);
-      });
+          setLoading(false);
+        })
+        .catch((err) => {
+          setError("No user is logged in.");
+          setLoading(false);
+        });
     }
   }, []);
 
   const handleClick = async (item) => {
     if (item.special && item.special === "randomMeal") {
-      const meal : Meal = (await api.get("/meal/random")).data;
+      const meal: Meal = (await api.get("/meal/random")).data;
       setCurrent("/recipe");
       navigate(`/recipe/${meal.id}/${meal.name}`);
     } else {
@@ -73,7 +75,7 @@ export default function NavigatonBar() {
   };
 
   const logoutUser = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
   };
 
   return (
@@ -107,69 +109,64 @@ export default function NavigatonBar() {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item, index) => (
-                        <a
-                            key={index}
-                            onClick={() => handleClick(item)}  // Passing the entire item to the handler
-                            className={classNames(
-                                current === item.href
-                                    ? "text-munch-orange underline underline-offset-8"
-                                    : "text-white hover:border border-munch-orange hover:text-white",
-                                "rounded-md px-3 py-2 text-sm font-regular cursor-pointer"
-                            )}
-                            aria-current={current === item.href ? "page" : undefined}
-                        >
-                          {item.name}
-                        </a>
+                      <a
+                        key={index}
+                        onClick={() => handleClick(item)} // Passing the entire item to the handler
+                        className={classNames(
+                          current === item.href
+                            ? "text-munch-orange underline underline-offset-8"
+                            : "text-white hover:border border-munch-orange hover:text-white",
+                          "rounded-md px-3 py-2 text-sm font-regular cursor-pointer"
+                        )}
+                        aria-current={
+                          current === item.href ? "page" : undefined
+                        }
+                      >
+                        {item.name}
+                      </a>
                     ))}
                   </div>
                 </div>
               </div>
               {/*Login Button*/}
               {!userData ? (
-                  <div
-                      className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    <div>
-                      <div className="flex space-x-4">
-                        <a
-                            href={"/login"}
-                            className={"rounded-lg border border-munch-orange bg-munch-orange px-3 py-1 text-black font-medium"}
-                        >
+                <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                  <div>
+                    <div className="flex space-x-4">
+                      <a
+                        href={"/login"}
+                        className={
+                          "rounded-lg border border-munch-orange bg-munch-orange px-3 py-1 text-black font-medium"
+                        }
+                      >
                         Login
-                        </a>
-                      </div>
+                      </a>
                     </div>
                   </div>
+                </div>
               ) : (
-                  <div
-                      className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    <div>
-                      <div className="hidden md:flex md:space-x-4">
-                        <p
-                            className={"text-munch-orange font-medium"}
-                        >
-                          Hallo {userData.profile.firstName}!
-                        </p>
-                      </div>
+                <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                  <div>
+                    <div className="hidden md:flex md:space-x-4">
+                      <p className={"text-munch-orange font-medium"}>
+                        Hallo {userData.profile.firstName}!
+                      </p>
                     </div>
                   </div>
+                </div>
               )}
-              {userData &&
-                <div
-                    className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              {userData && (
+                <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   {/* Profile dropdown */}
                   <Menu as="div" className="relative ml-1">
                     <div>
-                      <MenuButton
-                          className="relative flex items-center justify-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                      >
-                        <span className="absolute -inset-1.5"/>
+                      <MenuButton className="relative flex items-center justify-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                        <span className="absolute -inset-1.5" />
                         <span className="sr-only">Open user menu</span>
                         {userData && (
-                            <p
-                                className="flex items-center justify-center h-8 w-8 rounded-full bg-munch-orange font-semibold"
-                            >
-                              {userInitials}
-                            </p>
+                          <p className="flex items-center justify-center h-8 w-8 rounded-full bg-munch-orange font-semibold">
+                            {userInitials}
+                          </p>
                         )}
                       </MenuButton>
                     </div>
@@ -185,7 +182,7 @@ export default function NavigatonBar() {
                         <MenuItem>
                           {({ focus }) => (
                             <a
-                              href="/login"
+                              href="/profile"
                               className={classNames(
                                 focus ? "text-munch-orange" : "",
                                 "block px-4 py-2 text-sm text-white hover:text-munch-orange"
@@ -226,7 +223,7 @@ export default function NavigatonBar() {
                     </Transition>
                   </Menu>
                 </div>
-              }
+              )}
             </div>
           </div>
 
@@ -237,7 +234,7 @@ export default function NavigatonBar() {
                   key={index}
                   onClick={() => handleClick(item)}
                   className={classNames(
-                      current === item.href
+                    current === item.href
                       ? "text-munch-orange"
                       : "text-white hover:text-munch-orange",
                     "block rounded-md px-3 py-2 text-base font-regular"

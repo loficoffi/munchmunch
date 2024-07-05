@@ -10,7 +10,7 @@ import Register from "./pages/Register.tsx";
 import About from "./pages/About.tsx";
 import MyRecipes from "./pages/MyRecipes.tsx";
 import SearchPage from "./pages/SearchPage.tsx";
-
+import Profile from "./pages/Profile.tsx";
 
 import "./index.css";
 import { DevSupport } from "@react-buddy/ide-toolbox";
@@ -69,16 +69,26 @@ const router = createBrowserRouter([
       },
     ],
   },
-    {
-        path: "/searchpage", // Pfad für das SearchPage
-        element: <App />,
-        children: [
-            {
-                path: "/searchpage",
-                element: <SearchPage/>, // Search-Komponente einfügen
-            },
-        ],
-    },
+  {
+    path: "/searchpage", // Pfad für das SearchPage
+    element: <App />,
+    children: [
+      {
+        path: "/searchpage",
+        element: <SearchPage />, // Search-Komponente einfügen
+      },
+    ],
+  },
+  {
+    path: "/profile", // Pfad für das Profil
+    element: <App />,
+    children: [
+      {
+        path: "/profile",
+        element: <Profile />, // Search-Komponente einfügen
+      },
+    ],
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
