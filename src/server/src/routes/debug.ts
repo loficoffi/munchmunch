@@ -1,6 +1,5 @@
 import express from 'express';
 
-// This will help us connect to the database
 import db from "../db/connection.js";
 
 import { Recipe } from "../models/datamodels/Recipe";
@@ -16,6 +15,10 @@ import { DietType } from "../models/datamodels/enums/DietType";
 
 const router = express.Router();
 
+/* /debug Route */
+
+// /debug GET-Method. This Route regenerates all of the recipes, meals and other test data used for our project.
+// The individual recipes are also defined in here. After the instances are created, the db collection is regenerated with the new data.
 router.get("/", async (req, res) => {
 
     //Recipe 1: Spagetthi mit Garnelen und Paprika-Peperoni Sauce
@@ -1495,7 +1498,5 @@ router.get("/", async (req, res) => {
 
     res.status(200).json({ message: 'Recipe is successfully created! Congratulations!' });
 });
-
-
 
 export default router;

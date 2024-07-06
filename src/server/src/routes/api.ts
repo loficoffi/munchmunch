@@ -11,6 +11,12 @@ import {getSeedFromDate, shuffleArray} from "../utils/RandomHelper.js"
 
 const router = express.Router();
 
+/* /api Route */
+
+// /api/dashboard GET-Method. This route returns a lot of specialized data directed towards the frontend Dashboard view.
+// First, all categories and their meals are created. Then the order of the individual meals inside the categories is randomized and after
+// every category with their respective meals is created, the order of the categories themselves is also randomized.
+// Lastly, the meal of the day is also appended and then the data gets sent to the user.
 router.get('/dashboard', async (req, res) => {
     try {
         let collection = await db.collection("meals");
@@ -110,6 +116,7 @@ router.get('/dashboard', async (req, res) => {
     }
 });
 
+// /api/categories GET-Method. This method returns every type of cuisine category with their respective meals.
 router.get('/categories', async (req, res) => {
     try {
         let collection = await db.collection("meals");

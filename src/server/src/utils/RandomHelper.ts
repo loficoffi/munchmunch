@@ -1,3 +1,6 @@
+// This module provides different functions for various pseudo-random operations.
+
+// Returns a deterministic random number given a specific seed.
 function seededRandom(seed : any) {
     return function() {
         // Parameters for the generator
@@ -9,6 +12,7 @@ function seededRandom(seed : any) {
     };
 }
 
+// Returns the given array shuffled randomly.
 function shuffleArray(array : any, seed : any) {
     const random = seededRandom(seed);
     for (let i = array.length - 1; i > 0; i--) {
@@ -19,6 +23,7 @@ function shuffleArray(array : any, seed : any) {
     return array;
 }
 
+// Generates a seed from the current moment in time.
 function getSeedFromDate() {
     const today = new Date();
     return today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
