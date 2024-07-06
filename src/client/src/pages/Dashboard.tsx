@@ -26,7 +26,7 @@ export const Dashboard: React.FC = () => {
 
     const [userData, setUserData] = useState<Account | null>(null);
 
-
+    // Fetches the dashboard data. Sets the loading state to false if successful, else displays an error message.
     useEffect(() => {
         fetchDashboardData().then(data => {
             setDashboardData(data);
