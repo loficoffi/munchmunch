@@ -1,10 +1,11 @@
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
+// Favorite button component for saving meals in your favorite list which will
+// be displayed in the MyRecipes View when user has logged in
 const FavoriteButton = ( { onClick, icon}) => {
 
     const handleClick = () => {
-        //go into onClick function which was given from component
         if (onClick) {
             onClick();
         }

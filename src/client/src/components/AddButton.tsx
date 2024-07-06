@@ -1,9 +1,11 @@
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+
+// Add button component for saving meals in your saved list which will
+// be displayed in the MyRecipes View when user has logged in
 const AddButton = ( {onClick, icon}) => {
 
     const handleClick = () => {
-        //go into onClick function which was given from component
         if (onClick) {
             onClick();
         }

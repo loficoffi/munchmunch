@@ -1,5 +1,7 @@
 import React from "react";
 
+// Ingredients Component which displays in RecipeView all ingredients for a recipe
+// with the needed amount and unit, every ingredient will be displayed as a list item
 const IngredientsContainer = ({ ingredients }) => {
   return (
     <div className="mx-2">

@@ -15,10 +15,12 @@ import mealTileFallback from "../assets/images/mealTileFallback.png";
 import FavoriteButton from "./FavoriteButton.tsx";
 import TagContainer from "./TagContainer.tsx";
 
+// Interface for the meal category props for using them in another page
 interface MealTileProps {
   meal: Meal;
 }
 
+// Defining icons for diet types, which will be displayed in the left top corner
 const dietIcons: any = {
   fish: [faFish, "#c085ff"],
   meat: [faDrumstickBite, "#ff8585"],
@@ -26,10 +28,13 @@ const dietIcons: any = {
   vegan: [faLeaf, "#87ff85"],
 };
 
+// Function for getting a random image for the recipe everytime the meal tile renders
 function randomImg(imagePaths: string[]): string {
   return imagePaths[Math.floor(Math.random() * imagePaths.length)];
 }
 
+// Mealtile component, which displays a random image and has a click function to get to the right
+// recipe. Tile also shows details like name, cuisine and diettype when hovering over
 const MealTile: React.FC<MealTileProps> = ({ meal }) => {
   const allImages = [...meal.extraImage, meal.mainImage];
   const [imgSrc, setImgSrc] = React.useState(getImageUrl(randomImg(allImages)));

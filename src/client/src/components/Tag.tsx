@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
+// Interface for the tag props for using them in another page
 interface TagProps {
   name: string;
   icon?: any;
@@ -9,6 +10,9 @@ interface TagProps {
   backgroundColor: string;
   onClick?: () => void;
 }
+
+//Tag component with click-function for displaying tags in TagContainer in
+//RecipeView, MyRecipes and in MealTile
 const Tag: React.FC<TagProps> = ({
   name,
   icon,

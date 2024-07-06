@@ -19,6 +19,7 @@ import api, { setAuthToken } from "../utils/api.ts";
 import { Account } from "../models/datamodels/Account.ts";
 import { Meal } from "../models/datamodels/Meal.ts";
 
+// Array with page-items to navigate in navbar
 const navigation = [
   { name: "Home", href: "/" },
   { name: "Meine Rezepte", href: "/myrecipes" },
@@ -27,10 +28,15 @@ const navigation = [
   { name: "Zufällige Empfehlung", href: "/recipe", special: "randomMeal" },
 ];
 
+// This function filters falsy values and joins the right classes with a space,
+// so it combines multiple CSS classes into a single string
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
+// NavigationBar component based on a navbar template from headless-ui library
+// which will always be displayed and user can navigate to other pages
+// It is also responsive and works in mobile mode
 export default function NavigatonBar() {
   const [current, setCurrent] = useState(window.location.pathname);
   const [loading, setLoading] = useState(true);
@@ -40,7 +46,8 @@ export default function NavigatonBar() {
 
   const navigate = useNavigate();
 
-  //get userdata if token exists
+  // Fetching userdata if token exists and get the initials from users name
+  // for displaying them in the profile picture
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -63,6 +70,7 @@ export default function NavigatonBar() {
     }
   }, []);
 
+  // Function to get a random meal when user clicks on random recommendation item in navbar
   const handleClick = async (item) => {
     if (item.special && item.special === "randomMeal") {
       const meal: Meal = (await api.get("/meal/random")).data;
@@ -74,6 +82,7 @@ export default function NavigatonBar() {
     }
   };
 
+  // Remove token from user when user is logging out
   const logoutUser = () => {
     localStorage.removeItem("token");
   };

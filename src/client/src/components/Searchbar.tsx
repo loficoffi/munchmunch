@@ -1,11 +1,13 @@
 import React from "react";
-import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
+// Searchbar component to search recipes based on recipe name entered by the user
 const Searchbar= ({onSearchBarSelect }) => {
     const handleChange = (event) => {
         const searchTerm = event.target.value;
-        onSearchBarSelect(searchTerm); // Übergebe den eingegebenen Suchbegriff an die übergeordnete Funktion
+        // The function will receive the value entered by the user
+        onSearchBarSelect(searchTerm);
     };
 
 

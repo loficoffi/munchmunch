@@ -7,12 +7,14 @@ import { Navigation, Pagination } from "swiper/modules";
 import { Category } from "../models/helper/Category";
 import MealTile from "./MealTile";
 import "../index.css";
-import { Tooltip } from "react-tooltip";
 
+// Interface for the meal category props for using them in another page
 interface MealCategoryProps {
   category: Category;
 }
 
+// Meal category component which displays meals from a category in a slider component
+// which we are using from the swiper module.
 const MealCategory: React.FC<MealCategoryProps> = ({ category }) => {
   return (
     <div className="mb-24 relative w-full overflow-hidden">

@@ -2,6 +2,8 @@ import React from "react";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
+// Cooking directions component for displaying a step-for-step instruction how to
+// cook the recipe, written in markdown
 const CookingDirections = ({ description }) => {
     return (
         <div>

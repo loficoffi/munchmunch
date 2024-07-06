@@ -1,6 +1,7 @@
 import React from "react";
 import Tag from "./Tag.tsx";
 
+// Interface for the tag-container props for using them in another page
 interface TagContainerProps {
   tags: {
     name: string;
@@ -11,9 +12,10 @@ interface TagContainerProps {
   }[];
 }
 
+// TagContainer component that displays a list of all tags, with map every tag will be
+// rendered as a tag-component with the provided props
 const TagContainer: React.FC<TagContainerProps> = ({ tags }) => {
   return (
-    //tags.map is for rendering more than one tags in tag-container
     <div className="flex flex-wrap gap-2 mb-5 mx-auto justify-center md:justify-start">
       {tags.map((tag, index) => (
         <Tag
