@@ -1,6 +1,7 @@
 import React from "react";
 import Tag from "./Tag.tsx";
 
+// Interface for TagContainer
 interface TagContainerProps {
   tags: {
     name: string;
@@ -11,6 +12,8 @@ interface TagContainerProps {
   }[];
 }
 
+
+// Define the TagContainer as a functional Component
 const TagContainer: React.FC<TagContainerProps> = ({ tags }) => {
   return (
     //tags.map is for rendering more than one tags in tag-container

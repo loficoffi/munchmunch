@@ -1,6 +1,8 @@
 import {DietType} from "./enums/DietType.ts";
 import {Recipe} from "./Recipe.ts";
 
+//Datamodel for the Meal
+//More Details in Recipe.ts
 export type Meal = {
     id: string,
     name: string,

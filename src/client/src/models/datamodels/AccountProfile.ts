@@ -1,5 +1,6 @@
 import {Meal} from "./Meal.ts";
 
+//Datamodel for the AccountProfile
 export type AccountProfile = {
     id: string,
     firstName: string,

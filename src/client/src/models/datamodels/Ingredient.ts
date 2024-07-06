@@ -1,3 +1,4 @@
+//Datamodel for an Ingredient
 export type Ingredient = {
     id: string,
     name: string,
