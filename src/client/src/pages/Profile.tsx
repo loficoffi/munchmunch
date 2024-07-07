@@ -49,19 +49,19 @@ const Profile = () => {
       <div className="profile-overview p-6 rounded-lg shadow-lg">
         <h1 className="text-2xl font-bold mb-4">Dein Profil</h1>
         <p className="mb-2 text-xl">
-          <strong>Name:</strong>
-        </p>
-        <p className="w-full px-3 py-2 border rounded-lg border-gray-700 text-white placeholder-gray-500 my-5">
-          {userData.profile.firstName}
-        </p>
-        <p className="mb-2 text-xl">
           <strong>Email:</strong>
         </p>
         <p className="w-full px-3 py-2 border rounded-lg border-gray-700 text-white placeholder-gray-500 my-5">
           {userData.email}
         </p>
         <p className="mb-2 text-xl">
-          <strong>Username:</strong>
+          <strong>Name:</strong>
+        </p>
+        <p className="w-full px-3 py-2 border rounded-lg border-gray-700 text-white placeholder-gray-500 my-5">
+          {userData.profile.firstName}
+        </p>
+        <p className="mb-2 text-xl">
+          <strong>Nachname:</strong>
         </p>
         <p className="w-full px-3 py-2 border rounded-lg border-gray-700 text-white placeholder-gray-500 my-5">
           {userData.profile.lastName}
