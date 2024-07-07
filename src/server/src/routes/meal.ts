@@ -8,6 +8,9 @@ import { ObjectId } from 'mongodb';
 
 const router = express.Router();
 
+/* /meal Route */
+
+// /meal/all GET-Method. This route returns all meals the database contains.
 router.get('/all', async (req, res) => {
     try {
         let collection = await db.collection("meals");
@@ -31,24 +34,7 @@ router.get('/all', async (req, res) => {
     }
 });
 
-//update userprofile if new data was added in frontend
-router.post('/updateProfile', async (req, res) => {
-    try {
-        const updatedUser = req.body;
-
-        //update user in database with new data in profile
-        await db.collection('users').findOneAndUpdate(
-            { _id: new ObjectId(updatedUser._id) },
-            { $set: { profile: updatedUser.profile } },
-        );
-
-        res.status(200).send('User profile updated successfully');
-    } catch (error) {
-        console.error('Error updating user profile:', error);
-        res.status(500).send('Internal server error');
-    }
-});
-
+// /meal/random GET-method. This route simply returns a random meal.
 router.get('/random', async (req, res) => {
     try {
         let collection = await db.collection("meals");
@@ -78,6 +64,7 @@ router.get('/random', async (req, res) => {
     }
 });
 
+// /meal/:id GET-Method. This route returns the data associated with a specific meal when given a meal id.
 router.get('/:id', async (req, res) => {
     try {
         let collection = await db.collection("meals");
@@ -100,6 +87,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// /meal/filters GET-Method. This method returns every available filter.
 router.get('/filters', async (req, res) => {
     try {
         const mealsCollection = db.collection('meals');
@@ -118,7 +106,7 @@ router.get('/filters', async (req, res) => {
     }
 });
 
-// Endpunkt zum Abrufen gefilterter Mahlzeiten
+// /meal/filtered GET-Method. This method returns all available meals, filtered by the given filters inside the request.
 router.get('/filtered', async (req, res) => {
     try {
         const { cuisines, diets, difficulties } = req.query;
@@ -155,5 +143,22 @@ router.get('/filtered', async (req, res) => {
     }
 });
 
+// /meal/updateProfile POST-method.
+router.post('/updateProfile', async (req, res) => {
+    try {
+        const updatedUser = req.body;
+
+        //update user in database with new data in profile
+        await db.collection('users').findOneAndUpdate(
+            { _id: new ObjectId(updatedUser._id) },
+            { $set: { profile: updatedUser.profile } },
+        );
+
+        res.status(200).send('User profile updated successfully');
+    } catch (error) {
+        console.error('Error updating user profile:', error);
+        res.status(500).send('Internal server error');
+    }
+});
 
 export default router;

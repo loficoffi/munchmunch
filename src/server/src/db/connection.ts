@@ -1,7 +1,7 @@
 import { config } from "../config/config.js"
-
 import { MongoClient, ServerApiVersion } from "mongodb";
 
+// Connection module. Sets up the connection to the MongoDB database specified in the config.
 const uri = config.mongoURI || "";
 const client = new MongoClient(uri, {
     serverApi: {

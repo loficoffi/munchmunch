@@ -5,12 +5,14 @@ import { setAuthToken } from "../utils/api";
 import { Swiper, SwiperSlide } from "swiper/react";
 import MealTile from "../components/MealTile";
 
+// page for showing the informations of the user.
 const Profile = () => {
   const [userData, setUserData] = useState<Account | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [isEditing, setIsEditing] = useState(false);
 
+  // loads the informations based on the users token
+  // if the token isn't valid. it thorws some exeption
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -47,19 +49,19 @@ const Profile = () => {
       <div className="profile-overview p-6 rounded-lg shadow-lg">
         <h1 className="text-2xl font-bold mb-4">Dein Profil</h1>
         <p className="mb-2 text-xl">
-          <strong>Name:</strong>
-        </p>
-        <p className="w-full px-3 py-2 border rounded-lg border-gray-700 text-white placeholder-gray-500 my-5">
-          {userData.profile.firstName}
-        </p>
-        <p className="mb-2 text-xl">
           <strong>Email:</strong>
         </p>
         <p className="w-full px-3 py-2 border rounded-lg border-gray-700 text-white placeholder-gray-500 my-5">
           {userData.email}
         </p>
         <p className="mb-2 text-xl">
-          <strong>Username:</strong>
+          <strong>Name:</strong>
+        </p>
+        <p className="w-full px-3 py-2 border rounded-lg border-gray-700 text-white placeholder-gray-500 my-5">
+          {userData.profile.firstName}
+        </p>
+        <p className="mb-2 text-xl">
+          <strong>Nachname:</strong>
         </p>
         <p className="w-full px-3 py-2 border rounded-lg border-gray-700 text-white placeholder-gray-500 my-5">
           {userData.profile.lastName}

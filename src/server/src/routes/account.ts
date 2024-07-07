@@ -6,9 +6,12 @@ import db from "../db/connection.js";
 
 const router = express.Router();
 
+/* /account Route */
+
+// /account/get GET-Method. This route returns the data of a registered account associated to the JWT token
+// data that is to be sent via the request header.
 router.get('/get', async (req: Request, res: Response) => {
     const token = req.headers.authorization?.split(' ')[1];
-    //console.log(token);
 
     if (!token) {
         return res.status(401).json({ message: 'No token provided' });
@@ -30,7 +33,6 @@ router.get('/get', async (req: Request, res: Response) => {
             return res.status(401).json({ message: 'Invalid token' });
         }
     } catch (err) {
-        //console.error(err);
         return res.status(401).json({ message: 'Invalid token' });
     }
 })

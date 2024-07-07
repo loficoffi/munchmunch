@@ -8,10 +8,12 @@ import {
     faFish,
 } from "@fortawesome/free-solid-svg-icons";
 
+// creates urls for the images. 
 export function getImageUrl(mainImageName: string): string {
     return `${config.apiUrl}/image/${mainImageName}.png`;
 }
 
+// sets the colors of the difficulty tags based on their value
 export const getDifficultyColor = (difficulty: DifficultyType): string => {
     switch (difficulty) {
         case DifficultyType.easy:
@@ -25,7 +27,7 @@ export const getDifficultyColor = (difficulty: DifficultyType): string => {
     }
 };
 
-
+// sets the colors and the icons of the diet type tags based on their value
 export const getDietType = (diet: DietType) => {
     switch (diet) {
         case DietType.fish:
@@ -41,7 +43,7 @@ export const getDietType = (diet: DietType) => {
     }
 };
 
-
+// function for creating the tags for each meal dinamically
 export const getTags = (meal: Meal) => {
     const difficultyTag = {
         name: meal.recipe.difficulty,

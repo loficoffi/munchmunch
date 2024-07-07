@@ -8,7 +8,9 @@ import { Account } from "../models/datamodels/Account.js"
 
 const router = express.Router();
 
-// Registrierungsroute
+/* /auth Route */
+
+// /auth/register POST-Method. This method is used to register an account with the parsed data via the request body.
 router.post('/register', async (req, res) => {
     const parsedUser: Account = req.body;
 
@@ -51,7 +53,8 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// Login-Route
+// /auth/login POST-Method. This method checks for the existence of the specified account and checks for a password hash match.
+// If the data matches, a JWT token associated with the account is created and then sent to the user.
 router.post('/login', async (req, res) => {
     const parsedUser: Account = req.body;
 

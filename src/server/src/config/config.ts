@@ -1,5 +1,7 @@
 import dotenv from 'dotenv';
 
+// Globally available config, which centralizes important environment information for use
+// in different modules.
 console.log('Loading default .env from ./src/config/.env');
 dotenv.config({
     path: './src/config/.env'

@@ -16,6 +16,8 @@ import "./index.css";
 import { DevSupport } from "@react-buddy/ide-toolbox";
 import { ComponentPreviews, useInitial } from "./dev";
 
+// The React Router configuration of our application.
+// Defines every available client route and what component to show in our SPA.
 const router = createBrowserRouter([
   {
     path: "/", // Pfad für das Dashboard
