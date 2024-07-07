@@ -5,12 +5,14 @@ import { setAuthToken } from "../utils/api";
 import { Swiper, SwiperSlide } from "swiper/react";
 import MealTile from "../components/MealTile";
 
+// page for showing the informations of the user.
 const Profile = () => {
   const [userData, setUserData] = useState<Account | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [isEditing, setIsEditing] = useState(false);
 
+  // loads the informations based on the users token
+  // if the token isn't valid. it thorws some exeption
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {

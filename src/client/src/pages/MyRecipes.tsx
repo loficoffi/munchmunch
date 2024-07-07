@@ -14,10 +14,10 @@ import { setAuthToken } from "../utils/api.ts";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import MealTile from "../components/MealTile.tsx";
-import { Tooltip } from "react-tooltip";
 
+// page, where user can see its own saved and favorite meals
+// this page is only available, when the user is logged in.
 export const MyRecipes = () => {
-
   //array for the favourite category tags to render them in the tag-container
   const tags = [
     {
@@ -90,7 +90,6 @@ export const MyRecipes = () => {
     },
   ];
 
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -101,6 +100,7 @@ export const MyRecipes = () => {
   const [activeFaveDietMealArray, setFaveDietMealArray] = useState([]);
   const [activeSaveDietMealArray, setSaveDietMealArray] = useState([]);
 
+  // its load the users saved meals based on the useres token.
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -159,6 +159,7 @@ export const MyRecipes = () => {
     }
   }, [activeFaveTag, userData]);
 
+  // filter function for showing only meal categories that are filtered.
   useEffect(() => {
     if (userData) {
       let savedMealsArray = [];

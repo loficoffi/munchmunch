@@ -10,28 +10,29 @@ import { Meal } from "../models/datamodels/Meal";
 import { getImageUrl, getTags } from "../utils/assetHelper";
 import FavoriteButton from "../components/FavoriteButton.tsx";
 import React, { useEffect, useState } from "react";
-import api, {setAuthToken} from "../utils/api.ts";
-import {
-  faUtensils,
-  faHeart,
-  faMinus,
-  faPlus,
-} from "@fortawesome/free-solid-svg-icons";
+import api, { setAuthToken } from "../utils/api.ts";
+import { faHeart, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
-import {fetchUserData} from "../services/accountService.ts";
-import {Account} from "../models/datamodels/Account.ts";
+import { fetchUserData } from "../services/accountService.ts";
+import { Account } from "../models/datamodels/Account.ts";
 
+// detail page for each recipe. The data of the correct meal is loaded with the rest API based on the meal's id.
 const RecipeView: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [meal, setMeal] = useState<Meal | null>(null);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [faveMealWasAdded, setFaveMealAddStatus] = useState<boolean | null>(false);
-  const [savedMealWasAdded, setSavedMealAddStatus] = useState<boolean | null>(false);
+  const [faveMealWasAdded, setFaveMealAddStatus] = useState<boolean | null>(
+    false
+  );
+  const [savedMealWasAdded, setSavedMealAddStatus] = useState<boolean | null>(
+    false
+  );
 
   const [userData, setUserData] = useState<Account | null>(null);
 
+  // gets meals based on their ids.
   useEffect(() => {
     const fetchMeal = async () => {
       try {
@@ -46,25 +47,30 @@ const RecipeView: React.FC = () => {
 
   //get userdata if token exists
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (token) {
       setAuthToken(token);
-      fetchUserData().then(userData => {
-        setUserData(userData);
-        setLoading(false);
+      fetchUserData()
+        .then((userData) => {
+          setUserData(userData);
+          setLoading(false);
 
-        //check if mealoftheday already exists in users account for setting the right icon in add and fave button
-        //with function "some" it gives true or false back
-        const faveMealExistsAlready = userData.profile.favouriteMeals.some(meal => meal.id == id);
-        setFaveMealAddStatus(faveMealExistsAlready);
+          //check if mealoftheday already exists in users account for setting the right icon in add and fave button
+          //with function "some" it gives true or false back
+          const faveMealExistsAlready = userData.profile.favouriteMeals.some(
+            (meal) => meal.id == id
+          );
+          setFaveMealAddStatus(faveMealExistsAlready);
 
-        const saveMealExistsAlready = userData.profile.savedMeals.some(meal => meal.id == id);
-        setSavedMealAddStatus(saveMealExistsAlready);
-
-      }).catch(err => {
-        setError('No user is logged in.');
-        setLoading(false);
-      });
+          const saveMealExistsAlready = userData.profile.savedMeals.some(
+            (meal) => meal.id == id
+          );
+          setSavedMealAddStatus(saveMealExistsAlready);
+        })
+        .catch((err) => {
+          setError("No user is logged in.");
+          setLoading(false);
+        });
     }
   }, [id]);
 
@@ -72,6 +78,7 @@ const RecipeView: React.FC = () => {
     return <div>Loading...</div>;
   }
 
+  // gets the correct tags for the meal
   const tags = getTags(meal);
   const allImages = meal.extraImage
     ? [...meal.extraImage, meal.mainImage]
@@ -79,20 +86,21 @@ const RecipeView: React.FC = () => {
 
   const imgSrc = allImages.map((p) => getImageUrl(p));
 
+  //function for adding a favorite meal
   const addFavoriteMeal = async () => {
-
     try {
-      const checkIfMealExists = userData.profile.favouriteMeals.some(meal => meal.id == id);
+      const checkIfMealExists = userData.profile.favouriteMeals.some(
+        (meal) => meal.id == id
+      );
       let updateFavouriteMeals: Meal[];
 
-      if (checkIfMealExists)
-      {
+      if (checkIfMealExists) {
         //get a new array with filter without the one which was in it
-        updateFavouriteMeals = userData.profile.favouriteMeals.filter(meal => meal.id !== id);
+        updateFavouriteMeals = userData.profile.favouriteMeals.filter(
+          (meal) => meal.id !== id
+        );
         setFaveMealAddStatus(false);
-      }
-      else
-      {
+      } else {
         //add meal to favourite meals
         updateFavouriteMeals = [...userData.profile.favouriteMeals, meal];
         setFaveMealAddStatus(true);
@@ -101,40 +109,40 @@ const RecipeView: React.FC = () => {
       //create an updated profile in account with added favorite recipe
       const updatedProfile = {
         ...userData.profile,
-        favouriteMeals: updateFavouriteMeals
+        favouriteMeals: updateFavouriteMeals,
       };
 
       //create an updated account with updated profile
       const updatedUser = {
         ...userData,
-        profile: updatedProfile
+        profile: updatedProfile,
       };
 
       //also update it in backend
-      const response = await api.post('/meal/updateProfile', updatedUser);
+      const response = await api.post("/meal/updateProfile", updatedUser);
       console.log(response.data);
 
       setUserData(updatedUser); //update userdata in frontend
     } catch (error) {
-      console.error('Error updating user profile:', error);
+      console.error("Error updating user profile:", error);
     }
-  }
+  };
 
+  // function for saving the meal
   const addSavedMeal = async () => {
-
     try {
-      const checkIfSavedMealExists = userData.profile.savedMeals.some(meal => meal.id == id);
+      const checkIfSavedMealExists = userData.profile.savedMeals.some(
+        (meal) => meal.id == id
+      );
       let updateSavedMeals: Meal[];
 
-      if (checkIfSavedMealExists)
-      {
-
+      if (checkIfSavedMealExists) {
         //get a new array without the one which was in it
-        updateSavedMeals = userData.profile.savedMeals.filter(meal => meal.id !== id);
+        updateSavedMeals = userData.profile.savedMeals.filter(
+          (meal) => meal.id !== id
+        );
         setSavedMealAddStatus(false);
-      }
-      else
-      {
+      } else {
         //add meal to favourite meals
         updateSavedMeals = [...userData.profile.savedMeals, meal];
         setSavedMealAddStatus(true);
@@ -143,24 +151,24 @@ const RecipeView: React.FC = () => {
       //create an updated profile in account with added favorite recipe
       const updatedProfile = {
         ...userData.profile,
-        savedMeals: updateSavedMeals
+        savedMeals: updateSavedMeals,
       };
 
       //create an updated account with updated profile
       const updatedUser = {
         ...userData,
-        profile: updatedProfile
+        profile: updatedProfile,
       };
 
       //also update it in backend
-      const response = await api.post('/meal/updateProfile', updatedUser);
+      const response = await api.post("/meal/updateProfile", updatedUser);
       console.log(response.data);
 
       setUserData(updatedUser); //update userdata in frontend
     } catch (error) {
-      console.error('Error updating user profile: ', error);
+      console.error("Error updating user profile: ", error);
     }
-  }
+  };
 
   return (
     <div className="bg-black font-sans min-h-screen flex flex-col">
@@ -170,15 +178,26 @@ const RecipeView: React.FC = () => {
       >
         <div className="bg-black bg-opacity-50 p-4">
           <RecipeTitle recipeTitle={meal.name} />
-          {userData &&
-              <div className="flex flex-row mb-5">
-                <AddButton onClick={addSavedMeal} icon={savedMealWasAdded && userData && userData.profile ? faMinus : faPlus} />
-                <FavoriteButton
-                    onClick={addFavoriteMeal}
-                    icon={faveMealWasAdded && userData && userData.profile ? faHeart : farHeart}
-                />
-              </div>
-          }
+          {userData && (
+            <div className="flex flex-row mb-5">
+              <AddButton
+                onClick={addSavedMeal}
+                icon={
+                  savedMealWasAdded && userData && userData.profile
+                    ? faMinus
+                    : faPlus
+                }
+              />
+              <FavoriteButton
+                onClick={addFavoriteMeal}
+                icon={
+                  faveMealWasAdded && userData && userData.profile
+                    ? faHeart
+                    : farHeart
+                }
+              />
+            </div>
+          )}
           <TagContainer tags={tags} />
         </div>
       </div>
@@ -186,15 +205,26 @@ const RecipeView: React.FC = () => {
         <div className="w-full lg:w-2/4 p-4">
           <div className="hidden lg:block">
             <RecipeTitle recipeTitle={meal.name} />
-            {userData &&
+            {userData && (
               <div className="flex flex-row mb-5">
-                <AddButton onClick={addSavedMeal} icon={savedMealWasAdded && userData && userData.profile ? faMinus : faPlus} />
+                <AddButton
+                  onClick={addSavedMeal}
+                  icon={
+                    savedMealWasAdded && userData && userData.profile
+                      ? faMinus
+                      : faPlus
+                  }
+                />
                 <FavoriteButton
-                    onClick={addFavoriteMeal}
-                    icon={faveMealWasAdded && userData && userData.profile ? faHeart : farHeart}
+                  onClick={addFavoriteMeal}
+                  icon={
+                    faveMealWasAdded && userData && userData.profile
+                      ? faHeart
+                      : farHeart
+                  }
                 />
               </div>
-            }
+            )}
             <TagContainer tags={tags} />
           </div>
           <div className="flex flex-row mb-2 items-start">
