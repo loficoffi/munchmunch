@@ -12,7 +12,7 @@ const Searchbar= ({onSearchBarSelect }) => {
 
 
     return (
-        <div className="searchBar mb-5">
+        <div className="searchBar mb-5 min-w-32 md:max-w-72 lg:max-w-72  ">
             <FontAwesomeIcon className="searchIcon" icon={faSearch}/>
             <input onChange={handleChange} type="text" className="searchInput" placeholder="Search..."/>
         </div>

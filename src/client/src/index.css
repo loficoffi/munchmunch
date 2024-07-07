@@ -583,7 +583,6 @@ button:focus-visible {
     border: 2px solid #ccc;
     border-radius: 25px;
     padding: 5px 10px;
-    width: 400px;
     background: #3C3C3C;
 }
 
