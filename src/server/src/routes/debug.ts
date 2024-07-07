@@ -21,7 +21,7 @@ const router = express.Router();
 // The individual recipes are also defined in here. After the instances are created, the db collection is regenerated with the new data.
 router.get("/", async (req, res) => {
 
-    //Recipe 1: Spagetthi mit Garnelen und Paprika-Peperoni Sauce
+    //Recipe 1: Spaghetti mit Garnelen und Paprika-Peperoni Sauce
     let recipe1Ingredients: Ingredient[] = [
         {
             id: uuidv4(),
@@ -35,7 +35,7 @@ router.get("/", async (req, res) => {
         },
         {
             id: uuidv4(),
-            name: 'Spagetthi',
+            name: 'Spaghetti',
             calories_100g: 158
         },
         {
@@ -85,7 +85,7 @@ router.get("/", async (req, res) => {
     let recipe1Recipe: Recipe[] = [
         {
             id: uuidv4(),
-            name: "Spagetthi mit Garnelen und Paprika-Peperoni Sauce",
+            name: "Spaghetti mit Garnelen und Paprika-Peperoni Sauce",
             addedTime: Date.now().toString(),
             difficulty: DifficultyType.easy,
             ingredients: recipe1NeededIngredients,
@@ -107,7 +107,7 @@ router.get("/", async (req, res) => {
 
     let recipe1Meal: Meal = {
         id: uuidv4(),
-        name: "Spagetthi mit Garnelen und Paprika-Peperoni Sauce",
+        name: "Spaghetti mit Garnelen und Paprika-Peperoni Sauce",
         diet: DietType.fish,
         cuisine: "Italienisch",
         recipe: recipe1Recipe[0],
@@ -678,7 +678,7 @@ router.get("/", async (req, res) => {
     let recipe5Recipe: Recipe[] = [
         {
             id: uuidv4(),
-            name: "Thüringer Klösse",
+            name: "Thüringer Klöße",
             addedTime: Date.now().toString(),
             difficulty: DifficultyType.middle,
             ingredients: recipe5NeededIngredients,
@@ -709,9 +709,9 @@ router.get("/", async (req, res) => {
 
     let recipe5Meal: Meal = {
         id: uuidv4(),
-        name: "Thüringer Klösse",
+        name: "Thüringer Klöße",
         diet: DietType.veggie,
-        cuisine: "deutsch",
+        cuisine: "Deutsch",
         recipe: recipe5Recipe[0],
         mainImage: "recipe5" + "mainImage",
         extraImage: [

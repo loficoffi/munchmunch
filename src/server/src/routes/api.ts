@@ -40,7 +40,7 @@ router.get('/dashboard', async (req, res) => {
                     meals.find(x => x.name == "Rehragout mit Preiselbeeren"),
                     meals.find(x => x.name == "Forelle im Backofen"),
                     meals.find(x => x.name == "Wiener Schnitzel"),
-                    meals.find(x => x.name == "Spagetthi mit Garnelen und Paprika-Peperoni Sauce")
+                    meals.find(x => x.name == "Spaghetti mit Garnelen und Paprika-Peperoni Sauce")
                 ].map(value => ({value, sort: Math.random()}))
                     .sort((a, b) => a.sort - b.sort)
                     .map(({value}) => value)
@@ -91,7 +91,7 @@ router.get('/dashboard', async (req, res) => {
                 name: "Wenn's mal schnell gehen muss",
                 meals: [
                     meals.find(x => x.name == "Wiener Schnitzel"),
-                    meals.find(x => x.name == "Spagetthi mit Garnelen und Paprika-Peperoni Sauce"),
+                    meals.find(x => x.name == "Spaghetti mit Garnelen und Paprika-Peperoni Sauce"),
                 ]
                     .map(value => ({value, sort: Math.random()}))
                     .sort((a, b) => a.sort - b.sort)
